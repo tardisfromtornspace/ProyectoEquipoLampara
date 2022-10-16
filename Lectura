@@ -1,5 +1,18 @@
 Proyecto SE
+* Enunciado
 https://moodle.upm.es/titulaciones/oficiales/pluginfile.php/10366288/mod_folder/content/0/enunciado-v-0-1.pdf?forcedownload=1
+* Apéndice de Apoyo
 https://moodle.upm.es/titulaciones/oficiales/pluginfile.php/10366288/mod_folder/content/0/requisitos-v-0-1.pdf?forcedownload=1
 
-Documentación: https://moodle.upm.es/titulaciones/oficiales/mod/folder/view.php?id=469449
+Documentación adicional: https://moodle.upm.es/titulaciones/oficiales/mod/folder/view.php?id=469449
+
+* Herramientas: Todas estas herramientas estarán a disposicion de los alumnos en el Centro de Informática y Comunicaciones (CIC), así como en los ordenadores de los laboratorios en los que se desarrollen las
+prácticas.
+
+** Herramientas obligatorias. Herramientas cuya utilizacion es indiscutiblemente obligatoria para alguna de las actividades de desarrollo del proyecto.
+1. Kicad. Herramienta de libre distribución para el diseño y obtención de ficheros de fabricación de circuitos.
+2. MPLAB X. Herramienta de programación y simulación de los microcontroladores de la casa Microchip.
+3. xc8. Compilador de C para los microcontroladores de gama media de la casa Microchip.
+
+** Herramienta optativa. Herramienta cuya utilización es muy recomendable, pero no obligatoria, para alguna de las actividades del desarrollo del proyecto.
+1. Eclipse y Papyrus. Herramienta para generar diseños gr ́aficos (UML y SysML) de nuestros sistemas software.
