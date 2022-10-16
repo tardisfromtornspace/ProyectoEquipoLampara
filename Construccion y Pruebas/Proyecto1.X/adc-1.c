@@ -125,6 +125,8 @@ void main(void) {
     init_ADC();
     init_TMR1();
     
+    TRISB = 0; // Puerto B a output
+    
     INTCONbits.GIE = 1; // Habilitar interrupción
     INTCONbits.PEIE = 1; // Habilitar interrupción de otros timers que no son el 0
 
