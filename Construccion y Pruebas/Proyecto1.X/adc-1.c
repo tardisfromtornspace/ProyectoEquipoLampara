@@ -81,7 +81,7 @@ void __interrupt() TRAT_INT(void) {
     } else
     { // Interrupcion ADC
         PIR1bits.ADIF = 0;
-        valor = (int) ADRESH * 0x10 + ADRESL;
+        valor = (int) ADRESH * 0x100 + ADRESL;
         PORTB = ADRESL;
         continuar = 1;
     }
@@ -112,7 +112,7 @@ void init_uart(void) {
 
 /* It is needed for printf */
 void putch(char c) {
-    while (!TXIF && !TXSTAbits.TRMT) {
+    while (!TXSTAbits.TRMT) {
         continue;
 
     }

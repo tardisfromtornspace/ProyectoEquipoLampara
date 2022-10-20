@@ -20,17 +20,17 @@ unsigned char eltimer1L = 0x4d; // 0x4c +1
 int valor = 0;
 
 char porcentajeMin = 0; // Min duty cycle
-char porcentajeMax = 100; // Max duty cycle
+char porcentajeMax = 167; // Max duty cycle
 char porcentajeSubenBaja = 1; // 1 sube, 0 Baja
 
 char porcentaje = 0; // Porcentaje del duty cycle
-char porcentajeC = 100; // Porcentaje del duty cycle complementario
+char porcentajeC = 167; // Porcentaje del duty cycle complementario
 
 char elPR2 = 167; // para 30 kHz es  Fosc/4/PR2 = 30 kHz => PR2 = 167 < 255
 
 char x;
 int copias = 0; // De acuerdo al profesor, empleamos varias esperas de 5 ms ya que el TMR0 no puede aguantar hasta 1 s. 1s : 5 ms = 200 veces
-int los5msen1s = 5; // En TMR1 con 1:8 (el maximo preescalado) salen 0.5 : (8 * 2E-7) = 312500 > 65536; 312500 : 65536 = 4 ciclos, resto 50356, por lo tanto, 65536 - 50356 = 15180
+int los5msen1s = 4; // En TMR1 con 1:8 (el maximo preescalado) salen 0.5 : (8 * 2E-7) = 312500 > 65536; 312500 : 65536 = 4 ciclos, resto 50356, por lo tanto, 65536 - 50356 = 15180
 // Con TMR0 Medio segundo eran 100, 1 s son 200
 // En caso de emplear la mejora de 1:256 que serÃ­a un ciclo de 10 ms, esto seria 100 y no 200 (en 1 s))
 
@@ -72,8 +72,8 @@ void init_CCP1_PWM(void) {
     CCP1CONbits.CCP1M = 0b1100; // Modo PWM con todo a alto
     CCP1CONbits.P1M = 0b00; // Half Bridge simple
     //CCP1CONbits.DC1B = 0b00; // Los dos bits menos significativos de la cuenta.
-    CCPR1L = (porcentaje * elPR2 / 4); // Los 8 bits mas significativos para el duty cycle del PWM
-    CCP1CONbits.DC1B = porcentaje * elPR2 % 4; // Los dos bits menos significativos para el duty cycle del PWM
+    CCPR1L = porcentaje; // Los 8 bits mas significativos para el duty cycle del PWM
+    //CCP1CONbits.DC1B = porcentaje * elPR2 % 4; // Los dos bits menos significativos para el duty cycle del PWM
 
 }
 
@@ -84,9 +84,9 @@ void init_CCP2_PWM(void) {
     // CCP2CONbits.P2M = 0b00; // Half Bridge simple NO EXISTE EN CCP2
     //CCP2CONbits.DC2B0 = 0; // Los dos bits menos significativos de la cuenta.
     //CCP2CONbits.DC2B1 = 0; // Los dos bits menos significativos de la cuenta.
-    CCPR2L = porcentajeC * elPR2 / 4; // Los 8 bits mas significativos para el duty cycle del PWM
-    CCP2CONbits.DC2B1 = (unsigned char) (( porcentajeC * elPR2 % 4) >> 1 << 1); // Los dos bits menos significativos para el duty cycle del PWM
-    CCP2CONbits.DC2B0 = (unsigned char) (porcentajeC * elPR2 % 2); // Los dos bits menos significativos para el duty cycle del PWM
+    CCPR2L = porcentajeC ; // Los 8 bits mas significativos para el duty cycle del PWM
+    //CCP2CONbits.DC2B1 = (unsigned char) (( porcentajeC * elPR2 % 4) >> 1 << 1); // Los dos bits menos significativos para el duty cycle del PWM
+    //CCP2CONbits.DC2B0 = (unsigned char) (porcentajeC * elPR2 % 2); // Los dos bits menos significativos para el duty cycle del PWM
 
 }
 // TO-DO CCP2_PWM
@@ -129,14 +129,18 @@ void __interrupt() TRAT_INT(void) {
                 porcentajeC -= 1;
             }
             PORTB = porcentaje;
+            
             // Cada 50 ms ajustar el duty cycle segun especificaciones del enunciado
-            CCPR1L = porcentaje * elPR2 / 4; // Los 8 bits mas significativos para el duty cycle del PWM
-            CCP1CONbits.DC1B = porcentaje * elPR2 % 4; // Los dos bits menos significativos para el duty cycle del PWM
+            CCPR1L = porcentaje ; // Los 8 bits mas significativos para el duty cycle del PWM
+            //CCP1CONbits.DC1B = porcentaje % 4; // Los dos bits menos significativos para el duty cycle del PWM
+            
+            //CCPR1L = porcentaje * elPR2 / 4; // Los 8 bits mas significativos para el duty cycle del PWM
+            //CCP1CONbits.DC1B = porcentaje * elPR2 % 4; // Los dos bits menos significativos para el duty cycle del PWM
 
             // Para el CCP2 lo mismo pero al revés
-            CCPR2L = porcentajeC * elPR2 / 4; // Los 8 bits mas significativos para el duty cycle del PWM
-            CCP2CONbits.DC2B1 = (unsigned char) ((porcentajeC * elPR2 % 4) >> 1 << 1); // Los dos bits menos significativos para el duty cycle del PWM
-            CCP2CONbits.DC2B0 = (unsigned char) (porcentajeC * elPR2 % 2); // Los dos bits menos significativos para el duty cycle del PWM
+            CCPR2L = porcentajeC  ; // Los 8 bits mas significativos para el duty cycle del PWM
+            //CCP2CONbits.DC2B1 = (unsigned char) ((porcentajeC  % 4) >> 1 << 1); // Los dos bits menos significativos para el duty cycle del PWM
+            //CCP2CONbits.DC2B0 = (unsigned char) (porcentajeC % 2); // Los dos bits menos significativos para el duty cycle del PWM
             
             //TO-DO PORTC como lo sacamos?
         } else {

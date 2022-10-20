@@ -1,0 +1,855 @@
+!SESSION 2022-10-20 12:27:07.866 -----------------------------------------------
+eclipse.buildId=4.20.0.I20210611-1600
+java.version=16.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.jface 2 0 2022-10-20 12:28:28.589
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-10-20 12:28:28.589
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@59a5bb61,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6f65aa58,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-10-20 12:28:38.037
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\andro'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2022-10-20 12:31:26.196 -----------------------------------------------
+eclipse.buildId=4.20.0.I20210611-1600
+java.version=16.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data file:/C:/ASL/Universidad/4to_curso/SE/EclipsePap/ -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.jface 2 0 2022-10-20 12:31:32.930
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-10-20 12:31:32.930
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@31beb0d0,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@13da6bc9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-10-20 12:31:41.275
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\andro'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.intro 4 0 2022-10-20 12:31:43.520
+!MESSAGE Could not run action: org.eclipse.papyrus.uml.diagram.wizards.action.NewProjectAction
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.ui.IWorkbenchWindow.getWorkbench()" because the return value of "org.eclipse.ui.intro.IIntroSite.getWorkbenchWindow()" is null
+	at org.eclipse.papyrus.uml.diagram.wizards.action.NewProjectAction.run(NewProjectAction.java:49)
+	at org.eclipse.ui.internal.intro.impl.model.url.IntroURL.runAction(IntroURL.java:277)
+	at org.eclipse.ui.internal.intro.impl.model.url.IntroURL.doExecute(IntroURL.java:188)
+	at org.eclipse.ui.internal.intro.impl.model.url.IntroURL.lambda$0(IntroURL.java:143)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.ui.internal.intro.impl.model.url.IntroURL.execute(IntroURL.java:143)
+	at org.eclipse.ui.internal.intro.impl.presentations.BrowserIntroPartLocationListener.changing(BrowserIntroPartLocationListener.java:130)
+	at org.eclipse.swt.browser.IE.lambda$6(IE.java:525)
+	at org.eclipse.swt.ole.win32.OleEventTable.sendEvent(OleEventTable.java:58)
+	at org.eclipse.swt.ole.win32.OleEventSink.notifyListener(OleEventSink.java:160)
+	at org.eclipse.swt.ole.win32.OleEventSink.Invoke(OleEventSink.java:128)
+	at org.eclipse.swt.ole.win32.OleEventSink.access$1(OleEventSink.java:105)
+	at org.eclipse.swt.ole.win32.OleEventSink$1.method6(OleEventSink.java:79)
+	at org.eclipse.swt.internal.ole.win32.COMObject.callback6(COMObject.java:120)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3624)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.papyrus.infra.types.core 2 0 2022-10-20 12:32:49.155
+!MESSAGE Diagnosis of org.eclipse.papyrus.infra.types.impl.ElementTypeSetConfigurationImpl@77b60b6f{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet.extension}
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.InstanceValueImpl@3f1e91bf{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4me0kcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl@41a6e7d0{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4oUAUcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+
+!ENTRY org.eclipse.papyrus.infra.types.core 2 0 2022-10-20 12:32:49.764
+!MESSAGE Diagnosis of org.eclipse.papyrus.infra.types.impl.ElementTypeSetConfigurationImpl@1fafb2ae{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet.extension}
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.InstanceValueImpl@496361cd{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4me0kcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl@45f4a0ee{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4oUAUcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+!SESSION 2022-10-20 12:37:25.871 -----------------------------------------------
+eclipse.buildId=4.20.0.I20210611-1600
+java.version=16.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 4 567 2022-10-20 12:39:19.454
+!MESSAGE Workspace restored, but some problems occurred.
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2022-10-20 12:39:19.454
+!MESSAGE Could not read metadata for '.org.eclipse.egit.core.cmp'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/.org.eclipse.egit.core.cmp)[567]: java.lang.Exception: The project description file (.project) for '.org.eclipse.egit.core.cmp' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:868)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:724)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1555)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2480)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2231)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:475)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:814)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:806)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:763)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1028)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:371)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
+	at org.eclipse.osgi.container.Module.start(Module.java:468)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:511)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:170)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:519)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:153)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2022-10-20 12:39:19.455
+!MESSAGE The project description file (.project) for '.org.eclipse.egit.core.cmp' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!STACK 0
+java.lang.Exception: The project description file (.project) for '.org.eclipse.egit.core.cmp' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:908)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:888)
+	at org.eclipse.core.internal.resources.SaveManager.restoreMetaInfo(SaveManager.java:868)
+	at org.eclipse.core.internal.resources.SaveManager.restore(SaveManager.java:724)
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1555)
+	at org.eclipse.core.internal.resources.Workspace.startup(Workspace.java:2480)
+	at org.eclipse.core.internal.resources.Workspace.open(Workspace.java:2231)
+	at org.eclipse.core.resources.ResourcesPlugin.start(ResourcesPlugin.java:475)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:814)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:806)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:763)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1028)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:371)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:605)
+	at org.eclipse.osgi.container.Module.start(Module.java:468)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:511)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:117)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:572)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:345)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:401)
+	at org.eclipse.osgi.internal.loader.sources.SingleSourcePackage.loadClass(SingleSourcePackage.java:41)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:170)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:519)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:153)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.jface 2 0 2022-10-20 12:39:21.364
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-10-20 12:39:21.364
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1df83569,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@439047ef,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.papyrus.infra.types.core 2 0 2022-10-20 12:39:32.372
+!MESSAGE Diagnosis of org.eclipse.papyrus.infra.types.impl.ElementTypeSetConfigurationImpl@10af5cee{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet.extension}
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.InstanceValueImpl@45d3a77e{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4me0kcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl@23efa674{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4oUAUcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+
+!ENTRY org.eclipse.papyrus.infra.types.core 2 0 2022-10-20 12:39:32.988
+!MESSAGE Diagnosis of org.eclipse.papyrus.infra.types.impl.ElementTypeSetConfigurationImpl@25fd3379{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet.extension}
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.InstanceValueImpl@2d683b2d{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4me0kcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl@7272f82e{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4oUAUcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-10-20 12:39:35.666
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\andro'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui 4 0 2022-10-20 12:42:09.984
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: java.lang.IllegalStateException: Application does not have an active window
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:68)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:236)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4742)
+	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
+	at org.eclipse.e4.ui.internal.di.UIEventObjectSupplier$UIEventHandler.handleEvent(UIEventObjectSupplier.java:64)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:205)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:203)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:133)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:75)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:63)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
+	at org.eclipse.emf.ecore.util.EcoreEList.dispatchNotification(EcoreEList.java:249)
+	at org.eclipse.emf.common.notify.impl.NotifyingListImpl.addUnique(NotifyingListImpl.java:304)
+	at org.eclipse.emf.common.util.AbstractEList.add(AbstractEList.java:304)
+	at org.eclipse.ui.internal.SplitHandler.execute(SplitHandler.java:77)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:283)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem.executeItem(HandledContributionItem.java:438)
+	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.handleWidgetSelection(AbstractContributionItem.java:449)
+	at org.eclipse.e4.ui.workbench.renderers.swt.AbstractContributionItem.lambda$2(AbstractContributionItem.java:475)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+Caused by: java.lang.IllegalStateException: Application does not have an active window
+	at org.eclipse.e4.ui.internal.workbench.ApplicationPartServiceImpl.getActiveWindowService(ApplicationPartServiceImpl.java:48)
+	at org.eclipse.e4.ui.internal.workbench.ApplicationPartServiceImpl.activate(ApplicationPartServiceImpl.java:82)
+	at org.eclipse.e4.ui.internal.workbench.ApplicationPartServiceImpl.activate(ApplicationPartServiceImpl.java:82)
+	at org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon.splitPart(SplitterAddon.java:178)
+	at org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon.subscribeTopicTagsChanged(SplitterAddon.java:78)
+	at jdk.internal.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	... 63 more
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-20 12:57:53.357
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:728)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:338)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.updateButtonImage(ColorFieldEditor.java:158)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoadColor(ColorFieldEditor.java:108)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoad(ColorFieldEditor.java:98)
+	at org.eclipse.jface.preference.FieldEditor.load(FieldEditor.java:497)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.load(ColorFieldEditor.java:72)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPreferenceGroup.load(AbstractPreferenceGroup.java:128)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.initGroup(AbstractPapyrusPreferencePage.java:207)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.setVisible(AbstractPapyrusPreferencePage.java:228)
+	at org.eclipse.jface.preference.PreferenceDialog.showPage(PreferenceDialog.java:1263)
+	at org.eclipse.ui.internal.dialogs.FilteredPreferenceDialog.showPage(FilteredPreferenceDialog.java:630)
+	at org.eclipse.jface.preference.PreferenceDialog$5.lambda$0(PreferenceDialog.java:660)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.jface.preference.PreferenceDialog$5.selectionChanged(PreferenceDialog.java:657)
+	at org.eclipse.jface.viewers.StructuredViewer$3.run(StructuredViewer.java:823)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.firePostSelectionChanged(StructuredViewer.java:820)
+	at org.eclipse.jface.viewers.StructuredViewer.handlePostSelect(StructuredViewer.java:1193)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:84)
+	at org.eclipse.jface.util.OpenStrategy.firePostSelectionEvent(OpenStrategy.java:263)
+	at org.eclipse.jface.util.OpenStrategy.access$5(OpenStrategy.java:258)
+	at org.eclipse.jface.util.OpenStrategy$1.lambda$1(OpenStrategy.java:428)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.run(PropertyDialogAction.java:153)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:474)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:414)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-20 12:57:53.359
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:728)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:338)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.updateButtonImage(ColorFieldEditor.java:158)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoadColor(ColorFieldEditor.java:108)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoad(ColorFieldEditor.java:98)
+	at org.eclipse.jface.preference.FieldEditor.load(FieldEditor.java:497)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.load(ColorFieldEditor.java:72)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPreferenceGroup.load(AbstractPreferenceGroup.java:128)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.initGroup(AbstractPapyrusPreferencePage.java:207)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.setVisible(AbstractPapyrusPreferencePage.java:228)
+	at org.eclipse.jface.preference.PreferenceDialog.showPage(PreferenceDialog.java:1263)
+	at org.eclipse.ui.internal.dialogs.FilteredPreferenceDialog.showPage(FilteredPreferenceDialog.java:630)
+	at org.eclipse.jface.preference.PreferenceDialog$5.lambda$0(PreferenceDialog.java:660)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.jface.preference.PreferenceDialog$5.selectionChanged(PreferenceDialog.java:657)
+	at org.eclipse.jface.viewers.StructuredViewer$3.run(StructuredViewer.java:823)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.firePostSelectionChanged(StructuredViewer.java:820)
+	at org.eclipse.jface.viewers.StructuredViewer.handlePostSelect(StructuredViewer.java:1193)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:84)
+	at org.eclipse.jface.util.OpenStrategy.firePostSelectionEvent(OpenStrategy.java:263)
+	at org.eclipse.jface.util.OpenStrategy.access$5(OpenStrategy.java:258)
+	at org.eclipse.jface.util.OpenStrategy$1.lambda$1(OpenStrategy.java:428)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.run(PropertyDialogAction.java:153)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:474)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:414)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-20 12:57:53.360
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:728)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:338)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.updateButtonImage(ColorFieldEditor.java:158)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoadColor(ColorFieldEditor.java:108)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoad(ColorFieldEditor.java:98)
+	at org.eclipse.jface.preference.FieldEditor.load(FieldEditor.java:497)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.load(ColorFieldEditor.java:72)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPreferenceGroup.load(AbstractPreferenceGroup.java:128)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.initGroup(AbstractPapyrusPreferencePage.java:207)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.setVisible(AbstractPapyrusPreferencePage.java:228)
+	at org.eclipse.jface.preference.PreferenceDialog.showPage(PreferenceDialog.java:1263)
+	at org.eclipse.ui.internal.dialogs.FilteredPreferenceDialog.showPage(FilteredPreferenceDialog.java:630)
+	at org.eclipse.jface.preference.PreferenceDialog$5.lambda$0(PreferenceDialog.java:660)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.jface.preference.PreferenceDialog$5.selectionChanged(PreferenceDialog.java:657)
+	at org.eclipse.jface.viewers.StructuredViewer$3.run(StructuredViewer.java:823)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.firePostSelectionChanged(StructuredViewer.java:820)
+	at org.eclipse.jface.viewers.StructuredViewer.handlePostSelect(StructuredViewer.java:1193)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:84)
+	at org.eclipse.jface.util.OpenStrategy.firePostSelectionEvent(OpenStrategy.java:263)
+	at org.eclipse.jface.util.OpenStrategy.access$5(OpenStrategy.java:258)
+	at org.eclipse.jface.util.OpenStrategy$1.lambda$1(OpenStrategy.java:428)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.run(PropertyDialogAction.java:153)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:474)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:414)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-20 12:57:53.361
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:728)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:338)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.updateButtonImage(ColorFieldEditor.java:158)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoadColor(ColorFieldEditor.java:108)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.doLoad(ColorFieldEditor.java:98)
+	at org.eclipse.jface.preference.FieldEditor.load(FieldEditor.java:497)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.ColorFieldEditor.load(ColorFieldEditor.java:72)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPreferenceGroup.load(AbstractPreferenceGroup.java:128)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.initGroup(AbstractPapyrusPreferencePage.java:207)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.setVisible(AbstractPapyrusPreferencePage.java:228)
+	at org.eclipse.jface.preference.PreferenceDialog.showPage(PreferenceDialog.java:1263)
+	at org.eclipse.ui.internal.dialogs.FilteredPreferenceDialog.showPage(FilteredPreferenceDialog.java:630)
+	at org.eclipse.jface.preference.PreferenceDialog$5.lambda$0(PreferenceDialog.java:660)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.jface.preference.PreferenceDialog$5.selectionChanged(PreferenceDialog.java:657)
+	at org.eclipse.jface.viewers.StructuredViewer$3.run(StructuredViewer.java:823)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.firePostSelectionChanged(StructuredViewer.java:820)
+	at org.eclipse.jface.viewers.StructuredViewer.handlePostSelect(StructuredViewer.java:1193)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:84)
+	at org.eclipse.jface.util.OpenStrategy.firePostSelectionEvent(OpenStrategy.java:263)
+	at org.eclipse.jface.util.OpenStrategy.access$5(OpenStrategy.java:258)
+	at org.eclipse.jface.util.OpenStrategy$1.lambda$1(OpenStrategy.java:428)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.run(PropertyDialogAction.java:153)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:474)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:414)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-20 12:57:53.363
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:205)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.GradientFieldEditor.setButtonImage(GradientFieldEditor.java:239)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.jface.preference.GradientFieldEditor.load(GradientFieldEditor.java:94)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPreferenceGroup.load(AbstractPreferenceGroup.java:128)
+	at org.eclipse.papyrus.infra.gmfdiag.preferences.ui.BackgroundColor.load(BackgroundColor.java:104)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.initGroup(AbstractPapyrusPreferencePage.java:207)
+	at org.eclipse.papyrus.infra.ui.preferences.AbstractPapyrusPreferencePage.setVisible(AbstractPapyrusPreferencePage.java:228)
+	at org.eclipse.jface.preference.PreferenceDialog.showPage(PreferenceDialog.java:1263)
+	at org.eclipse.ui.internal.dialogs.FilteredPreferenceDialog.showPage(FilteredPreferenceDialog.java:630)
+	at org.eclipse.jface.preference.PreferenceDialog$5.lambda$0(PreferenceDialog.java:660)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.jface.preference.PreferenceDialog$5.selectionChanged(PreferenceDialog.java:657)
+	at org.eclipse.jface.viewers.StructuredViewer$3.run(StructuredViewer.java:823)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.firePostSelectionChanged(StructuredViewer.java:820)
+	at org.eclipse.jface.viewers.StructuredViewer.handlePostSelect(StructuredViewer.java:1193)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:84)
+	at org.eclipse.jface.util.OpenStrategy.firePostSelectionEvent(OpenStrategy.java:263)
+	at org.eclipse.jface.util.OpenStrategy.access$5(OpenStrategy.java:258)
+	at org.eclipse.jface.util.OpenStrategy$1.lambda$1(OpenStrategy.java:428)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.run(PropertyDialogAction.java:153)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:474)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:414)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.papyrus.infra.ui.emf 2 0 2022-10-20 12:58:23.325
+!MESSAGE There is no active editor, the applied Customizations won't be saved
+
+!ENTRY org.eclipse.papyrus.infra.ui.emf 2 0 2022-10-20 12:58:36.204
+!MESSAGE There is no active editor, the applied Customizations won't be saved
+
+!ENTRY org.eclipse.papyrus.infra.ui.emf 2 0 2022-10-20 12:59:55.817
+!MESSAGE There is no active editor, the applied Customizations won't be saved
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-10-20 14:37:37.291
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:683)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:274)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.papyrus.uml.tools.utils.ImageUtil.getImageFromLocation(ImageUtil.java:172)
+	at org.eclipse.papyrus.uml.tools.Activator.getImageInRegistry(Activator.java:258)
+	at org.eclipse.papyrus.uml.tools.Activator.getIconElement(Activator.java:219)
+	at org.eclipse.papyrus.uml.tools.Activator.getIconElement(Activator.java:164)
+	at org.eclipse.papyrus.uml.tools.providers.UMLLabelProvider.getImage(UMLLabelProvider.java:138)
+	at org.eclipse.papyrus.infra.ui.emf.providers.EMFLabelProvider.getImage(EMFLabelProvider.java:134)
+	at org.eclipse.papyrus.uml.modelexplorer.queries.GetImageQuery.evaluate(GetImageQuery.java:43)
+	at org.eclipse.papyrus.uml.modelexplorer.queries.GetImageQuery.evaluate(GetImageQuery.java:1)
+	at org.eclipse.papyrus.emf.facet.query.java.core.internal.evaluator.JavaQueryImplementation.getValue(JavaQueryImplementation.java:57)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.DerivedTypedElementManager.evaluateAndCheck(DerivedTypedElementManager.java:187)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.DerivedTypedElementManager.evaluate(DerivedTypedElementManager.java:153)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.DerivedTypedElementManager.evaluateSingleValued(DerivedTypedElementManager.java:89)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.DerivedTypedElementManager.evaluate(DerivedTypedElementManager.java:60)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.DerivedTypedElementUtils.evaluate(DerivedTypedElementUtils.java:69)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.FacetManager.internalInvoke(FacetManager.java:358)
+	at org.eclipse.papyrus.emf.facet.efacet.core.internal.FacetManager.invoke(FacetManager.java:322)
+	at org.eclipse.papyrus.emf.facet.custom.core.internal.CustomizationManager.getCustomValueOf(CustomizationManager.java:85)
+	at org.eclipse.papyrus.emf.facet.custom.core.internal.exported.CustomizationUtils.getPropertyValue(CustomizationUtils.java:121)
+	at org.eclipse.papyrus.emf.facet.custom.ui.internal.CustomizedLabelProvider.getPropertyValue(CustomizedLabelProvider.java:104)
+	at org.eclipse.papyrus.emf.facet.custom.ui.internal.CustomizedLabelProvider.getImage(CustomizedLabelProvider.java:344)
+	at org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.getImage(DelegatingStyledCellLabelProvider.java:198)
+	at org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider.getImage(DecoratingStyledCellLabelProvider.java:171)
+	at org.eclipse.papyrus.emf.facet.custom.ui.internal.ResolvingCustomizedLabelProvider.getImage(ResolvingCustomizedLabelProvider.java:53)
+	at org.eclipse.papyrus.infra.ui.emf.providers.EMFLabelProvider.getImage(EMFLabelProvider.java:129)
+	at org.eclipse.papyrus.infra.services.labelprovider.service.ExtensibleLabelProvider.getImage(ExtensibleLabelProvider.java:122)
+	at org.eclipse.ui.internal.navigator.NavigatorDecoratingLabelProvider$StyledLabelProviderAdapter.getImage(NavigatorDecoratingLabelProvider.java:63)
+	at org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.getImage(DelegatingStyledCellLabelProvider.java:198)
+	at org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider.getImage(DecoratingStyledCellLabelProvider.java:171)
+	at org.eclipse.papyrus.views.modelexplorer.DecoratingLabelProviderWTooltips.getImage(DecoratingLabelProviderWTooltips.java:110)
+	at org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.update(DelegatingStyledCellLabelProvider.java:124)
+	at org.eclipse.jface.viewers.DecoratingStyledCellLabelProvider.update(DecoratingStyledCellLabelProvider.java:134)
+	at org.eclipse.jface.viewers.ViewerColumn.refresh(ViewerColumn.java:144)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.doUpdateItem(AbstractTreeViewer.java:959)
+	at org.eclipse.jface.viewers.AbstractTreeViewer$UpdateItemSafeRunnable.run(AbstractTreeViewer.java:126)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.doUpdateItem(AbstractTreeViewer.java:1037)
+	at org.eclipse.jface.viewers.StructuredViewer$UpdateItemSafeRunnable.run(StructuredViewer.java:427)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:174)
+	at org.eclipse.jface.viewers.StructuredViewer.updateItem(StructuredViewer.java:2111)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createTreeItem(AbstractTreeViewer.java:853)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:831)
+	at org.eclipse.jface.viewers.TreeViewer.createChildren(TreeViewer.java:604)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:779)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalExpand(AbstractTreeViewer.java:1690)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setSelectionToWidget(AbstractTreeViewer.java:2557)
+	at org.eclipse.ui.navigator.CommonViewer.setSelectionToWidget(CommonViewer.java:442)
+	at org.eclipse.jface.viewers.StructuredViewer.setSelectionToWidget(StructuredViewer.java:1704)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setSelectionToWidget(AbstractTreeViewer.java:3029)
+	at org.eclipse.jface.viewers.StructuredViewer.setSelection(StructuredViewer.java:1660)
+	at org.eclipse.jface.viewers.TreeViewer.setSelection(TreeViewer.java:1084)
+	at org.eclipse.ui.navigator.CommonViewer.setSelection(CommonViewer.java:373)
+	at org.eclipse.papyrus.infra.ui.emf.utils.ProviderHelper.selectReveal(ProviderHelper.java:205)
+	at org.eclipse.papyrus.views.modelexplorer.ModelExplorerView.lambda$1(ModelExplorerView.java:1204)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:236)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4742)
+	at org.eclipse.papyrus.views.modelexplorer.ModelExplorerView.reveal(ModelExplorerView.java:1204)
+	at org.eclipse.papyrus.views.modelexplorer.ModelExplorerView.revealSemanticElement(ModelExplorerView.java:1182)
+	at org.eclipse.papyrus.infra.widgets.util.RevealResultCommand$1.run(RevealResultCommand.java:158)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui 4 0 2022-10-20 14:40:02.367
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: begin 0, end 12, length 11
+	at java.base/java.lang.String.checkBoundsBeginEnd(String.java:3751)
+	at java.base/java.lang.String.substring(String.java:1907)
+	at org.eclipse.draw2d.text.TextFlow.getBidiSubstring(TextFlow.java:223)
+	at org.eclipse.gmf.runtime.draw2d.ui.text.TextFlowEx.paintFigure(TextFlowEx.java:158)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1118)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1200)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1209)
+	at org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel.paintClientArea(WrappingLabel.java:1105)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure.paintClientArea(BorderItemContainerFigure.java:86)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1205)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure.paintClientArea(BorderItemContainerFigure.java:86)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1205)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1205)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1205)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1205)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.draw2d.Figure.paintChildren(Figure.java:1170)
+	at org.eclipse.draw2d.Figure.paintClientArea(Figure.java:1205)
+	at org.eclipse.draw2d.ScalableFreeformLayeredPane.paintClientArea(ScalableFreeformLayeredPane.java:60)
+	at org.eclipse.gmf.runtime.draw2d.ui.internal.graphics.ScalableFreeformLayeredPane.paintClientArea(ScalableFreeformLayeredPane.java:82)
+	at org.eclipse.draw2d.Figure.paint(Figure.java:1120)
+	at org.eclipse.gmf.runtime.draw2d.ui.internal.parts.ThumbnailEx$ThumbnailUpdater.run(ThumbnailEx.java:165)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4001)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
