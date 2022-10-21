@@ -26,7 +26,6 @@
         <packagedElement xmi:type="uml:Class" xmi:id="_QGty4FB2Ee2yaNLydTHFqg" name="Ventana interfaz usr"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_k_rl0FB2Ee2yaNLydTHFqg" name="PWMVentilador"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_xjWksFEZEe2yaNLydTHFqg" name="SensorLuminosidad"/>
-        <packagedElement xmi:type="uml:Actor" xmi:id="_QDPOkFEaEe2yaNLydTHFqg" name="LINUX usr"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_zVi_gFBzEe2yaNLydTHFqg" name="Low Level Design"/>
     </packagedElement>

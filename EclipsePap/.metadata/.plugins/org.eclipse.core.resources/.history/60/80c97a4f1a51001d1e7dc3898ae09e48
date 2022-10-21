@@ -478,40 +478,6 @@
       <element xsi:nil="true"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zQbxlVEZEe2yaNLydTHFqg" x="200"/>
     </children>
-    <children xmi:type="notation:Shape" xmi:id="_QDQcsFEaEe2yaNLydTHFqg" type="Class_Shape">
-      <children xmi:type="notation:DecorationNode" xmi:id="_QDQcslEaEe2yaNLydTHFqg" type="Class_NameLabel"/>
-      <children xmi:type="notation:DecorationNode" xmi:id="_QDRDwFEaEe2yaNLydTHFqg" type="Class_FloatingNameLabel">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_QDRDwVEaEe2yaNLydTHFqg" y="5"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_QDRDwlEaEe2yaNLydTHFqg" type="Class_AttributeCompartment">
-        <styles xmi:type="notation:TitleStyle" xmi:id="_QDRDw1EaEe2yaNLydTHFqg"/>
-        <styles xmi:type="notation:SortingStyle" xmi:id="_QDRDxFEaEe2yaNLydTHFqg"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_QDRDxVEaEe2yaNLydTHFqg"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QDRDxlEaEe2yaNLydTHFqg"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_QDRDx1EaEe2yaNLydTHFqg" type="Class_OperationCompartment">
-        <styles xmi:type="notation:TitleStyle" xmi:id="_QDRDyFEaEe2yaNLydTHFqg"/>
-        <styles xmi:type="notation:SortingStyle" xmi:id="_QDRDyVEaEe2yaNLydTHFqg"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_QDRDylEaEe2yaNLydTHFqg"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QDRDy1EaEe2yaNLydTHFqg"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_QDRDzFEaEe2yaNLydTHFqg" type="Class_NestedClassifierCompartment">
-        <styles xmi:type="notation:TitleStyle" xmi:id="_QDRDzVEaEe2yaNLydTHFqg"/>
-        <styles xmi:type="notation:SortingStyle" xmi:id="_QDRDzlEaEe2yaNLydTHFqg"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_QDRDz1EaEe2yaNLydTHFqg"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QDRD0FEaEe2yaNLydTHFqg"/>
-      </children>
-      <children xmi:type="notation:Compartment" xmi:id="_QDZmoFEaEe2yaNLydTHFqg" type="Flow Ports"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDZmoVEaEe2yaNLydTHFqg" type="constraints"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDZmolEaEe2yaNLydTHFqg" type="Parts"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDZmo1EaEe2yaNLydTHFqg" type="Proxy Ports"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDZmpFEaEe2yaNLydTHFqg" type="Full Ports"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDaNsFEaEe2yaNLydTHFqg" type="References"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDaNsVEaEe2yaNLydTHFqg" type="Flow Properties"/>
-      <children xmi:type="notation:Compartment" xmi:id="_QDaNslEaEe2yaNLydTHFqg" type="Parameters"/>
-      <element xmi:type="uml:Actor" href="Lampara.uml#_QDPOkFEaEe2yaNLydTHFqg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QDQcsVEaEe2yaNLydTHFqg" x="1080" y="520"/>
-    </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_LgKJYVB0Ee2yaNLydTHFqg" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_LgKJYlB0Ee2yaNLydTHFqg"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_LgKJY1B0Ee2yaNLydTHFqg" diagramKindId="org.eclipse.papyrus.sysml16.diagram.blockdefinition">
