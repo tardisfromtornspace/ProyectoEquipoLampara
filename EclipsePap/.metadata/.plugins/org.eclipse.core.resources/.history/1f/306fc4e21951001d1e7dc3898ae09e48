@@ -25,7 +25,6 @@
         <packagedElement xmi:type="uml:Class" xmi:id="_OFBA4FB2Ee2yaNLydTHFqg" name="LEDes"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_QGty4FB2Ee2yaNLydTHFqg" name="Ventana interfaz usr"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_k_rl0FB2Ee2yaNLydTHFqg" name="PWMVentilador"/>
-        <packagedElement xmi:type="uml:Class" xmi:id="_xjWksFEZEe2yaNLydTHFqg" name="SensorLuminosidad"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_zVi_gFBzEe2yaNLydTHFqg" name="Low Level Design"/>
     </packagedElement>
@@ -105,5 +104,4 @@
   <Blocks:Block xmi:id="_OFEEMFB2Ee2yaNLydTHFqg" base_Class="_OFBA4FB2Ee2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_QGwPIFB2Ee2yaNLydTHFqg" base_Class="_QGty4FB2Ee2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_k_upIFB2Ee2yaNLydTHFqg" base_Class="_k_rl0FB2Ee2yaNLydTHFqg"/>
-  <Blocks:Block xmi:id="_xjbdMFEZEe2yaNLydTHFqg" base_Class="_xjWksFEZEe2yaNLydTHFqg"/>
 </xmi:XMI>
