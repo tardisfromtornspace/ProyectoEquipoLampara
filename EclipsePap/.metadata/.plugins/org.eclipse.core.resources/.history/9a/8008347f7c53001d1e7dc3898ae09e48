@@ -18,20 +18,10 @@
             <subvertex xmi:type="uml:State" xmi:id="_Vn48cFB2Ee2yaNLydTHFqg" name="State3"/>
           </region>
         </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_6W6ekFB1Ee2yaNLydTHFqg" name="Sensor Ruido"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_CB-FwFB2Ee2yaNLydTHFqg" name="SensorHumedad"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_ENHHoFB2Ee2yaNLydTHFqg" name="SensorCO2"/>
-        <packagedElement xmi:type="uml:Class" xmi:id="_Lzlw0FB2Ee2yaNLydTHFqg" name="SensorTemperatura">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_00SyAFN_Ee2yaNLydTHFqg" name="Temperatura" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_8jG30FN_Ee2yaNLydTHFqg"/>
-          </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_58bl8FN-Ee2yaNLydTHFqg" name="setTemperatura">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_x-MuoFN_Ee2yaNLydTHFqg" annotatedElement="_58bl8FN-Ee2yaNLydTHFqg">
-              <body>Esto lo obtiene directamente del ADC así que no se asigna nada a nivel SW</body>
-            </ownedComment>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_fmZQ4FN_Ee2yaNLydTHFqg" name="getTemperatura"/>
-        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Lzlw0FB2Ee2yaNLydTHFqg" name="SensorTemperatura"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_OFBA4FB2Ee2yaNLydTHFqg" name="LEDes SK9822"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_QGty4FB2Ee2yaNLydTHFqg" name="SMA_COMP Ventana interfaz usr"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_k_rl0FB2Ee2yaNLydTHFqg" name="PWMVentilador"/>
@@ -46,82 +36,10 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_OrR3wFN4Ee2yaNLydTHFqg"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_SumjQFN4Ee2yaNLydTHFqg" name="configR" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByte"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_3L2KIFN9Ee2yaNLydTHFqg" value="255"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_SumjQFN4Ee2yaNLydTHFqg" name="configLED" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteArray"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_wc-bMFN5Ee2yaNLydTHFqg" value="11111111 11111111 11111111 00011111"/>
           </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_6fLjIFN9Ee2yaNLydTHFqg" name="configG" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByte"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_RIDNcFN-Ee2yaNLydTHFqg" value="255"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_6r4iYFN9Ee2yaNLydTHFqg" name="configB" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByte"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_M9htwFN-Ee2yaNLydTHFqg" value="255"/>
-          </ownedAttribute>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_6-QEwFN9Ee2yaNLydTHFqg" name="configBrillo" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByte"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_I5ROIFN-Ee2yaNLydTHFqg" value="31"/>
-          </ownedAttribute>
-          <ownedBehavior xmi:type="uml:FunctionBehavior" xmi:id="_nMs3wFN7Ee2yaNLydTHFqg" name="getnoPrimerArranque" specification="_1A-8cFN6Ee2yaNLydTHFqg">
-            <language>C++</language>
-            <body>return getnoPrimerArranque;</body>
-          </ownedBehavior>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_1A-8cFN6Ee2yaNLydTHFqg" name="getnoPrimerArranque" method="_nMs3wFN7Ee2yaNLydTHFqg">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_J0qxUFN8Ee2yaNLydTHFqg" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-            </ownedParameter>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_wWLkwFN7Ee2yaNLydTHFqg" name="setnoPrimerArranque">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="__0XxEFN7Ee2yaNLydTHFqg" name="valor">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-              <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="__0XxEVN7Ee2yaNLydTHFqg" value="true"/>
-            </ownedParameter>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_CZhOYFN8Ee2yaNLydTHFqg" name="getporcentajePWM">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_PPXfcFN8Ee2yaNLydTHFqg" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-            </ownedParameter>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_VTLcAFN8Ee2yaNLydTHFqg" name="setporcentajePWM">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dOSRYFN8Ee2yaNLydTHFqg">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-            </ownedParameter>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_hwNkcFN8Ee2yaNLydTHFqg" name="setconfigLED">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_xcP_gFN8Ee2yaNLydTHFqg" name="r">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_xcP_gVN8Ee2yaNLydTHFqg" value="255"/>
-            </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SEGbcFN9Ee2yaNLydTHFqg" name="g">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_SEGbcVN9Ee2yaNLydTHFqg" value="255"/>
-            </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_WhcwgFN9Ee2yaNLydTHFqg" name="b">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_WhcwgVN9Ee2yaNLydTHFqg" value="255"/>
-            </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_axP8UFN-Ee2yaNLydTHFqg" name="brillo">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-              <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_es22QFN-Ee2yaNLydTHFqg" value="31"/>
-            </ownedParameter>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_5rW5gFN9Ee2yaNLydTHFqg" name="getconfigLED">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_5ZClAFN-Ee2yaNLydTHFqg" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteArray"/>
-            </ownedParameter>
-          </ownedOperation>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Class" xmi:id="_LhNO0FOAEe2yaNLydTHFqg" name="SensorRuido">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_LhNO0VOAEe2yaNLydTHFqg" name="Ruido" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_LhNO0lOAEe2yaNLydTHFqg"/>
-          </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_LhNO01OAEe2yaNLydTHFqg" name="setRuido">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_LhNO1FOAEe2yaNLydTHFqg" annotatedElement="_LhNO01OAEe2yaNLydTHFqg">
-              <body>Esto lo obtiene directamente del ADC así que no se asigna nada a nivel SW</body>
-            </ownedComment>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_LhNO1VOAEe2yaNLydTHFqg" name="getRuido"/>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_zVi_gFBzEe2yaNLydTHFqg" name="Low Level Design"/>
@@ -195,6 +113,7 @@
     </profileApplication>
   </uml:Model>
   <Blocks:Block xmi:id="_7B180FBzEe2yaNLydTHFqg" base_Class="_7BjB4FBzEe2yaNLydTHFqg"/>
+  <Blocks:Block xmi:id="_6W-wAFB1Ee2yaNLydTHFqg" base_Class="_6W6ekFB1Ee2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_CCBJEFB2Ee2yaNLydTHFqg" base_Class="_CB-FwFB2Ee2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_ENKK8FB2Ee2yaNLydTHFqg" base_Class="_ENHHoFB2Ee2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_LzoNEFB2Ee2yaNLydTHFqg" base_Class="_Lzlw0FB2Ee2yaNLydTHFqg"/>
@@ -203,5 +122,4 @@
   <Blocks:Block xmi:id="_k_upIFB2Ee2yaNLydTHFqg" base_Class="_k_rl0FB2Ee2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_xjbdMFEZEe2yaNLydTHFqg" base_Class="_xjWksFEZEe2yaNLydTHFqg"/>
   <Blocks:Block xmi:id="_J_1HMFN2Ee2yaNLydTHFqg" base_Class="_J_cssFN2Ee2yaNLydTHFqg"/>
-  <Blocks:Block xmi:id="_LhOc8FOAEe2yaNLydTHFqg" base_Class="_LhNO0FOAEe2yaNLydTHFqg"/>
 </xmi:XMI>
