@@ -1,3 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.papyrus.infra.ui.emf.customizationManager">
+		<section name="platform:/resource/Lampara/Lampara">
+			<item key="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.modelexplorer/resources/PapyrusDiagram.custom" value="true"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.infra.nattable.modelexplorer/resources/PapyrusTable.custom" value="true"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.sysml16.modelexplorer/resources/System.custom" value="true"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.sysml16.ui/resources/custom/OperationalSysML16.custom" value="false"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.uml.modelexplorer/resource/SimpleUML.custom" value="true"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.uml.modelexplorer/resource/StereotypeDisplay.custom" value="true"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.uml.modelexplorer/resource/CustomizableUMLLabel.custom" value="false"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.views.modelexplorer/resources/OpenedPage.custom" value="true"/>
+			<item key="platform:/plugin/org.eclipse.papyrus.views.modelexplorer/resources/ReadOnlyElement.custom" value="true"/>
+			<list key="org.eclipse.papyrus.infra.ui.emf.facet.order">
+				<item value="platform:/plugin/org.eclipse.papyrus.infra.gmfdiag.modelexplorer/resources/PapyrusDiagram.custom"/>
+				<item value="platform:/plugin/org.eclipse.papyrus.infra.nattable.modelexplorer/resources/PapyrusTable.custom"/>
+				<item value="platform:/plugin/org.eclipse.papyrus.uml.modelexplorer/resource/SimpleUML.custom"/>
+				<item value="platform:/plugin/org.eclipse.papyrus.sysml16.modelexplorer/resources/System.custom"/>
+				<item value="platform:/plugin/org.eclipse.papyrus.views.modelexplorer/resources/OpenedPage.custom"/>
+				<item value="platform:/plugin/org.eclipse.papyrus.uml.modelexplorer/resource/StereotypeDisplay.custom"/>
+				<item value="platform:/plugin/org.eclipse.papyrus.views.modelexplorer/resources/ReadOnlyElement.custom"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__platform:/resource/Lampara/Lampara.uml:uml:Type:type">
+		<section name="History">
+			<list key="PreviousSelection">
+				<item value="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+				<item value="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByte"/>
+				<item value="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteArray"/>
+				<item value="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EChar"/>
+				<item value="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EIntegerObject"/>
+				<item value="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__uml:Type:type">
+		<section name="History">
+			<list key="PreviousSelection">
+				<item value="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+				<item value="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+				<item value="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+				<item value="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EChar"/>
+				<item value="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteArray"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__platform:/resource/Lampara/Lampara.uml:uml:Property:subsettedProperty">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__platform:/resource/Lampara/Lampara.uml:uml:Behavior:method">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history_container_platform:/resource/Lampara/Lampara.uml:uml:Behavior:method">
+		<section name="History">
+			<list key="PreviousSelection">
+				<item value="platform:/resource/Lampara/Lampara.uml#_J_cssFN2Ee2yaNLydTHFqg"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__uml:ValueSpecification:min">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history_container_uml:ValueSpecification:min">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__platform:/resource/Lampara/Lampara.uml:uml:UseCase:useCase">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__uml:Event:event">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__uml:Element:constrainedElement">
+	</section>
+	<section name="org.eclipse.papyrus.infra.ui.emf.providers.EMFGraphicalContentProvider_history__platform:/resource/Lampara/Lampara.uml:uml:Constraint:guard">
+	</section>
 </section>

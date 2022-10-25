@@ -196,14 +196,6 @@ setconfigguardadaLED (r,g,b, brillo)</body>
             </ownedParameter>
           </ownedOperation>
         </packagedElement>
-        <packagedElement xmi:type="uml:StateMachine" xmi:id="_Oxun0FB0Ee2yaNLydTHFqg" name="StateMachine2">
-          <region xmi:type="uml:Region" xmi:id="_Pq65oFB0Ee2yaNLydTHFqg" name="Region1">
-            <transition xmi:type="uml:Transition" xmi:id="_doQsUFB2Ee2yaNLydTHFqg" name="Primer encendido" source="_Wh6moFB0Ee2yaNLydTHFqg" target="_Vn48cFB2Ee2yaNLydTHFqg"/>
-            <subvertex xmi:type="uml:Pseudostate" xmi:id="_Wh6moFB0Ee2yaNLydTHFqg" name="Estado Inicial"/>
-            <subvertex xmi:type="uml:FinalState" xmi:id="_ZbHBUFB0Ee2yaNLydTHFqg" name="Estado final"/>
-            <subvertex xmi:type="uml:State" xmi:id="_Vn48cFB2Ee2yaNLydTHFqg" name="State3"/>
-          </region>
-        </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_Lzlw0FB2Ee2yaNLydTHFqg" name="SensorTemperatura">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_00SyAFN_Ee2yaNLydTHFqg" name="Temperatura" visibility="private">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -251,6 +243,10 @@ setconfigguardadaLED (r,g,b, brillo)</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_QGty4FB2Ee2yaNLydTHFqg" name="SMA_COMP Ventana interfaz usr">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_10ZIkFQ5Ee2Oldf2clt63Q" name="opero" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_BqS_kFQ6Ee2Oldf2clt63Q" name="defaultOpero" value="true"/>
+          </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_qc8fgFOGEe2yaNLydTHFqg" name="init">
             <ownedComment xmi:type="uml:Comment" xmi:id="_cS6BsFOREe2yaNLydTHFqg" annotatedElement="_qc8fgFOGEe2yaNLydTHFqg">
               <body>Abrir ventana/terminales para:&#xD;
@@ -272,7 +268,7 @@ setconfigguardadaLED (r,g,b, brillo)</body>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_5TQXAFOHEe2yaNLydTHFqg" name="pingComprobacionSMALAMP">
             <ownedComment xmi:type="uml:Comment" xmi:id="_Q_EFAFOIEe2yaNLydTHFqg" annotatedElement="_5TQXAFOHEe2yaNLydTHFqg">
               <body>1º llama a la funcion pong de SMA_LAMP y devuleve su resultado.&#xD;
-2º si pong no responde tras cierto tiempo, devuelve false</body>
+2º si pong no responde tras cierto tiempo, pone opero a falso y devuelve false</body>
             </ownedComment>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ie2XcFOIEe2yaNLydTHFqg" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
@@ -293,7 +289,7 @@ setconfigguardadaLED (r,g,b, brillo)</body>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_k5aPYFOPEe2yaNLydTHFqg" name="cambiarVelocidadVentilador">
             <ownedComment xmi:type="uml:Comment" xmi:id="_7gWAAFOPEe2yaNLydTHFqg" annotatedElement="_k5aPYFOPEe2yaNLydTHFqg">
-              <body>while{1}{&#xD;
+              <body>if (opero}{ // No opere cuando no pueda conectar con la lámpara&#xD;
   pedir parametro porcentajePWM por pantalla (terminal o ventana)&#xD;
   si porcentajePWM > 100 entonces porcentajePWM = 100;&#xD;
   si porcentajePWM &lt; 0 entonces porcentajePWM = 0;&#xD;
@@ -303,10 +299,16 @@ setconfigguardadaLED (r,g,b, brillo)</body>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_sxy2AFOREe2yaNLydTHFqg" name="cambiarLuz">
             <ownedComment xmi:type="uml:Comment" xmi:id="_F61XAFOSEe2yaNLydTHFqg" annotatedElement="_sxy2AFOREe2yaNLydTHFqg">
-              <body>1º pedir parametros 'r', 'g', 'b', 'brillo' por pantalla (terminal o ventana)&#xD;
+              <body>// No opere cuando no pueda conectar con la lámpara&#xD;
+1º pedir parametros 'r', 'g', 'b', 'brillo' por pantalla (terminal o ventana)&#xD;
 2º si 'r' o 'g' o 'b'  están por encima de 255, se establecerá a 255. Si 'brillo' está por encima de 31 se establece a 31.&#xD;
 Si estan por debajo de 0 pues se establecen a 0.&#xD;
 2º llamar a SMA_LAMP cambiarVelocidadVentilador(porcentajePWM)</body>
+            </ownedComment>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_nlFC0FQ8Ee2Oldf2clt63Q" name="entrada">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_rJoHoFQ8Ee2Oldf2clt63Q" annotatedElement="_nlFC0FQ8Ee2Oldf2clt63Q">
+              <body>Leería de teclado o un botón u algo</body>
             </ownedComment>
           </ownedOperation>
         </packagedElement>
@@ -381,6 +383,23 @@ El 167 es para un cristal de 30 kHz</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_VTLcAFN8Ee2yaNLydTHFqg" name="setporcentajePWM">
+            <ownedComment xmi:type="uml:Comment" xmi:id="_dVbB0FRFEe2Oldf2clt63Q" annotatedElement="_VTLcAFN8Ee2yaNLydTHFqg">
+              <body>EADDR = direccion;&#xD;
+int contador = 0;&#xD;
+boolean confirmado = false;&#xD;
+while (contador &lt; 10 &amp;&amp; confirmado)&#xD;
+{&#xD;
+  EEDAT = valor;&#xD;
+  EECON2 = 55h;&#xD;
+  EECON2 = AAh;&#xD;
+  EECON1bits.WR = 1;&#xD;
+  if (getPorcentajePWM == valor)&#xD;
+    confirmado = true;&#xD;
+  else&#xD;
+    contador++;&#xD;
+}&#xD;
+if (contador >= 10) -- MANDAR ERROR EPROM</body>
+            </ownedComment>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_dOSRYFN8Ee2yaNLydTHFqg" name="valor">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
@@ -531,7 +550,154 @@ El 167 es para un cristal de 30 kHz</body>
           <ownedEnd xmi:type="uml:Property" xmi:id="_s2oko1OPEe2yaNLydTHFqg" name="linux usr" type="_QDPOkFEaEe2yaNLydTHFqg" association="_s2nWgFOPEe2yaNLydTHFqg"/>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_zVi_gFBzEe2yaNLydTHFqg" name="Low Level Design"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_zVi_gFBzEe2yaNLydTHFqg" name="Low Level Design">
+        <packagedElement xmi:type="uml:StateMachine" xmi:id="_GS1KkFQyEe2Oldf2clt63Q" name="StateMachine1">
+          <region xmi:type="uml:Region" xmi:id="_HVEDoFQyEe2Oldf2clt63Q" name="Region1">
+            <transition xmi:type="uml:Transition" xmi:id="_TC5jwFQyEe2Oldf2clt63Q" name="PrimerEncendido" source="_JOBwYFQyEe2Oldf2clt63Q" target="_NXTS4FQyEe2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_gbtX8FQyEe2Oldf2clt63Q" name="if EEDAT == null" source="_NXTS4FQyEe2Oldf2clt63Q" target="_adRqoFQyEe2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_BvUGoFQzEe2Oldf2clt63Q" name="if EEDAT != null" source="_NXTS4FQyEe2Oldf2clt63Q" target="_YV_1EFQyEe2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_-4cf0FQ1Ee2Oldf2clt63Q" source="_YV_1EFQyEe2Oldf2clt63Q" target="_9WHxcFQ1Ee2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_ARnSMFQ2Ee2Oldf2clt63Q" source="_adRqoFQyEe2Oldf2clt63Q" target="_9WHxcFQ1Ee2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_TADVAFQ7Ee2Oldf2clt63Q" name="muestraDatosPorSegundo(); o Apagar SMP_LAMP" source="_9WHxcFQ1Ee2Oldf2clt63Q" target="_Mps28FQ7Ee2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_q1W14FQ-Ee2Oldf2clt63Q" name="!pingComprobacionSMALAMP" source="_Mps28FQ7Ee2Oldf2clt63Q" target="_zAAOAFQ8Ee2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_vTBUAFQ-Ee2Oldf2clt63Q" name="Reinicio SMP_COMP" source="_zAAOAFQ8Ee2Oldf2clt63Q" target="_9WHxcFQ1Ee2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_8tTu4FQ-Ee2Oldf2clt63Q" name="pulsado != null" source="_Mps28FQ7Ee2Oldf2clt63Q" target="_484xQFQ-Ee2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_NSjp4FQ_Ee2Oldf2clt63Q" name="Apagar SMP_LAMP 1" source="_adRqoFQyEe2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_kJ0qoFRBEe2Oldf2clt63Q" source="_484xQFQ-Ee2Oldf2clt63Q" target="_Mps28FQ7Ee2Oldf2clt63Q">
+              <ownedComment xmi:type="uml:Comment" xmi:id="_mikqsFRBEe2Oldf2clt63Q" annotatedElement="_kJ0qoFRBEe2Oldf2clt63Q">
+                <body>Aca sea como sea vuelve a este estado</body>
+              </ownedComment>
+            </transition>
+            <transition xmi:type="uml:Transition" xmi:id="_lcv1oFRCEe2Oldf2clt63Q" name="EncendidosNoPrimeros" source="_KmNEQFQyEe2Oldf2clt63Q" target="_NXTS4FQyEe2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_89Y1cFRCEe2Oldf2clt63Q" name="Apagar SMP_LAMP 2" source="_YV_1EFQyEe2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
+            <transition xmi:type="uml:Transition" xmi:id="_RgUG8FRDEe2Oldf2clt63Q" name="Apagar SMP_LAMP 3" source="_zAAOAFQ8Ee2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_JOBwYFQyEe2Oldf2clt63Q" name="ApagadoInicial"/>
+            <subvertex xmi:type="uml:FinalState" xmi:id="_KmNEQFQyEe2Oldf2clt63Q" name="ApagadoFinal"/>
+            <subvertex xmi:type="uml:State" xmi:id="_NXTS4FQyEe2Oldf2clt63Q" name="S1">
+              <entry xmi:type="uml:FunctionBehavior" xmi:id="_nRNasFQzEe2Oldf2clt63Q" name="Ent1">
+                <language>C</language>
+                <body>//Iniciar variables de entorno del actuador. El init incluye los inits de Sensores y actuadores, menos el valor de salida de actuadores&#xD;
+initYo();</body>
+              </entry>
+              <exit xmi:type="uml:FunctionBehavior" xmi:id="_VCEUQFQ0Ee2Oldf2clt63Q" name="Sal1">
+                <language>C</language>
+                <body>EADR = direccion;&#xD;
+EECON1bits.RD = 1</body>
+              </exit>
+              <region xmi:type="uml:Region" xmi:id="_O0IdQFQyEe2Oldf2clt63Q" name="Region1"/>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_YV_1EFQyEe2Oldf2clt63Q" name="S2">
+              <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_E6pvUFQ1Ee2Oldf2clt63Q" name="Ant1">
+                <language>C</language>
+                <body>cambiarVelocidadVentilador(EEDAT);&#xD;
+byte test[4];&#xD;
+for (i = 0; i = 4) {&#xD;
+EADR = direccion + 8 * i;&#xD;
+EECON1bits.RD = 1;&#xD;
+test[i] = EEDAT;&#xD;
+}&#xD;
+cambiarLuz(test);</body>
+              </doActivity>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_adRqoFQyEe2Oldf2clt63Q" name="S3">
+              <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_ryOc4FQ1Ee2Oldf2clt63Q" name="Default">
+                <language>C</language>
+                <body>cambiarVelocidadVentilador(0);&#xD;
+byte test[4] = {255,255,255, 31};&#xD;
+cambiarLuz(test);</body>
+              </doActivity>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_9WHxcFQ1Ee2Oldf2clt63Q" name="S4">
+              <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_-64d4FQ3Ee2Oldf2clt63Q" name="InitSMP_COMP">
+                <language>C</language>
+                <body>//Iniciar al SMP_COMP con init();&#xD;
+//Init contiene&#xD;
+/*&#xD;
+init(){&#xD;
+  // abrirVentanas o terminal&#xD;
+  muestraDatosPorSegundo();&#xD;
+}&#xD;
+&#xD;
+muestraDatosPorSegundo()&#xD;
+while(1){&#xD;
+  esperar_1_Segundo;&#xD;
+  if pingComprobacionSMALAMP entonces&#xD;
+     obtenerSensoresDisponibles&#xD;
+     int pulsado; // Se rellenaría con datos de un botón o terminal&#xD;
+     if (pulsado != null)&#xD;
+     {&#xD;
+         &#xD;
+     }&#xD;
+   else&#xD;
+      decir que el SMA_LAMP está desconectado&#xD;
+      break; (salir del bucle)&#xD;
+}&#xD;
+while{1}{&#xD;
+  pedir parametro porcentajePWM por pantalla (terminal o ventana)&#xD;
+  si porcentajePWM > 100 entonces porcentajePWM = 100;&#xD;
+  si porcentajePWM &lt; 0 entonces porcentajePWM = 0;&#xD;
+  llamar a SMA_LAMP cambiarVelocidadVentilador(porcentajePWM)&#xD;
+}&#xD;
+*/</body>
+              </doActivity>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_Mps28FQ7Ee2Oldf2clt63Q" name="S5">
+              <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_co9TgFQ8Ee2Oldf2clt63Q" name="BuclePrograma">
+                <language>C</language>
+                <body>muestraDatosPorSegundo()&#xD;
+while(1){&#xD;
+  esperar_1_Segundo;&#xD;
+  if pingComprobacionSMALAMP entonces&#xD;
+     obtenerSensoresDisponibles&#xD;
+     int pulsado = entrada(); // Se rellenaría con datos de un botón o terminal&#xD;
+     if (pulsado != null)&#xD;
+     {&#xD;
+         // Se podría abrir en una nueva ventana&#xD;
+         cambiarVelocidadVentilador();&#xD;
+         cambiarLuz();&#xD;
+     }&#xD;
+   else&#xD;
+      printf(&quot;El SMA_LAMP está desconectado, apagando SMP_COMP&quot;)&#xD;
+      // Cerrar ventana&#xD;
+      break; (salir del bucle)&#xD;
+}&#xD;
+if (opero){&#xD;
+  pedir parametro porcentajePWM por pantalla (terminal o ventana)&#xD;
+  si porcentajePWM > 100 entonces porcentajePWM = 100;&#xD;
+  si porcentajePWM &lt; 0 entonces porcentajePWM = 0;&#xD;
+  llamar a SMA_LAMP cambiarVelocidadVentilador(porcentajePWM)&#xD;
+}</body>
+              </doActivity>
+            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_zAAOAFQ8Ee2Oldf2clt63Q" name="SMP_COMP apagado"/>
+            <subvertex xmi:type="uml:State" xmi:id="_484xQFQ-Ee2Oldf2clt63Q" name="S6">
+              <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_XdDnoFRCEe2Oldf2clt63Q" name="CambiarValoresPWMyLuz">
+                <language>C</language>
+                <body>if (opero){&#xD;
+  pedir parametro porcentajePWM por pantalla (terminal o ventana)&#xD;
+  si porcentajePWM > 100 entonces porcentajePWM = 100;&#xD;
+  si porcentajePWM &lt; 0 entonces porcentajePWM = 0;&#xD;
+  llamar a SMA_LAMP cambiarVelocidadVentilador(porcentajePWM)&#xD;
+}&#xD;
+if (opero){&#xD;
+  pedir parametro porcentajePWM por pantalla (terminal o ventana)&#xD;
+  si porcentajePWM > 100 entonces porcentajePWM = 100;&#xD;
+  si porcentajePWM &lt; 0 entonces porcentajePWM = 0;&#xD;
+  llamar a SMA_LAMP cambiarVelocidadVentilador(porcentajePWM)&#xD;
+}&#xD;
+1º pedir parametros 'r', 'g', 'b', 'brillo' por pantalla (terminal o ventana)&#xD;
+2º si 'r' o 'g' o 'b'  están por encima de 255, se establecerá a 255. Si 'brillo' está por encima de 31 se establece a 31.&#xD;
+Si estan por debajo de 0 pues se establecen a 0.&#xD;
+2º llamar a SMA_LAMP cambiarVelocidadVentilador(porcentajePWM)</body>
+              </doActivity>
+              <entry xmi:type="uml:FunctionBehavior" xmi:id="_0bFSoFRBEe2Oldf2clt63Q" name="entrada">
+                <language>C</language>
+                <body>// Leo de la entrada</body>
+              </entry>
+            </subvertex>
+          </region>
+        </packagedElement>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_uDLuAFBzEe2yaNLydTHFqg" name="Pruebas"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_jA7xQFBiEe2hA76gCq675A">
