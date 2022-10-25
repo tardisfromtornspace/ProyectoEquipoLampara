@@ -113,9 +113,6 @@ iniciar todas las variables de entorno&#xD;
   valorLumen = transformarALumen(getLumen());&#xD;
   valorTemperatura = transformarACelsius(getTemperatura());</body>
             </ownedComment>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="__9FVYFRxEe2Oldf2clt63Q" direction="return">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-            </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_lE8GwFOLEe2yaNLydTHFqg" name=" transformarUnidadesappm" visibility="private">
             <ownedComment xmi:type="uml:Comment" xmi:id="_8iuxcFOMEe2yaNLydTHFqg" annotatedElement="_lE8GwFOLEe2yaNLydTHFqg">
@@ -197,11 +194,6 @@ setconfigguardadaLED (r,g,b, brillo)</body>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_mmLy4FOSEe2yaNLydTHFqg" name="brillo">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_5ajAAFRyEe2Oldf2clt63Q" name="apagar">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_Auo4sFRzEe2Oldf2clt63Q" annotatedElement="_5ajAAFRyEe2Oldf2clt63Q">
-              <body>//Ejecutaría un reset de SMA_LAMP</body>
-            </ownedComment>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_Lzlw0FB2Ee2yaNLydTHFqg" name="SensorTemperatura">
@@ -319,12 +311,6 @@ Si estan por debajo de 0 pues se establecen a 0.&#xD;
               <body>Leería de teclado o un botón u algo</body>
             </ownedComment>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_wJNXgFRyEe2Oldf2clt63Q" name="apagar">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_1-BOwFRyEe2Oldf2clt63Q" annotatedElement="_wJNXgFRyEe2Oldf2clt63Q">
-              <body>//Llama a una función de SMA-LAMP que la apaga.&#xD;
-SMA-LAMP.apagar()</body>
-            </ownedComment>
-          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_k_rl0FB2Ee2yaNLydTHFqg" name="PWMVentilador">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_-n-nsFOBEe2yaNLydTHFqg" name="elPWMDutyCycle" visibility="private">
@@ -420,8 +406,7 @@ if (contador >= 10) -- MANDAR ERROR EPROM</body>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_hwNkcFN8Ee2yaNLydTHFqg" name="setconfigguardada">
             <ownedComment xmi:type="uml:Comment" xmi:id="_LXdpsFOQEe2yaNLydTHFqg" annotatedElement="_hwNkcFN8Ee2yaNLydTHFqg">
-              <body>//Tambien hará casting de integer a tipo byte&#xD;
-//Lo mismo que el comentario de setporcentajePWM()</body>
+              <body>Tambien hará casting de integer a tipo byte</body>
             </ownedComment>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_xcP_gFN8Ee2yaNLydTHFqg" name="r">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -586,19 +571,9 @@ if (contador >= 10) -- MANDAR ERROR EPROM</body>
             <transition xmi:type="uml:Transition" xmi:id="_lcv1oFRCEe2Oldf2clt63Q" name="EncendidosNoPrimeros" source="_KmNEQFQyEe2Oldf2clt63Q" target="_NXTS4FQyEe2Oldf2clt63Q"/>
             <transition xmi:type="uml:Transition" xmi:id="_89Y1cFRCEe2Oldf2clt63Q" name="Apagar SMP_LAMP 2" source="_YV_1EFQyEe2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
             <transition xmi:type="uml:Transition" xmi:id="_RgUG8FRDEe2Oldf2clt63Q" name="Apagar SMP_LAMP 3" source="_zAAOAFQ8Ee2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
-            <transition xmi:type="uml:Transition" xmi:id="_V20MUFRzEe2Oldf2clt63Q" name="apagar()" source="_Mps28FQ7Ee2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
             <subvertex xmi:type="uml:Pseudostate" xmi:id="_JOBwYFQyEe2Oldf2clt63Q" name="ApagadoInicial"/>
-            <subvertex xmi:type="uml:FinalState" xmi:id="_KmNEQFQyEe2Oldf2clt63Q" name="ApagadoFinal">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_0TZx8FRwEe2Oldf2clt63Q" annotatedElement="_KmNEQFQyEe2Oldf2clt63Q">
-                <body>r := ?, g := ?, bMem := ?, brillo := ?; (memoria volátil)&#xD;
-rMem := Y, gMem := Y, bMem := Y, brilloMem := Y; (igual al estadio anterior)</body>
-              </ownedComment>
-            </subvertex>
+            <subvertex xmi:type="uml:FinalState" xmi:id="_KmNEQFQyEe2Oldf2clt63Q" name="ApagadoFinal"/>
             <subvertex xmi:type="uml:State" xmi:id="_NXTS4FQyEe2Oldf2clt63Q" name="S1">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_yKbvwFRvEe2Oldf2clt63Q" annotatedElement="_NXTS4FQyEe2Oldf2clt63Q">
-                <body>r := ?, g := ?, b := ?; brillo = ?;&#xD;
-rMem := Y, gMem := Y, bMem := Y, brilloMem := Y; (pueden ser o no null)</body>
-              </ownedComment>
               <entry xmi:type="uml:FunctionBehavior" xmi:id="_nRNasFQzEe2Oldf2clt63Q" name="Ent1">
                 <language>C</language>
                 <body>//Iniciar variables de entorno del actuador. El init incluye los inits de Sensores y actuadores, menos el valor de salida de actuadores&#xD;
@@ -609,11 +584,9 @@ initYo();</body>
                 <body>EADR = direccion;&#xD;
 EECON1bits.RD = 1</body>
               </exit>
+              <region xmi:type="uml:Region" xmi:id="_O0IdQFQyEe2Oldf2clt63Q" name="Region1"/>
             </subvertex>
             <subvertex xmi:type="uml:State" xmi:id="_YV_1EFQyEe2Oldf2clt63Q" name="S2">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_Z1AdAFRvEe2Oldf2clt63Q" annotatedElement="_YV_1EFQyEe2Oldf2clt63Q">
-                <body>r,g,b := 255; brillo = 31;</body>
-              </ownedComment>
               <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_E6pvUFQ1Ee2Oldf2clt63Q" name="Ant1">
                 <language>C</language>
                 <body>cambiarVelocidadVentilador(EEDAT);&#xD;
@@ -627,9 +600,6 @@ cambiarLuz(test);</body>
               </doActivity>
             </subvertex>
             <subvertex xmi:type="uml:State" xmi:id="_adRqoFQyEe2Oldf2clt63Q" name="S3">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_4mmh8FRvEe2Oldf2clt63Q" annotatedElement="_adRqoFQyEe2Oldf2clt63Q">
-                <body>r := rMem, g :=  gMem, b :=  bMem; brillo = brilloMem;</body>
-              </ownedComment>
               <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_ryOc4FQ1Ee2Oldf2clt63Q" name="Default">
                 <language>C</language>
                 <body>cambiarVelocidadVentilador(0);&#xD;
@@ -638,10 +608,6 @@ cambiarLuz(test);</body>
               </doActivity>
             </subvertex>
             <subvertex xmi:type="uml:State" xmi:id="_9WHxcFQ1Ee2Oldf2clt63Q" name="S4">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_C6udIFRwEe2Oldf2clt63Q" annotatedElement="_9WHxcFQ1Ee2Oldf2clt63Q">
-                <body>r := X, g :=  X, b :=  X; brillo = X; (igual al estadio anterior)&#xD;
-rMem := Y, gMem := Y, bMem := Y, brilloMem := Y; (igual al estadio anterior)</body>
-              </ownedComment>
               <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_-64d4FQ3Ee2Oldf2clt63Q" name="InitSMP_COMP">
                 <language>C</language>
                 <body>//Iniciar al SMP_COMP con init();&#xD;
@@ -675,10 +641,6 @@ while{1}{&#xD;
               </doActivity>
             </subvertex>
             <subvertex xmi:type="uml:State" xmi:id="_Mps28FQ7Ee2Oldf2clt63Q" name="S5">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_IFiVIFRwEe2Oldf2clt63Q" annotatedElement="_Mps28FQ7Ee2Oldf2clt63Q">
-                <body>r := X, g :=  X, b :=  X; brillo = X; (igual al estadio anterior)&#xD;
-rMem := Y, gMem := Y, bMem := Y, brilloMem := Y; (igual al estadio anterior)</body>
-              </ownedComment>
               <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_co9TgFQ8Ee2Oldf2clt63Q" name="BuclePrograma">
                 <language>C</language>
                 <body>muestraDatosPorSegundo(){&#xD;
@@ -693,32 +655,16 @@ while(1){&#xD;
          cambiarVelocidadVentilador();&#xD;
          cambiarLuz();&#xD;
      }&#xD;
-    boolean pulsado2 = entrada(); // Otra entrada distinta nos indicaría si apagamos o no&#xD;
-    if (pulsado2) apagar();&#xD;
    else {&#xD;
       printf(&quot;El SMA_LAMP está desconectado, apagando SMP_COMP&quot;)&#xD;
       // Cerrar ventana&#xD;
       break; (salir del bucle)&#xD;
    }&#xD;
-}&#xD;
-&#xD;
-apagar(){&#xD;
-// Posiblemente usar el P.O.R. (Power on Reset) o el comando de apagar. NOTA: Preguntar al profesor por detalles&#xD;
-&#xD;
 }</body>
               </doActivity>
             </subvertex>
-            <subvertex xmi:type="uml:State" xmi:id="_zAAOAFQ8Ee2Oldf2clt63Q" name="SMP_COMP apagado">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_luO4UFRwEe2Oldf2clt63Q" annotatedElement="_zAAOAFQ8Ee2Oldf2clt63Q">
-                <body>r := X, g := X, bMem := X, brillo := X; (igual al estadio anterior)&#xD;
-rMem := Y, gMem := Y, bMem := Y, brilloMem := Y; (igual al estadio anterior)</body>
-              </ownedComment>
-            </subvertex>
+            <subvertex xmi:type="uml:State" xmi:id="_zAAOAFQ8Ee2Oldf2clt63Q" name="SMP_COMP apagado"/>
             <subvertex xmi:type="uml:State" xmi:id="_484xQFQ-Ee2Oldf2clt63Q" name="S6">
-              <ownedComment xmi:type="uml:Comment" xmi:id="_PKeXgFRwEe2Oldf2clt63Q" annotatedElement="_484xQFQ-Ee2Oldf2clt63Q">
-                <body>r := rPantalla, g :=  gPantalla, b :=  bPantalla; brillo = brilloPantalla;&#xD;
-rMem := r, gMem := g, bMem := b, brilloMem := brillo;</body>
-              </ownedComment>
               <doActivity xmi:type="uml:FunctionBehavior" xmi:id="_XdDnoFRCEe2Oldf2clt63Q" name="CambiarValoresPWMyLuz">
                 <language>C</language>
                 <body>if (opero){&#xD;

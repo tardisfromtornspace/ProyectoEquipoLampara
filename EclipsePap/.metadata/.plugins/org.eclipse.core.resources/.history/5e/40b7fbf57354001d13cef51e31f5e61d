@@ -609,6 +609,11 @@ initYo();</body>
                 <body>EADR = direccion;&#xD;
 EECON1bits.RD = 1</body>
               </exit>
+              <region xmi:type="uml:Region" xmi:id="_O0IdQFQyEe2Oldf2clt63Q" name="r,g,b := 255; brillo = 31;">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_f5txcFRvEe2Oldf2clt63Q" annotatedElement="_O0IdQFQyEe2Oldf2clt63Q">
+                  <body>r := ?, g := ?, b := ?; brillo = ?;</body>
+                </ownedComment>
+              </region>
             </subvertex>
             <subvertex xmi:type="uml:State" xmi:id="_YV_1EFQyEe2Oldf2clt63Q" name="S2">
               <ownedComment xmi:type="uml:Comment" xmi:id="_Z1AdAFRvEe2Oldf2clt63Q" annotatedElement="_YV_1EFQyEe2Oldf2clt63Q">

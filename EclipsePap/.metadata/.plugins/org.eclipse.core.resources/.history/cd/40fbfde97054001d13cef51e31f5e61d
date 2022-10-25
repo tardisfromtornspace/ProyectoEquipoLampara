@@ -1,4 +1,4 @@
-#Tue Oct 25 16:47:52 CEST 2022
+#Tue Oct 25 16:11:52 CEST 2022
 _label_Lampara__Disenio__High\ Level\ Design__Memoria__configG=configG
 _label_Lampara__Disenio__High\ Level\ Design__SensorTemperatura__getTemperatura=getTemperatura
 _label_Lampara__Disenio__High\ Level\ Design__Memoria__configB=configB
@@ -34,7 +34,6 @@ _label_Lampara__Disenio__High\ Level\ Design__Memoria__setporcentajePWM=setporce
 _label_Lampara__Disenio__High\ Level\ Design__SMA_LAMP__transformaraporcentajes__valor=valor
 _label_Lampara__Disenio__High\ Level\ Design__Memoria__noPrimerArranque=noPrimerArranque
 _label_DarloPorTerminado=DarloPorTerminado
-_label_r,g,b\ \:\=\ 255;\ brillo\ \=\ 31;=r,g,b \:\= 255; brillo \= 31;
 _label_Lampara__Disenio__Low\ Level\ Design__StateMachine1__Region1__pulsado\ \!\=\ null=pulsado \!\= null
 _label_Lampara__Disenio__High\ Level\ Design__SensorHumedad=SensorHumedad
 _label_Lampara__Disenio__High\ Level\ Design__PWMVentilador__elPWMDutyCycle=elPWMDutyCycle
@@ -58,7 +57,6 @@ _label_Lampara__Disenio__High\ Level\ Design__SMA_LAMP__RuidoMasAltoPorSeg=Ruido
 _label_S1=Arranque SME_LAMP
 _label_Lampara__Disenio__High\ Level\ Design__SensorCO2=SensorCO2
 _label_Lampara__Disenio__High\ Level\ Design__Memoria__setconfigguardada=setconfigguardada
-_label_Lampara__Disenio__Low\ Level\ Design__StateMachine1__Region1__apagar()=apagar()
 _label_Lampara__Disenio__Low\ Level\ Design__StateMachine1__Region1__PrimerEncendido=PrimerEncendido
 _label_Lampara__Disenio__High\ Level\ Design__SMA_LAMP__cambiarLuz__brillo=brillo
 _label_InitSMP_COMP=InitSMP_COMP

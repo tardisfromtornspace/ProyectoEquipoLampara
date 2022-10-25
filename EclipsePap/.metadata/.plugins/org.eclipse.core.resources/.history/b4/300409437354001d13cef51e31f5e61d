@@ -198,11 +198,6 @@ setconfigguardadaLED (r,g,b, brillo)</body>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_5ajAAFRyEe2Oldf2clt63Q" name="apagar">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_Auo4sFRzEe2Oldf2clt63Q" annotatedElement="_5ajAAFRyEe2Oldf2clt63Q">
-              <body>//Ejecutaría un reset de SMA_LAMP</body>
-            </ownedComment>
-          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_Lzlw0FB2Ee2yaNLydTHFqg" name="SensorTemperatura">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_00SyAFN_Ee2yaNLydTHFqg" name="Temperatura" visibility="private">
@@ -317,12 +312,6 @@ Si estan por debajo de 0 pues se establecen a 0.&#xD;
           <ownedOperation xmi:type="uml:Operation" xmi:id="_nlFC0FQ8Ee2Oldf2clt63Q" name="entrada">
             <ownedComment xmi:type="uml:Comment" xmi:id="_rJoHoFQ8Ee2Oldf2clt63Q" annotatedElement="_nlFC0FQ8Ee2Oldf2clt63Q">
               <body>Leería de teclado o un botón u algo</body>
-            </ownedComment>
-          </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_wJNXgFRyEe2Oldf2clt63Q" name="apagar">
-            <ownedComment xmi:type="uml:Comment" xmi:id="_1-BOwFRyEe2Oldf2clt63Q" annotatedElement="_wJNXgFRyEe2Oldf2clt63Q">
-              <body>//Llama a una función de SMA-LAMP que la apaga.&#xD;
-SMA-LAMP.apagar()</body>
             </ownedComment>
           </ownedOperation>
         </packagedElement>
@@ -586,7 +575,6 @@ if (contador >= 10) -- MANDAR ERROR EPROM</body>
             <transition xmi:type="uml:Transition" xmi:id="_lcv1oFRCEe2Oldf2clt63Q" name="EncendidosNoPrimeros" source="_KmNEQFQyEe2Oldf2clt63Q" target="_NXTS4FQyEe2Oldf2clt63Q"/>
             <transition xmi:type="uml:Transition" xmi:id="_89Y1cFRCEe2Oldf2clt63Q" name="Apagar SMP_LAMP 2" source="_YV_1EFQyEe2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
             <transition xmi:type="uml:Transition" xmi:id="_RgUG8FRDEe2Oldf2clt63Q" name="Apagar SMP_LAMP 3" source="_zAAOAFQ8Ee2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
-            <transition xmi:type="uml:Transition" xmi:id="_V20MUFRzEe2Oldf2clt63Q" name="apagar()" source="_Mps28FQ7Ee2Oldf2clt63Q" target="_KmNEQFQyEe2Oldf2clt63Q"/>
             <subvertex xmi:type="uml:Pseudostate" xmi:id="_JOBwYFQyEe2Oldf2clt63Q" name="ApagadoInicial"/>
             <subvertex xmi:type="uml:FinalState" xmi:id="_KmNEQFQyEe2Oldf2clt63Q" name="ApagadoFinal">
               <ownedComment xmi:type="uml:Comment" xmi:id="_0TZx8FRwEe2Oldf2clt63Q" annotatedElement="_KmNEQFQyEe2Oldf2clt63Q">
@@ -609,6 +597,11 @@ initYo();</body>
                 <body>EADR = direccion;&#xD;
 EECON1bits.RD = 1</body>
               </exit>
+              <region xmi:type="uml:Region" xmi:id="_O0IdQFQyEe2Oldf2clt63Q" name="r,g,b := 255; brillo = 31;">
+                <ownedComment xmi:type="uml:Comment" xmi:id="_f5txcFRvEe2Oldf2clt63Q" annotatedElement="_O0IdQFQyEe2Oldf2clt63Q">
+                  <body>r := ?, g := ?, b := ?; brillo = ?;</body>
+                </ownedComment>
+              </region>
             </subvertex>
             <subvertex xmi:type="uml:State" xmi:id="_YV_1EFQyEe2Oldf2clt63Q" name="S2">
               <ownedComment xmi:type="uml:Comment" xmi:id="_Z1AdAFRvEe2Oldf2clt63Q" annotatedElement="_YV_1EFQyEe2Oldf2clt63Q">
@@ -693,18 +686,11 @@ while(1){&#xD;
          cambiarVelocidadVentilador();&#xD;
          cambiarLuz();&#xD;
      }&#xD;
-    boolean pulsado2 = entrada(); // Otra entrada distinta nos indicaría si apagamos o no&#xD;
-    if (pulsado2) apagar();&#xD;
    else {&#xD;
       printf(&quot;El SMA_LAMP está desconectado, apagando SMP_COMP&quot;)&#xD;
       // Cerrar ventana&#xD;
       break; (salir del bucle)&#xD;
    }&#xD;
-}&#xD;
-&#xD;
-apagar(){&#xD;
-// Posiblemente usar el P.O.R. (Power on Reset) o el comando de apagar. NOTA: Preguntar al profesor por detalles&#xD;
-&#xD;
 }</body>
               </doActivity>
             </subvertex>

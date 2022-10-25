@@ -1466,7 +1466,7 @@
     <edges xmi:type="notation:Connector" xmi:id="_gb7aYFQyEe2Oldf2clt63Q" type="Transition_Edge" source="_NXZZgFQyEe2Oldf2clt63Q" target="_ada0kFQyEe2Oldf2clt63Q">
       <children xmi:type="notation:DecorationNode" xmi:id="_gb7aY1QyEe2Oldf2clt63Q" type="Transition_NameLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_iy6f4FQyEe2Oldf2clt63Q" name="IS_UPDATED_POSITION" booleanValue="true"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_gb7aZFQyEe2Oldf2clt63Q" x="14" y="23"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gb7aZFQyEe2Oldf2clt63Q" x="13" y="45"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_gb7aZVQyEe2Oldf2clt63Q" type="Transition_GuardLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_izDCwFQyEe2Oldf2clt63Q" name="IS_UPDATED_POSITION" booleanValue="true"/>
@@ -1656,7 +1656,7 @@
     <edges xmi:type="notation:Connector" xmi:id="_lc6NsFRCEe2Oldf2clt63Q" type="Transition_Edge" source="_KmRVsFQyEe2Oldf2clt63Q" target="_NXZZgFQyEe2Oldf2clt63Q">
       <children xmi:type="notation:DecorationNode" xmi:id="_lc6Ns1RCEe2Oldf2clt63Q" type="Transition_NameLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_mYXwYFRCEe2Oldf2clt63Q" name="IS_UPDATED_POSITION" booleanValue="true"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_lc6NtFRCEe2Oldf2clt63Q" x="-202" y="13"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_lc6NtFRCEe2Oldf2clt63Q" x="1" y="18"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_lc6NtVRCEe2Oldf2clt63Q" type="Transition_GuardLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_mYhhYFRCEe2Oldf2clt63Q" name="IS_UPDATED_POSITION" booleanValue="true"/>
