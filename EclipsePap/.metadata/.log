@@ -369,3 +369,182 @@ java.lang.ClassCastException
 !MESSAGE Unhandled event loop exception
 !STACK 0
 java.lang.ClassCastException
+!SESSION 2022-11-04 11:01:10.849 -----------------------------------------------
+eclipse.buildId=4.20.0.I20210611-1600
+java.version=16.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-11-04 11:01:22.723
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jface 2 0 2022-11-04 11:01:24.641
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2022-11-04 11:01:24.641
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@37f0fb02,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4687fee7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.papyrus.infra.types.core 2 0 2022-11-04 11:01:42.361
+!MESSAGE Diagnosis of org.eclipse.papyrus.infra.types.impl.ElementTypeSetConfigurationImpl@30e1f008{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet.extension}
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.InstanceValueImpl@382e9e2a{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4me0kcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl@5620a340{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4oUAUcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+
+!ENTRY org.eclipse.papyrus.infra.types.core 2 0 2022-11-04 11:01:42.899
+!MESSAGE Diagnosis of org.eclipse.papyrus.infra.types.impl.ElementTypeSetConfigurationImpl@979ca7c{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#org.eclipse.papyrus.sysml16.service.types.elementTypeSet.extension}
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.InstanceValueImpl@7cfb8bf0{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4me0kcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+	Warning: Element 'org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl@1a19493a{platform:/plugin/org.eclipse.papyrus.sysml16.service.types/model/SysML16-extension.elementtypesconfigurations#_p4oUAUcKEemrpM9dj3x64Q}' must be owned, but it has no owner.
+
+!ENTRY org.eclipse.egit.ui 2 0 2022-11-04 11:01:48.309
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\andro'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-11-04 11:15:51.820
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:683)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:274)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:287)
+	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:265)
+	at org.eclipse.papyrus.uml.tools.utils.ImageUtil.getImageFromLocation(ImageUtil.java:172)
+	at org.eclipse.papyrus.uml.tools.Activator.getImageInRegistry(Activator.java:258)
+	at org.eclipse.papyrus.uml.tools.Activator.getIconElement(Activator.java:219)
+	at org.eclipse.papyrus.uml.tools.Activator.getIconElement(Activator.java:164)
+	at org.eclipse.papyrus.uml.tools.providers.UMLLabelProvider.getImage(UMLLabelProvider.java:138)
+	at org.eclipse.papyrus.infra.ui.emf.providers.EMFLabelProvider.getImage(EMFLabelProvider.java:134)
+	at org.eclipse.papyrus.infra.services.labelprovider.service.ExtensibleLabelProvider.getImage(ExtensibleLabelProvider.java:122)
+	at org.eclipse.papyrus.infra.gmfdiag.common.utils.DiagramEditPartsUtil.getIcon(DiagramEditPartsUtil.java:1062)
+	at org.eclipse.papyrus.uml.diagram.common.editparts.AbstractNodeLabelEditPart.getLabelIcon(AbstractNodeLabelEditPart.java:403)
+	at org.eclipse.papyrus.uml.diagram.common.editparts.AbstractNodeLabelEditPart.refreshLabel(AbstractNodeLabelEditPart.java:755)
+	at org.eclipse.papyrus.uml.diagram.common.editparts.AbstractNodeLabelEditPart.refreshVisuals(AbstractNodeLabelEditPart.java:806)
+	at org.eclipse.papyrus.uml.diagram.common.editparts.AbstractNodeLabelEditPart.setLabel(AbstractNodeLabelEditPart.java:271)
+	at org.eclipse.papyrus.uml.diagram.clazz.edit.parts.ClassEditPart.addFixedChild(ClassEditPart.java:218)
+	at org.eclipse.papyrus.uml.diagram.clazz.edit.parts.ClassEditPart.addChildVisual(ClassEditPart.java:281)
+	at org.eclipse.gef.editparts.AbstractEditPart.addChild(AbstractEditPart.java:211)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.addChild(GraphicalEditPart.java:1318)
+	at org.eclipse.gef.editparts.AbstractEditPart.refreshChildren(AbstractEditPart.java:781)
+	at org.eclipse.gef.editparts.AbstractEditPart.refresh(AbstractEditPart.java:726)
+	at org.eclipse.gef.editparts.AbstractGraphicalEditPart.refresh(AbstractGraphicalEditPart.java:644)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.access$3(GraphicalEditPart.java:1)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart$3.run(GraphicalEditPart.java:863)
+	at org.eclipse.papyrus.infra.emf.readonly.PapyrusROTransactionalEditingDomain.runExclusive(PapyrusROTransactionalEditingDomain.java:273)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.refresh(GraphicalEditPart.java:853)
+	at org.eclipse.papyrus.uml.diagram.common.editparts.UMLNodeEditPart.refresh(UMLNodeEditPart.java:95)
+	at org.eclipse.papyrus.uml.diagram.common.editparts.NamedElementEditPart.refresh(NamedElementEditPart.java:113)
+	at org.eclipse.gef.editparts.AbstractEditPart.addNotify(AbstractEditPart.java:253)
+	at org.eclipse.gef.editparts.AbstractGraphicalEditPart.addNotify(AbstractGraphicalEditPart.java:223)
+	at org.eclipse.gef.editparts.AbstractEditPart.addChild(AbstractEditPart.java:212)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.addChild(GraphicalEditPart.java:1318)
+	at org.eclipse.gef.editparts.AbstractEditPart.refreshChildren(AbstractEditPart.java:781)
+	at org.eclipse.gef.editparts.AbstractEditPart.refresh(AbstractEditPart.java:726)
+	at org.eclipse.gef.editparts.AbstractGraphicalEditPart.refresh(AbstractGraphicalEditPart.java:644)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.access$3(GraphicalEditPart.java:1)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart$3.run(GraphicalEditPart.java:863)
+	at org.eclipse.papyrus.infra.emf.readonly.PapyrusROTransactionalEditingDomain.runExclusive(PapyrusROTransactionalEditingDomain.java:273)
+	at org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.refresh(GraphicalEditPart.java:853)
+	at org.eclipse.papyrus.infra.gmfdiag.common.editpart.PapyrusDiagramEditPart.refresh(PapyrusDiagramEditPart.java:95)
+	at org.eclipse.gef.editparts.AbstractEditPart.addNotify(AbstractEditPart.java:253)
+	at org.eclipse.gef.editparts.AbstractGraphicalEditPart.addNotify(AbstractGraphicalEditPart.java:223)
+	at org.eclipse.gef.editparts.AbstractEditPart.addChild(AbstractEditPart.java:212)
+	at org.eclipse.gef.editparts.SimpleRootEditPart.setContents(SimpleRootEditPart.java:105)
+	at org.eclipse.gef.ui.parts.AbstractEditPartViewer.setContents(AbstractEditPartViewer.java:617)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer.setContents(DiagramGraphicalViewer.java:353)
+	at org.eclipse.gef.ui.parts.AbstractEditPartViewer.setContents(AbstractEditPartViewer.java:626)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor.initializeGraphicalViewerContents(DiagramEditor.java:873)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor.initializeGraphicalViewer(DiagramEditor.java:866)
+	at org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditorWithFlyOutPalette.initializeGraphicalViewer(DiagramEditorWithFlyOutPalette.java:117)
+	at org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor.initializeGraphicalViewer(DiagramDocumentEditor.java:176)
+	at org.eclipse.papyrus.infra.gmfdiag.common.SynchronizableGmfDiagramEditor.initializeGraphicalViewer(SynchronizableGmfDiagramEditor.java:348)
+	at org.eclipse.papyrus.uml.diagram.common.part.UmlGmfDiagramEditor.doInitializeGraphicalViewer(UmlGmfDiagramEditor.java:163)
+	at org.eclipse.papyrus.uml.diagram.common.part.UmlGmfDiagramEditor$2.run(UmlGmfDiagramEditor.java:151)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.papyrus.uml.diagram.common.part.UmlGmfDiagramEditor.setFocus(UmlGmfDiagramEditor.java:147)
+	at org.eclipse.papyrus.uml.diagram.clazz.UmlClassDiagramForMultiEditor.setFocus(UmlClassDiagramForMultiEditor.java:125)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.EditorPart.setFocus(EditorPart.java:621)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.ActiveEditorServicesSwitcher.activeEditorChanged(ActiveEditorServicesSwitcher.java:128)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.ActivePageTracker.fireEditorChangeEvent(ActivePageTracker.java:173)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.ActivePageTracker.setActiveEditor(ActivePageTracker.java:104)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.SashWindowsContainer.setActivePage(SashWindowsContainer.java:430)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.SashWindowsContainer.setActivePageRequest(SashWindowsContainer.java:409)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.TabFolderPart.pageChange(TabFolderPart.java:341)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.TabFolderPart$2.pageChangeEvent(TabFolderPart.java:147)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.PTabFolder$EventsManager.firePageChange(PTabFolder.java:558)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.PTabFolder.firePageChange(PTabFolder.java:401)
+	at org.eclipse.papyrus.infra.core.sasheditor.internal.PTabFolder$5.widgetSelected(PTabFolder.java:163)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:252)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1067)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1052)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:766)
+	at org.eclipse.swt.custom.CTabFolder.setSelection(CTabFolder.java:3243)
+	at org.eclipse.swt.custom.CTabFolder.onMouse(CTabFolder.java:1881)
+	at org.eclipse.swt.custom.CTabFolder.lambda$0(CTabFolder.java:330)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4209)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1043)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4026)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3626)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1157)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:654)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1462)
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-11-04 11:30:14.555
+!MESSAGE Not properly disposed SWT resource
+!STACK 0
+java.lang.Error: SWT Resource was not properly disposed
+	at org.eclipse.swt.graphics.Resource.initNonDisposeTracking(Resource.java:172)
+	at org.eclipse.swt.graphics.Resource.<init>(Resource.java:120)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:498)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SWTImageTranscoder.createGraphics(SWTImageTranscoder.java:70)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.ImageTranscoderEx.renderImage(ImageTranscoderEx.java:364)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.ImageTranscoderEx.transcode(ImageTranscoderEx.java:347)
+	at org.apache.batik.transcoder.XMLAbstractTranscoder.transcode(XMLAbstractTranscoder.java:142)
+	at org.apache.batik.transcoder.SVGAbstractTranscoder.transcode(SVGAbstractTranscoder.java:158)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImageConverter.setUpTranscoders(SVGImageConverter.java:162)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImageConverter.renderSVGtoSWTImage(SVGImageConverter.java:82)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage.renderImage(SVGImage.java:69)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.internal.AbstractRenderedImage.getSWTImage(AbstractRenderedImage.java:128)
+	at org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderHelper$1.run(RenderHelper.java:105)
+	at java.base/java.lang.Thread.run(Thread.java:831)
