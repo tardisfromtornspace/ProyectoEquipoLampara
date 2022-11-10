@@ -23,6 +23,12 @@ typedef enum {
 int deboContinuar = 1; // Ponerla a 0 detiene nuestro programa
 int continuar = 0;
 int continuoEscribiendo = 0;
+int reciboLED = 0; // 0 -> NO, 1 es Lumen, 2 es B, 3 es G, 4 es R
+char miLED[] = {255, 255, 255, 31}; // Inicio con valor por defecto
+int reciboPWM = 0; // ¿Estoy recibiendo datos para mi PWM? no = 0, sí = 1;
+int emitirMisSensores = 0; // ¿Me piden el sensor? 0 = No, 1 = Sí
+char emitoSensores[];
+
 int contado1 = 15180; // TMR1
 unsigned char eltimer1H = 0x3b;
 unsigned char eltimer1L = 0x4d; // 0x4c +1
@@ -33,7 +39,7 @@ char direccionInicial = 0; //Dirección inicial de la memoria de datos
 char direccionPWM = 1; //Dirección del valor del duty cycle en la memoria de datos
 char direccionLED = 2; //Dirección del valor de ledes en la memoria de datos. Offset: r = 0, g = 1, b = 2, lum = 3;
 
-int pPWM, r, g, b, lum; // Almacenados en memoria volátil lo que scamos de la flash
+int pPWM, r, g, b, lum; // Almacenados en memoria volátil lo que sacamos de la flash
 
 int numLedes = 10; // Tira de 10 ledes
 
@@ -274,9 +280,53 @@ void __interrupt() TRAT_INT(void) {
                     ADCON0bits.CHS = anI; // Leemos el siguiente. Así, vamos Rui-Hum-Temp-Rui
                     PORTB = ADRESL;
                     continuar = 1;
-                } else if(PIR2bits.EEIF){
+                } else if (PIR2bits.EEIF) {
                     PIR2bits.EEIF = 0;
                     continuoEscribiendo = 1; // Ahora sí puedo comprobar si la escritura está correcta
+                } else if (PIR1bits.SSPIF) { // El de I2C
+                    PIR1bits.SSPIF = 0;
+                    //TODO
+                } else if (PIR1bits.TXIF) { // El de USART de emisión tty/usb0/
+                    PIR1bits.TXIF = 0;
+                    //TODO
+
+                } else if (PIR1bits.RCIF) { // El de USART de recepción tty/usb0/
+                    PIR1bits.RCIF = 0;
+                    //TODO
+                    if (reciboLED > 0) {
+                        reciboLED--;
+                        miLED[reciboLED] = RCREG;
+                        if (reciboLED == 0) setLED(miLED[3], miLED[2], miLED[1], miLED[0]);
+                    } else if (reciboPWM > 0) {
+                        reciboPWM = 0;
+                        setPWM(RCREG);
+                    } else {
+                        switch (RCREG) {
+                            case "a":
+                                emitirMisSensores = 1; // Esto inicia el comienzo del printf en el main
+                                break;
+                            case "b": // Hago el pong del ping
+                                TXREG = 'B';
+                                break;
+                            case "c":
+                                reciboPWM = 1;
+                                break;
+                            case "d":
+                                //tener en cuenta buffers
+                                reciboLED = 4;
+                                break;
+                            case "e": // Apagar
+                                // TODO: hacer una flag?
+                                deboContinuar = 0;
+                                break;
+                            default: // Error
+                                TXREG = 'E';
+                                break;
+                        }
+                    }
+                } else if (PIR1bits.SSPIF) { // El de SPI (Dummy)
+                    PIR1bits.SSPIF = 0;
+                    //Dummy
                 }
 
             }
@@ -294,6 +344,7 @@ void putch(char c) {
     }
     TXREG = c;
 }
+
 /*NOTA: Estas dos son las del sensor de Luminosidad*/
 void setLumen() {
     //Es de los sensores del bus I2C, respondería por interrupción
@@ -302,6 +353,7 @@ void setLumen() {
 char getLumen() {
     return "TODO"; // TODO Por hacer 
 }
+
 /*NOTA: Estas dos son las del sensor de CO2*/
 void setCO2() {
     //Es de los sensores del bus I2C, respondería por interrupción
@@ -310,6 +362,7 @@ void setCO2() {
 char getCO2() {
     return "TODO"; // TODO Por hacer 
 }
+
 /*FUNCIONES DE MEMORIA*/
 char leerMemoria(char direccion) {
     EECON1bits.EEPGD = 0; // Acceder memoria de datos
@@ -341,7 +394,7 @@ int escribirMemoria(char direccion, char dato) {
             EECON2 = 0xAA;
             EECON1bits.WR = 1;
             INTCONbits.GIE = 1; // rehabilitar interrupción
-            while(!continuoEscribiendo); // Esperamos a que PIR2bits.EEIF == 0; // Limpiar flag cuando la escritura esté completa
+            while (!continuoEscribiendo); // Esperamos a que PIR2bits.EEIF == 0; // Limpiar flag cuando la escritura esté completa
             continuoEscribiendo = 0;
             if (leerMemoria(direccion) == dato)
                 confirmado = 1;
@@ -353,6 +406,7 @@ int escribirMemoria(char direccion, char dato) {
     } else valorSal = 2; // Error, ya se está realizando operacion de lectura
     return valorSal;
 }
+
 /*INICIALIZACIÓN SMA_LAMP*/
 void initYo(void) {
     OSCCON = 0b00001000; // External cristal
@@ -375,7 +429,8 @@ void initYo(void) {
     INTCONbits.PEIE = 1; // Habilitar interrupción de otros timers que no son el 0
 
 }
-void initActuadoresSegunMemoria(void){
+
+void initActuadoresSegunMemoria(void) {
     if (getnoPrimerArranque() == FALSE) { // Si no encuentra nada, opción por defecto: luz blanca a máxima intensidad y ventilador apagado
         setPWM(0);
         setLED(255, 255, 255, 31);
@@ -384,6 +439,7 @@ void initActuadoresSegunMemoria(void){
         setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
     }
 }
+
 /*COMPROBACIÓN MEMORIA DISPONIBLE*/
 boolean getnoPrimerArranque() {
     char direccion = direccionInicial;
@@ -405,6 +461,7 @@ void getPWM() {
 }
 /*FUNCIONES DEL LED*/
 //NOTA: TODO puede que requieran interrupción por emplear bus SPI
+
 void setLED(int red, int green, int blue, int luminosidad) {
     //TO-DO cosas del SPI
     setLED((char) red, (char) green, (char) blue, (char) luminosidad);
@@ -450,30 +507,30 @@ void cosasSPI(char roj, char verd, char azu, char lumi) {
     spi_write_read(0xFF); // End frame
 
 }
-
+/*ANALISIS RUIDO*/
+void analisisRuido(){
+    // TODO
+}
+/*ANALISIS DEL RESTO DE SENSORES*/
+void analisisResto(){
+    //TODO
+}
 /*FUNCION PRINCIPAL*/
 void main(void) {
     initYo();
     initActuadoresSegunMemoria();
-    
-    while (deboContinuar) {
-        while (!continuar);
-        continuar = 0;
-        printf("%d = %d\r\n", anI, valor);
-        TXREG = 'B'; //TODO Modificar con códigos que establecimos
 
-        /*
-         SMA-LAMP       USART        SMA-COMP
-         c0 otros   ->               c0 otros
-         A          ->               a
-         B          ->               b
-                                     c
-                                     d
-                                     e
-         * 
-         * "a" es leerSensores, valor "b" es hacer ping, valor "c" es cambiar el PWM, "d" es cambiar LED, y "e" sería apgar
-         * "A" es la respuesta de lso sensores, "B" es hacer pong
-        
-         */
+    while (deboContinuar) {
+        if (emitirMisSensores) {
+            printf("A%c = %d\r\n", emitoSensores);
+            //'A' + valoresSensores(); // TODO valores de los sensores
+        }
+        analisisRuido();
+        analisisResto();
+        //while (!continuar);
+        //continuar = 0;
+        //printf("%d = %d\r\n", anI, valor);
+
+
     }
 }
