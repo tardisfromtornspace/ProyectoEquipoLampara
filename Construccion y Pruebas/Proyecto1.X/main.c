@@ -13,8 +13,8 @@
 #include <xc.h>
 #include <stdio.h>
 
-#include <i2c-v2.h>
-#include <spi-master-v1.h>
+#include "i2c-v2.h"
+#include "spi-master-v1.h"
 
 typedef enum {
     FALSE = 0b0, TRUE = 0b1
@@ -27,13 +27,20 @@ int reciboLED = 0; // 0 -> NO, 1 es Lumen, 2 es B, 3 es G, 4 es R
 char miLED[] = {255, 255, 255, 31}; // Inicio con valor por defecto
 int reciboPWM = 0; // ¿Estoy recibiendo datos para mi PWM? no = 0, sí = 1;
 int emitirMisSensores = 0; // ¿Me piden el sensor? 0 = No, 1 = Sí
-char emitoSensores[];
+char emitoSensores[] = {0, 0, 0, 0, 0}; // Ruido, humedad, temperatura, C02, Lumen. -1 es "not ready"
 
 int contado1 = 15180; // TMR1
 unsigned char eltimer1H = 0x3b;
 unsigned char eltimer1L = 0x4d; // 0x4c +1
-int valor[] = {0, 0, 0}; //Entradas Ruido, Humedad, Temperatura
+
+char valor[] = {0, 0, 0}; //Entradas Ruido, Humedad, Temperatura
+char ruidoMasAlto = 0; // Valor de ruido más alto, 0 es no inicializado,1 es bajo, 2 es medio, 3 es alto 
+char ruidoBajo = 400; // POr debajo de este valor ruido es bajo
+char ruidoMedio = 900;
 int anI = 0; // 0 es Ruido, 1 es Humedad, 2 es Temperatura
+char valorI2C[] = {0, 0}; // Entradas CO2 y Lumen
+
+int actualizoLecturas = 0; // Indicar si es mi tiempo para actualizar lecturas al comp cada 5 s
 
 char direccionInicial = 0; //Dirección inicial de la memoria de datos
 char direccionPWM = 1; //Dirección del valor del duty cycle en la memoria de datos
@@ -55,8 +62,9 @@ char elPR2 = 167; // para 30 kHz es  Fosc/4/PR2 = 30 kHz => PR2 = 167 < 255
 char x;
 int copias1 = 0;
 int copias = 0; // De acuerdo al profesor, empleamos varias esperas de 5 ms ya que el TMR0 no puede aguantar hasta 1 s. 1s : 5 ms = 200 veces
+int copias5s = 0; // Para contar cada 5 s
 int los5msen1s = 4; // En TMR1 con 1:8 (el maximo preescalado) salen 0.5 : (8 * 2E-7) = 312500 > 65536; 312500 : 65536 = 4 ciclos, resto 50356, por lo tanto, 65536 - 50356 = 15180
-// Con TMR0 Medio segundo eran 100, 1 s son 200
+int los5msen1sT0 = 100;// Con TMR0 Medio segundo eran 100, 1 s son 200
 // En caso de emplear la mejora de 1:256 que serÃ­a un ciclo de 10 ms, esto seria 100 y no 200 (en 1 s))
 
 void init_TMR0(void) {
@@ -223,22 +231,22 @@ void __interrupt() TRAT_INT(void) {
     { // Interrupcion del timer
 
         TMR0 = 61;
-        if (copias >= los5msen1s) {
+        if (copias >= los5msen1sT0) {
+            
             copias = 0; // Reseteamos contador global
-            if (porcentaje <= porcentajeMin) { // Si menor o igual a 0 hay que subir
-                porcentajeSubenBaja = 1;
-            } else {
-                if (porcentaje >= porcentajeMax) { // Si mayor a igual a 100 hay que bajar
-                    porcentajeSubenBaja = 0;
-                }
-            }
-            if (porcentajeSubenBaja == 0) {
-                porcentaje -= 1;
-                porcentajeC += 1;
-            } else {
-                porcentaje += 1;
-                porcentajeC -= 1;
-            }
+            copias5s++; // Ha pasado 1 segundo
+            // TODO cada 1 s se actualiza ruido a mostrar, el más alto
+            emitoSensores[0] = ruidoMasAlto;
+            ruidoMasAlto = 0; // Preparo para el segundo siguiente. Cambiar una flag nos cuesta lo mismo
+
+            // TODO cada 5 segundos se actualizan otros sensores
+            // TODO cada 5 segundos se muestrean los otros
+            if (copias5s >= 5) // Para contar 5 segundos
+            {
+                actualizoLecturas = 1; // Mando que los de i2c se actualizen
+                copias5s = 0;
+            } 
+
             PORTB = porcentaje;
 
             // Cada 50 ms ajustar el duty cycle segun especificaciones del enunciado
@@ -247,6 +255,8 @@ void __interrupt() TRAT_INT(void) {
         } else {
             copias += 1;
         }
+        // TODO Cada 10 ms se actualiza lectura ruido - como TMR0 completa 1 vuelta cada 10ms, lo llamamos siempre que esto ocurre
+
 
         INTCONbits.T0IF = 0; // Evitar que vuelva a entrar en la interrupcion tras salir
     } else {
@@ -283,12 +293,12 @@ void __interrupt() TRAT_INT(void) {
                 } else if (PIR2bits.EEIF) {
                     PIR2bits.EEIF = 0;
                     continuoEscribiendo = 1; // Ahora sí puedo comprobar si la escritura está correcta
-                } else if (PIR1bits.SSPIF) { // El de I2C
-                    PIR1bits.SSPIF = 0;
-                    //TODO
+                //} else if (PIR1bits.SSPIF) { // El de I2C NO SE HACE POR INTERRUPCIONES
+                //    PIR1bits.SSPIF = 0;
                 } else if (PIR1bits.TXIF) { // El de USART de emisión tty/usb0/
                     PIR1bits.TXIF = 0;
                     //TODO
+                    //Probablemente innecesario si usamos printf
 
                 } else if (PIR1bits.RCIF) { // El de USART de recepción tty/usb0/
                     PIR1bits.RCIF = 0;
@@ -302,20 +312,20 @@ void __interrupt() TRAT_INT(void) {
                         setPWM(RCREG);
                     } else {
                         switch (RCREG) {
-                            case "a":
+                            case 'a':
                                 emitirMisSensores = 1; // Esto inicia el comienzo del printf en el main
                                 break;
-                            case "b": // Hago el pong del ping
+                            case 'b': // Hago el pong del ping
                                 TXREG = 'B';
                                 break;
-                            case "c":
+                            case 'c':
                                 reciboPWM = 1;
                                 break;
-                            case "d":
+                            case 'd':
                                 //tener en cuenta buffers
                                 reciboLED = 4;
                                 break;
-                            case "e": // Apagar
+                            case 'e': // Apagar
                                 // TODO: hacer una flag?
                                 deboContinuar = 0;
                                 break;
@@ -347,7 +357,8 @@ void putch(char c) {
 
 /*NOTA: Estas dos son las del sensor de Luminosidad*/
 void setLumen() {
-    //Es de los sensores del bus I2C, respondería por interrupción
+    //Es de los sensores del bus I2C
+    valorI2C[1] = i2c_read(1);
 }
 
 char getLumen() {
@@ -356,7 +367,8 @@ char getLumen() {
 
 /*NOTA: Estas dos son las del sensor de CO2*/
 void setCO2() {
-    //Es de los sensores del bus I2C, respondería por interrupción
+    //Es de los sensores del bus I2C
+    valorI2C[0] = i2c_read(1);
 }
 
 char getCO2() {
@@ -421,6 +433,7 @@ void initYo(void) {
     //init_CCP2_PWM();
     init_I2C();
     init_SPI();
+    i2c_start(); // Adicional memoria
     init_memoria();
 
     TRISB = 0; // Puerto B a output
@@ -462,11 +475,6 @@ void getPWM() {
 /*FUNCIONES DEL LED*/
 //NOTA: TODO puede que requieran interrupción por emplear bus SPI
 
-void setLED(int red, int green, int blue, int luminosidad) {
-    //TO-DO cosas del SPI
-    setLED((char) red, (char) green, (char) blue, (char) luminosidad);
-}
-
 void setLED(char red, char green, char blue, char luminosidad) {
     //cosas del SPI
     r = red;
@@ -475,17 +483,15 @@ void setLED(char red, char green, char blue, char luminosidad) {
     lum = luminosidad;
     cosasSPI(r, g, b, lum);
     // Guardamos en memoria no volátil
-    escribirMemoria(leerMemoria(direccionLED), r);
-    escribirMemoria(leerMemoria(direccionLED + 1 * 8), g);
-    escribirMemoria(leerMemoria(direccionLED + 2 * 8), b);
-    escribirMemoria(leerMemoria(direccionLED + 3 * 8), lum);
+    escribirMemoria(direccionLED, r);
+    escribirMemoria(direccionLED + 1 * 8, g);
+    escribirMemoria(direccionLED + 2 * 8, b);
+    escribirMemoria(direccionLED + 3 * 8, lum);
 }
 
 char *getLED() {
-    return
-    {
-        r, g, b, lum
-    };
+    int aux[4] = {r, g, b, lum};
+    return aux;
 }
 
 void cosasSPI(char roj, char verd, char azu, char lumi) {
@@ -495,7 +501,7 @@ void cosasSPI(char roj, char verd, char azu, char lumi) {
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00); // Starting frame
-    for (i = numLedes; i = 0; i--) {
+    for (i = numLedes; i == 0; i--) {
         spi_write_read(lumo);
         spi_write_read(azu);
         spi_write_read(verd);
@@ -509,11 +515,30 @@ void cosasSPI(char roj, char verd, char azu, char lumi) {
 }
 /*ANALISIS RUIDO*/
 void analisisRuido(){
-    // TODO
+    char temp = 0;
+    // Si el ruido está por debajo de 400, es bajo, si por encima de 900 es alto. 
+    if (valor[0] < ruidoBajo) temp = 1; // Ruido bajo
+    else if (valor[0] < ruidoMedio)  temp = 2; // Ruido medio
+    else temp = 3; // Ruido alto
+    // Solo debe mostrarse la categoría mas alta detectada por segundo
+    if (temp > ruidoMasAlto) ruidoMasAlto = temp;
+    // El ruido mas alto se resetea cada segundo en la interupcion - emitir un flag global para que lo reseteásemos acá nos costaría lo mismo
 }
 /*ANALISIS DEL RESTO DE SENSORES*/
 void analisisResto(){
     //TODO
+    if (actualizoLecturas) // Cada vez que me dejen 
+    {
+        actualizoLecturas = 0;  // Refresco el flag global para no meterme en un bucle cuando no lo necesite
+        
+        emitoSensores[1] = valor[1]; // Humedad
+        emitoSensores[2] = valor[2]; // Temperatura
+        emitoSensores[3] = valorI2C[0]; // CO2
+        emitoSensores[4] = valorI2C[1]; //Lumen
+        setCO2();  // Pido los valores de i2c cada 5s, para dar margen los pido al fial para el próximo ciclo
+        setLumen();
+    }
+    // TODO ver si mi ruido es el más alto
 }
 /*FUNCION PRINCIPAL*/
 void main(void) {
