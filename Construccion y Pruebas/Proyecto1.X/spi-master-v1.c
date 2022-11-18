@@ -7,7 +7,7 @@
 
 char spi_write_read(char one_byte)
 {
-    char x;
+    //char x; el profe tenis esto puesto acá pero no tiene sentido
     char answer, x;
     
     answer = 0;

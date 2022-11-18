@@ -27,18 +27,20 @@ int reciboLED = 0; // 0 -> NO, 1 es Lumen, 2 es B, 3 es G, 4 es R
 char miLED[] = {255, 255, 255, 31}; // Inicio con valor por defecto
 int reciboPWM = 0; // øEstoy recibiendo datos para mi PWM? no = 0, sÌ = 1;
 int emitirMisSensores = 0; // øMe piden el sensor? 0 = No, 1 = SÌ
-char emitoSensores[] = {0, 0, 0, 0, 0}; // Ruido, humedad, temperatura, C02, Lumen. -1 es "not ready"
+int emitoSensores[] = {0, 0, 0, 0, 0}; // Ruido, humedad, temperatura, C02, Lumen. -1 es "not ready"
 
-int contado1 = 15180; // TMR1
-unsigned char eltimer1H = 0x3b;
-unsigned char eltimer1L = 0x4d; // 0x4c +1
+int contado1 = 25000; // TMR1 cuenta cada 5 ms con preescalado 1:1
+unsigned char eltimer1H = 0x61; // Estos dos son lo de arriba pasado a hexadecimal
+unsigned char eltimer1L = 0xA9; // 0xA8 +1
 
-char valor[] = {0, 0, 0}; //Entradas Ruido, Humedad, Temperatura
-char ruidoMasAlto = 0; // Valor de ruido m·s alto, 0 es no inicializado,1 es bajo, 2 es medio, 3 es alto 
-char ruidoBajo = 400; // POr debajo de este valor ruido es bajo
-char ruidoMedio = 900;
-int anI = 0; // 0 es Ruido, 1 es Humedad, 2 es Temperatura
-char valorI2C[] = {0, 0}; // Entradas CO2 y Lumen
+int valor[] = {0, 0, 0}; //Entradas Ruido, Humedad, Temperatura
+int ruidoMasAlto = 0; // Valor de ruido m·s alto, 0 es no inicializado,1 es bajo, 2 es medio, 3 es alto 
+int ruidoBajo = 400; // Por debajo de este valor ruido es bajo
+int ruidoMedio = 900; // Por encima de este valor el ruido es alto
+int anI = 1; // 0 es Ruido, 1 es Humedad, 2 es Temperatura 1∫ va Humedad a los 5 ms, luego Ruido a los 10 ms y Temperatura a los 15 ms (Humedad y Temperatura cada 5s, claro)
+int anINext = 0; // El valor siguiente de los ADC
+int valorI2C[] = {0, 0}; // Entradas CO2 y Lumen
+int leoADCHumedadTemp = 2; // Para leer temperatura y humedad en su tiempo correcto
 
 int actualizoLecturas = 0; // Indicar si es mi tiempo para actualizar lecturas al comp cada 5 s
 
@@ -46,7 +48,7 @@ char direccionInicial = 0; //DirecciÛn inicial de la memoria de datos
 char direccionPWM = 1; //DirecciÛn del valor del duty cycle en la memoria de datos
 char direccionLED = 2; //DirecciÛn del valor de ledes en la memoria de datos. Offset: r = 0, g = 1, b = 2, lum = 3;
 
-int pPWM, r, g, b, lum; // Almacenados en memoria vol·til lo que sacamos de la flash
+char pPWM; // Almacenados en memoria vol·til lo que sacamos de la flash
 
 int numLedes = 10; // Tira de 10 ledes
 
@@ -63,8 +65,8 @@ char x;
 int copias1 = 0;
 int copias = 0; // De acuerdo al profesor, empleamos varias esperas de 5 ms ya que el TMR0 no puede aguantar hasta 1 s. 1s : 5 ms = 200 veces
 int copias5s = 0; // Para contar cada 5 s
-int los5msen1s = 4; // En TMR1 con 1:8 (el maximo preescalado) salen 0.5 : (8 * 2E-7) = 312500 > 65536; 312500 : 65536 = 4 ciclos, resto 50356, por lo tanto, 65536 - 50356 = 15180
-int los5msen1sT0 = 100;// Con TMR0 Medio segundo eran 100, 1 s son 200
+int los5msen15ms = 3; // En TMR1 nos conviene separarlos en intervalos de 5ms (Humedad - Ruido - temperatura)
+int los5msen1sT0 = 100; // Con TMR0 Medio segundo eran 100, 1 s son 200
 // En caso de emplear la mejora de 1:256 que ser√≠a un ciclo de 10 ms, esto seria 100 y no 200 (en 1 s))
 
 void init_TMR0(void) {
@@ -80,9 +82,9 @@ void init_TMR0(void) {
 void init_TMR1(void) {
     TMR1H = eltimer1H;
     TMR1L = eltimer1L;
-    T1CONbits.TMR1CS = 0;
+    T1CONbits.TMR1CS = 0; // Usamos Fosc/4
     //T1CONbits.PSA = 0;
-    T1CONbits.T1CKPS = 0b11;
+    T1CONbits.T1CKPS = 0b00; // 1:1 prescale value. Sabiendo que Fosc/4 es 200 ns y queremos hacer cada 5 ms,  5 ms / 200 ns = 25000 < 65536.
     T1CONbits.TMR1GE = 0; // TIMER1 siempre contando
     PIE1bits.TMR1IE = 1;
     T1CONbits.TMR1ON = 1;
@@ -109,7 +111,7 @@ void init_CCP1_PWM(void) {
     //CCP1CONbits.DC1B = porcentaje * elPR2 % 4; // Los dos bits menos significativos para el duty cycle del PWM
 
 }
-
+/* NO USADA
 void init_CCP2_PWM(void) {
     // TRISC = 0; // Es un output, CCP1 es pin 10, CCP2 es pin 9, segun el manual son del PORT C
     TRISCbits.TRISC1 = 0;
@@ -123,7 +125,7 @@ void init_CCP2_PWM(void) {
     //CCP2CONbits.DC2B0 = (unsigned char) (porcentajeC * elPR2 % 2); // Los dos bits menos significativos para el duty cycle del PWM
 
 }
-
+*/
 void init_uart(void) {
     TXSTAbits.BRGH = 0;
     BAUDCTLbits.BRG16 = 0;
@@ -170,6 +172,7 @@ void init_I2C(void) {
      
     Por consiguiente, no debemos restablecer el BBRG a SSPADD, solo decir SSPADD 
      */
+    // TO-DO VER VALORES REALES A USAR
     SSPADD = (_XTAL_FREQ / 4) - 1; // El ratio de baudios, si SSPM = 0 seg˙n el manual: SSPADD + 1 = Fosc/4 ;
 
     PIR1bits.SSPIF = 0; //A˙n no activamos la flag
@@ -226,126 +229,6 @@ void init_memoria() {
     PIE2bits.EEIE = 1; // Permitimos que haya interrupciones por memoria
 }
 
-void __interrupt() TRAT_INT(void) {
-    if (INTCONbits.TMR0IF) // Esto es TMRO, para TMR 1 seria PIR1bits.TMR1IF == 1
-    { // Interrupcion del timer
-
-        TMR0 = 61;
-        if (copias >= los5msen1sT0) {
-            
-            copias = 0; // Reseteamos contador global
-            copias5s++; // Ha pasado 1 segundo
-            // TODO cada 1 s se actualiza ruido a mostrar, el m·s alto
-            emitoSensores[0] = ruidoMasAlto;
-            ruidoMasAlto = 0; // Preparo para el segundo siguiente. Cambiar una flag nos cuesta lo mismo
-
-            // TODO cada 5 segundos se actualizan otros sensores
-            // TODO cada 5 segundos se muestrean los otros
-            if (copias5s >= 5) // Para contar 5 segundos
-            {
-                actualizoLecturas = 1; // Mando que los de i2c se actualizen
-                copias5s = 0;
-            } 
-
-            PORTB = porcentaje;
-
-            // Cada 50 ms ajustar el duty cycle segun especificaciones del enunciado
-            CCPR1L = porcentaje; // Los 8 bits mas significativos para el duty cycle del PWM
-            CCPR2L = porcentajeC; // Los 8 bits mas significativos para el duty cycle del PWM
-        } else {
-            copias += 1;
-        }
-        // TODO Cada 10 ms se actualiza lectura ruido - como TMR0 completa 1 vuelta cada 10ms, lo llamamos siempre que esto ocurre
-
-
-        INTCONbits.T0IF = 0; // Evitar que vuelva a entrar en la interrupcion tras salir
-    } else {
-        if (PIR1bits.TMR1IF == 1) // TMR1
-        { // Interrupcion del timer
-
-            if (copias1 >= los5msen1s) {
-                copias1 = 0;
-                TMR1H = eltimer1H;
-                TMR1L = eltimer1L;
-                ADCON0bits.GO_DONE = 1;
-            } else {
-                copias1 += 1;
-                TMR1H = 0;
-                TMR1L = 0;
-            }
-            PIR1bits.TMR1IF = 0;
-        } else {
-            if (PIR1bits.TMR2IF) // Interrupcion TMR2
-            {
-                // TMR2 =  88; // 255 - 167 = 88
-                TRISC = 0; // Segun el manual, activar el pin output driver del CCPx se hace limpiando el bit TRIS correspondiente
-                PIR1bits.TMR2IF = 0; // Evitar volver a la interrupcion
-            } else {
-                if (PIR1bits.ADIF) {
-                    // Interrupcion ADC
-                    PIR1bits.ADIF = 0;
-                    valor[anI] = (int) ADRESH * 0x10 + ADRESL;
-                    anI++;
-                    if (anI >= 3) anI = 0;
-                    ADCON0bits.CHS = anI; // Leemos el siguiente. AsÌ, vamos Rui-Hum-Temp-Rui
-                    PORTB = ADRESL;
-                    continuar = 1;
-                } else if (PIR2bits.EEIF) {
-                    PIR2bits.EEIF = 0;
-                    continuoEscribiendo = 1; // Ahora sÌ puedo comprobar si la escritura est· correcta
-                //} else if (PIR1bits.SSPIF) { // El de I2C NO SE HACE POR INTERRUPCIONES
-                //    PIR1bits.SSPIF = 0;
-                } else if (PIR1bits.TXIF) { // El de USART de emisiÛn tty/usb0/
-                    PIR1bits.TXIF = 0;
-                    //TODO
-                    //Probablemente innecesario si usamos printf
-
-                } else if (PIR1bits.RCIF) { // El de USART de recepciÛn tty/usb0/
-                    PIR1bits.RCIF = 0;
-                    //TODO
-                    if (reciboLED > 0) {
-                        reciboLED--;
-                        miLED[reciboLED] = RCREG;
-                        if (reciboLED == 0) setLED(miLED[3], miLED[2], miLED[1], miLED[0]);
-                    } else if (reciboPWM > 0) {
-                        reciboPWM = 0;
-                        setPWM(RCREG);
-                    } else {
-                        switch (RCREG) {
-                            case 'a':
-                                emitirMisSensores = 1; // Esto inicia el comienzo del printf en el main
-                                break;
-                            case 'b': // Hago el pong del ping
-                                TXREG = 'B';
-                                break;
-                            case 'c':
-                                reciboPWM = 1;
-                                break;
-                            case 'd':
-                                //tener en cuenta buffers
-                                reciboLED = 4;
-                                break;
-                            case 'e': // Apagar
-                                // TODO: hacer una flag?
-                                deboContinuar = 0;
-                                break;
-                            default: // Error
-                                TXREG = 'E';
-                                break;
-                        }
-                    }
-                } else if (PIR1bits.SSPIF) { // El de SPI (Dummy)
-                    PIR1bits.SSPIF = 0;
-                    //Dummy
-                }
-
-            }
-        }
-
-    }
-
-}
-
 /* It is needed for printf */
 void putch(char c) {
     while (!TXIF && !TXSTAbits.TRMT) {
@@ -357,22 +240,30 @@ void putch(char c) {
 
 /*NOTA: Estas dos son las del sensor de Luminosidad*/
 void setLumen() {
-    //Es de los sensores del bus I2C
-    valorI2C[1] = i2c_read(1);
+    //Es de los sensores del bus I2C, de 16 bits
+    i2c_rstart();
+    i2c_write(0x21); // 0x10 es la direcciÛn del esclavo, ahora eso evoluciona a 0x20 para escribir, y 0x21 para leer
+    i2c_write(0x04); // 0x04 es el registro ALS (Ambient Light Sensor), ver si es accidentalmente el 0x05 que es el registro WHITE, hay hata 0x06 pero 0x03 no est· implementado
+    valorI2C[1] = i2c_read(1); // Recibo el Least Significant Byte (LSB)
+    valorI2C[1] +=  (i2c_read(1) * 0x10); // Recibo el MSB
 }
 
-char getLumen() {
-    return "TODO"; // TODO Por hacer 
+int getLumen() {
+    return valorI2C[1]; // TODO Por hacer 
 }
 
 /*NOTA: Estas dos son las del sensor de CO2*/
 void setCO2() {
-    //Es de los sensores del bus I2C
-    valorI2C[0] = i2c_read(1);
+    //Es de los sensores del bus I2C, de 16 bits
+    i2c_rstart();
+    i2c_write(0x5A); // 0x5a DirecciÛn del sensor de CO2, + 0  para leer, +1 para escribir. El write bit A 1 lo hace "no contactable" como dice el manual.
+    i2c_write(0xB5); // Para leer datos
+    valorI2C[0] = i2c_read(1); // Primero recibo el LSB
+    valorI2C[0] +=  (i2c_read(1) * 0x10); // Recibo el MSB
 }
 
-char getCO2() {
-    return "TODO"; // TODO Por hacer 
+int getCO2() {
+    return valorI2C[0]; // TODO Por hacer 
 }
 
 /*FUNCIONES DE MEMORIA*/
@@ -433,7 +324,7 @@ void initYo(void) {
     //init_CCP2_PWM();
     init_I2C();
     init_SPI();
-    i2c_start(); // Adicional memoria
+    i2c_start();
     init_memoria();
 
     TRISB = 0; // Puerto B a output
@@ -441,16 +332,6 @@ void initYo(void) {
     INTCONbits.GIE = 1; // Habilitar interrupciÛn
     INTCONbits.PEIE = 1; // Habilitar interrupciÛn de otros timers que no son el 0
 
-}
-
-void initActuadoresSegunMemoria(void) {
-    if (getnoPrimerArranque() == FALSE) { // Si no encuentra nada, opciÛn por defecto: luz blanca a m·xima intensidad y ventilador apagado
-        setPWM(0);
-        setLED(255, 255, 255, 31);
-    } else { // Cargo configuraciÛn de LED y PWM
-        setPWM(leerMemoria(direccionPWM));
-        setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
-    }
 }
 
 /*COMPROBACI”N MEMORIA DISPONIBLE*/
@@ -462,38 +343,18 @@ boolean getnoPrimerArranque() {
 }
 
 /*FUNCIONES DEL PWM*/
-void setPWM(int porcent) {
+void setPWM(char porcent) {
     porcentaje = (char) (porcent / 100);
     CCPR1L = porcentaje * porcentajeMax; // Los 8 bits mas significativos para el duty cycle del PWM. El porcentajeMax debe ser igual a la variable elPR2
     escribirMemoria(direccionPWM, porcent);
     pPWM = porcent;
 }
 
-void getPWM() {
+char getPWM() {
     return porcentaje;
 }
 /*FUNCIONES DEL LED*/
 //NOTA: TODO puede que requieran interrupciÛn por emplear bus SPI
-
-void setLED(char red, char green, char blue, char luminosidad) {
-    //cosas del SPI
-    r = red;
-    g = green;
-    b = blue;
-    lum = luminosidad;
-    cosasSPI(r, g, b, lum);
-    // Guardamos en memoria no vol·til
-    escribirMemoria(direccionLED, r);
-    escribirMemoria(direccionLED + 1 * 8, g);
-    escribirMemoria(direccionLED + 2 * 8, b);
-    escribirMemoria(direccionLED + 3 * 8, lum);
-}
-
-char *getLED() {
-    int aux[4] = {r, g, b, lum};
-    return aux;
-}
-
 void cosasSPI(char roj, char verd, char azu, char lumi) {
     int i;
     char lumo = 0b11100000 + (lumi % 32);
@@ -513,33 +374,216 @@ void cosasSPI(char roj, char verd, char azu, char lumi) {
     spi_write_read(0xFF); // End frame
 
 }
+
+void setLED(char red, char green, char blue, char luminosidad) {
+    //cosas del SPI
+    cosasSPI(red, green, blue, luminosidad);
+    // Si tuvo Èxito procedemos a guardarlo en nuestra memoria vol·til...
+    miLED[0] = red;
+    miLED[1] = green;
+    miLED[2] = blue;
+    miLED[3] = luminosidad;
+    //... y guardamos en memoria no vol·til
+    escribirMemoria(direccionLED, miLED[0]);
+    escribirMemoria(direccionLED + 1 * sizeof(char), miLED[1]);
+    escribirMemoria(direccionLED + 2 * sizeof(char), miLED[2]);
+    escribirMemoria(direccionLED + 3 * sizeof(char), miLED[3]);
+}
+//TO-DO: ver como devolver vector
+char *getLED() {
+    return miLED;
+}
+
 /*ANALISIS RUIDO*/
-void analisisRuido(){
+void analisisRuido() {
+    // POSIBLE OPTIMIZACI”N: se podrÌa simplemente comparar el valor numÈrico y luego ya se convierte el m·s alto
     char temp = 0;
     // Si el ruido est· por debajo de 400, es bajo, si por encima de 900 es alto. 
+    //TO-DO ver como el sensor de ruido trabaja para darnos resultados por encima de 255 -> AJUSTAR VALORES RECIBIDOS A UN RANGO DE ENTEROS LUEGO, Y REMUEVE ESOS (int))
     if (valor[0] < ruidoBajo) temp = 1; // Ruido bajo
-    else if (valor[0] < ruidoMedio)  temp = 2; // Ruido medio
+    else if (valor[0] < ruidoMedio) temp = 2; // Ruido medio
     else temp = 3; // Ruido alto
     // Solo debe mostrarse la categorÌa mas alta detectada por segundo
     if (temp > ruidoMasAlto) ruidoMasAlto = temp;
     // El ruido mas alto se resetea cada segundo en la interupcion - emitir un flag global para que lo resete·semos ac· nos costarÌa lo mismo
 }
+
 /*ANALISIS DEL RESTO DE SENSORES*/
-void analisisResto(){
+void analisisResto() {
     //TODO
     if (actualizoLecturas) // Cada vez que me dejen 
     {
-        actualizoLecturas = 0;  // Refresco el flag global para no meterme en un bucle cuando no lo necesite
-        
+        actualizoLecturas = 0; // Refresco el flag global para no meterme en un bucle cuando no lo necesite
+
         emitoSensores[1] = valor[1]; // Humedad
         emitoSensores[2] = valor[2]; // Temperatura
-        emitoSensores[3] = valorI2C[0]; // CO2
-        emitoSensores[4] = valorI2C[1]; //Lumen
-        setCO2();  // Pido los valores de i2c cada 5s, para dar margen los pido al fial para el prÛximo ciclo
+        emitoSensores[3] = getCO2(); // CO2
+        emitoSensores[4] = getLumen(); //Lumen
+        setCO2(); // Pido los valores de i2c cada 5s, para dar margen los pido al fial para el prÛximo ciclo
         setLumen();
     }
     // TODO ver si mi ruido es el m·s alto
 }
+
+void initActuadoresSegunMemoria(void) {
+    if (getnoPrimerArranque() == FALSE) { // Si no encuentra nada, opciÛn por defecto: luz blanca a m·xima intensidad y ventilador apagado
+        setPWM(0);
+        setLED(255, 255, 255, 31);
+    } else { // Cargo configuraciÛn de LED y PWM
+        setPWM(leerMemoria(direccionPWM));
+        setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
+    }
+}
+
+void __interrupt() TRAT_INT(void) {
+    if (INTCONbits.TMR0IF) // Esto es TMRO, para TMR 1 seria PIR1bits.TMR1IF == 1
+    { // Interrupcion del timer
+
+        TMR0 = 61;
+        if (copias >= los5msen1sT0) {
+
+            copias = 0; // Reseteamos contador global
+            copias5s++; // Ha pasado 1 segundo
+            // Cada 1 s se actualiza ruido a mostrar, el m·s alto
+            emitoSensores[0] = ruidoMasAlto;
+            ruidoMasAlto = 0; // Preparo para el segundo siguiente. Cambiar una flag nos cuesta lo mismo
+
+            // TODO cada 5 segundos se actualizan otros sensores
+            // TODO cada 5 segundos se muestrean los otros
+            if (copias5s >= 5) // Para contar 5 segundos
+            {
+                actualizoLecturas = 1; // Mando que los de i2c se actualizen
+                leoADCHumedadTemp = 2; // Digo que debe leer Humedad y Temperatura
+                copias5s = 0;
+            }
+
+        } else {
+            copias += 1;
+        }
+        INTCONbits.T0IF = 0; // Evitar que vuelva a entrar en la interrupcion tras salir
+        
+    } else {
+        if (PIR1bits.TMR1IF == 1) // TMR1
+        { // Interrupcion del timer
+
+            if (copias1 >= los5msen15ms) { // TODO Cada 15 ms se actualiza lectura ruido, entonces esto puede valer 0, 1 y 2 y 3, pero al ADC solo llegan 0, 1 y 2
+                copias1 = 0;
+                //TMR1H = eltimer1H;
+                //TMR1L = eltimer1L;
+                if (leoADCHumedadTemp > 0) ADCON0bits.GO_DONE = 1; // Terminada lectura de Temperatura
+            } else { // Esto es solo por almacenar cosas para que humedad y temperatura se lean cada 5 segundos, pero con un desfasse de 5
+                copias1 += 1;
+                if (copias1 == los5msen15ms -1 || (leoADCHumedadTemp > 0 && copias1 == los5msen15ms -2))
+                    ADCON0bits.GO_DONE = 1; // Terminada lectura de ruido o humedad
+                //TMR1H = 0;
+                //TMR1L = 0;
+            }
+            ADCON0bits.GO_DONE = 1; // Hemos completado la lectura
+            TMR1H = eltimer1H;
+            TMR1L = eltimer1L;
+            PIR1bits.TMR1IF = 0;
+        } else {
+            if (PIR1bits.TMR2IF) // Interrupcion TMR2
+            {
+                // TMR2 =  88; // 255 - 167 = 88
+                TRISC = 0; // Segun el manual, activar el pin output driver del CCPx se hace limpiando el bit TRIS correspondiente
+                PIR1bits.TMR2IF = 0; // Evitar volver a la interrupcion
+            } else {
+                if (PIR1bits.ADIF) {
+                    // Interrupcion ADC
+                    PIR1bits.ADIF = 0;
+                    valor[anI] = (int) ADRESH * 0x10 + ADRESL;
+                    //anI++;
+                    //if (anI >= 3) anI = 0;
+
+                    /*Ac· hemos decidido hacer algo como esto
+                     * Suponiendo anI 0 es ruido, anI 1 es humedad y anI 2 es temperatura
+                     * Si me toca leer humedad y temperatura
+                         * tiempos:  0ms   |5ms     |10ms    |15ms->0ms
+                         * copias1:0       |1       |2       |0
+                         *  sample:  HHHHHH|H RRRRRR|R TTTTTT|T HHHHHH
+                         *  evaluo: -      | H      | R      | T
+                         *     anI:  1        0        2        1
+                     * Si solo leo ruido
+                         * tiempos:  0ms   |5ms     |10ms    |15ms->0ms
+                         * copias1:0       |1       |2       |0
+                         *  sample:RRRRRRRR|RRRRRRRR|R RRRRRR|RRRRRRRR
+                         *  evaluo:        |        | R      |
+                         *     anI:  0        0        0        0
+                    */
+                    if (leoADCHumedadTemp > 0) // Humedad y Temperatura cada 5s
+                    {
+                        if (copias1 == 0) // Hay que leer Humedad a los 5ms, asÌ que a los  0ms pasamos el MUX al pin de Humedad
+                        {
+                            leoADCHumedadTemp--; // Uno menos que contar
+                            anI = 1;
+                        } else if (copias1 == 2) // Hay que leer Temperatura en el siguiente ciclo
+                        {
+                            leoADCHumedadTemp--; // Uno menos que contar
+                            anI = 2;
+                        } else anI = 0; // en otro caso es que queremos leer ruido
+                    } else
+                        anI = 0;
+                    ADCON0bits.CHS = (char) anI; // Leemos el siguiente sample del pin indicado
+                    // PORTB = ADRESL;
+                    // continuar = 1;
+                } else if (PIR2bits.EEIF) {
+                    PIR2bits.EEIF = 0;
+                    continuoEscribiendo = 1; // Ahora sÌ puedo comprobar si la escritura est· correcta
+                    //} else if (PIR1bits.SSPIF) { // El de I2C NO SE HACE POR INTERRUPCIONES
+                    //    PIR1bits.SSPIF = 0;
+                } else if (PIR1bits.TXIF) { // El de USART de emisiÛn tty/usb0/
+                    PIR1bits.TXIF = 0;
+                    //TODO
+                    //Probablemente innecesario si usamos printf
+
+                } else if (PIR1bits.RCIF) { // El de USART de recepciÛn tty/usb0/
+                    PIR1bits.RCIF = 0;
+                    //TODO
+                    if (reciboLED > 0) {
+                        reciboLED--;
+                        miLED[reciboLED] = RCREG;
+                        if (reciboLED == 0) setLED(miLED[3], miLED[2], miLED[1], miLED[0]);
+                    } else if (reciboPWM > 0) {
+                        reciboPWM = 0;
+                        setPWM(RCREG);
+                    } else {
+                        switch (RCREG) {
+                            case 'a':
+                                emitirMisSensores = 1; // Esto inicia el comienzo del printf en el main
+                                break;
+                            case 'b': // Hago el pong del ping
+                                TXREG = 'B';
+                                break;
+                            case 'c':
+                                reciboPWM = 1;
+                                break;
+                            case 'd':
+                                //tener en cuenta buffers
+                                reciboLED = 4;
+                                break;
+                            case 'e': // Apagar
+                                // TODO: hacer una flag?
+                                deboContinuar = 0;
+                                break;
+                            default: // Error
+                                TXREG = 'E';
+                                break;
+                        }
+                    }
+                } else if (PIR1bits.SSPIF) { // El de SPI (Dummy)
+                    PIR1bits.SSPIF = 0;
+                    //Dummy
+                }
+
+            }
+        }
+
+    }
+
+}
+
+
 /*FUNCION PRINCIPAL*/
 void main(void) {
     initYo();
@@ -558,4 +602,5 @@ void main(void) {
 
 
     }
+    i2c_stop(); // Finalizamos nuestro i2c
 }
