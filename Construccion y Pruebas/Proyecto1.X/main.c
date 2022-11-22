@@ -27,7 +27,7 @@ int reciboLED = 0; // 0 -> NO, 1 es Lumen, 2 es B, 3 es G, 4 es R
 char miLED[] = {255, 255, 255, 31}; // Inicio con valor por defecto
 int reciboPWM = 0; // ¿Estoy recibiendo datos para mi PWM? no = 0, sí = 1;
 int emitirMisSensores = 0; // ¿Me piden el sensor? 0 = No, 1 = Sí
-int emitoSensores[] = {0, 0, 0, 0, 0}; // Ruido, humedad, temperatura, C02, Lumen. -1 es "not ready"
+int emitoSensores[] = {-1, -1, -1, -1, -1}; // Ruido, humedad, temperatura, C02, Lumen. -1 es "not ready"
 
 int contado1 = 25000; // TMR1 cuenta cada 5 ms con preescalado 1:1
 unsigned char eltimer1H = 0x61; // Estos dos son lo de arriba pasado a hexadecimal
@@ -111,6 +111,7 @@ void init_CCP1_PWM(void) {
     //CCP1CONbits.DC1B = porcentaje * elPR2 % 4; // Los dos bits menos significativos para el duty cycle del PWM
 
 }
+
 /* NO USADA
 void init_CCP2_PWM(void) {
     // TRISC = 0; // Es un output, CCP1 es pin 10, CCP2 es pin 9, segun el manual son del PORT C
@@ -125,7 +126,7 @@ void init_CCP2_PWM(void) {
     //CCP2CONbits.DC2B0 = (unsigned char) (porcentajeC * elPR2 % 2); // Los dos bits menos significativos para el duty cycle del PWM
 
 }
-*/
+ */
 void init_uart(void) {
     TXSTAbits.BRGH = 0;
     BAUDCTLbits.BRG16 = 0;
@@ -245,7 +246,7 @@ void setLumen() {
     i2c_write(0x21); // 0x10 es la dirección del esclavo, ahora eso evoluciona a 0x20 para escribir, y 0x21 para leer
     i2c_write(0x04); // 0x04 es el registro ALS (Ambient Light Sensor), ver si es accidentalmente el 0x05 que es el registro WHITE, hay hata 0x06 pero 0x03 no está implementado
     valorI2C[1] = i2c_read(1); // Recibo el Least Significant Byte (LSB)
-    valorI2C[1] +=  (i2c_read(1) * 0x10); // Recibo el MSB
+    valorI2C[1] += (i2c_read(1) * 0x10); // Recibo el MSB
 }
 
 int getLumen() {
@@ -259,7 +260,7 @@ void setCO2() {
     i2c_write(0x5A); // 0x5a Dirección del sensor de CO2, + 0  para leer, +1 para escribir. El write bit A 1 lo hace "no contactable" como dice el manual.
     i2c_write(0xB5); // Para leer datos
     valorI2C[0] = i2c_read(1); // Primero recibo el LSB
-    valorI2C[0] +=  (i2c_read(1) * 0x10); // Recibo el MSB
+    valorI2C[0] += (i2c_read(1) * 0x10); // Recibo el MSB
 }
 
 int getCO2() {
@@ -355,6 +356,7 @@ char getPWM() {
 }
 /*FUNCIONES DEL LED*/
 //NOTA: TODO puede que requieran interrupción por emplear bus SPI
+
 void cosasSPI(char roj, char verd, char azu, char lumi) {
     int i;
     char lumo = 0b11100000 + (lumi % 32);
@@ -385,11 +387,12 @@ void setLED(char red, char green, char blue, char luminosidad) {
     miLED[3] = luminosidad;
     //... y guardamos en memoria no volátil
     escribirMemoria(direccionLED, miLED[0]);
-    escribirMemoria(direccionLED + 1 * sizeof(char), miLED[1]);
-    escribirMemoria(direccionLED + 2 * sizeof(char), miLED[2]);
-    escribirMemoria(direccionLED + 3 * sizeof(char), miLED[3]);
+    escribirMemoria(direccionLED + 1 * sizeof (char), miLED[1]);
+    escribirMemoria(direccionLED + 2 * sizeof (char), miLED[2]);
+    escribirMemoria(direccionLED + 3 * sizeof (char), miLED[3]);
 }
 //TO-DO: ver como devolver vector
+
 char *getLED() {
     return miLED;
 }
@@ -461,7 +464,7 @@ void __interrupt() TRAT_INT(void) {
             copias += 1;
         }
         INTCONbits.T0IF = 0; // Evitar que vuelva a entrar en la interrupcion tras salir
-        
+
     } else {
         if (PIR1bits.TMR1IF == 1) // TMR1
         { // Interrupcion del timer
@@ -473,7 +476,7 @@ void __interrupt() TRAT_INT(void) {
                 if (leoADCHumedadTemp > 0) ADCON0bits.GO_DONE = 1; // Terminada lectura de Temperatura
             } else { // Esto es solo por almacenar cosas para que humedad y temperatura se lean cada 5 segundos, pero con un desfasse de 5
                 copias1 += 1;
-                if (copias1 == los5msen15ms -1 || (leoADCHumedadTemp > 0 && copias1 == los5msen15ms -2))
+                if (copias1 == los5msen15ms - 1 || (leoADCHumedadTemp > 0 && copias1 == los5msen15ms - 2))
                     ADCON0bits.GO_DONE = 1; // Terminada lectura de ruido o humedad
                 //TMR1H = 0;
                 //TMR1L = 0;
@@ -499,18 +502,18 @@ void __interrupt() TRAT_INT(void) {
                     /*Acá hemos decidido hacer algo como esto
                      * Suponiendo anI 0 es ruido, anI 1 es humedad y anI 2 es temperatura
                      * Si me toca leer humedad y temperatura
-                         * tiempos:  0ms   |5ms     |10ms    |15ms->0ms
-                         * copias1:0       |1       |2       |0
-                         *  sample:  HHHHHH|H RRRRRR|R TTTTTT|T HHHHHH
-                         *  evaluo: -      | H      | R      | T
-                         *     anI:  1        0        2        1
+                     * tiempos:  0ms   |5ms     |10ms    |15ms->0ms
+                     * copias1:0       |1       |2       |0
+                     *  sample:  HHHHHH|H RRRRRR|R TTTTTT|T HHHHHH
+                     *  evaluo: -      | H      | R      | T
+                     *     anI:  1        0        2        1
                      * Si solo leo ruido
-                         * tiempos:  0ms   |5ms     |10ms    |15ms->0ms
-                         * copias1:0       |1       |2       |0
-                         *  sample:RRRRRRRR|RRRRRRRR|R RRRRRR|RRRRRRRR
-                         *  evaluo:        |        | R      |
-                         *     anI:  0        0        0        0
-                    */
+                     * tiempos:  0ms   |5ms     |10ms    |15ms->0ms
+                     * copias1:0       |1       |2       |0
+                     *  sample:RRRRRRRR|RRRRRRRR|R RRRRRR|RRRRRRRR
+                     *  evaluo:        |        | R      |
+                     *     anI:  0        0        0        0
+                     */
                     if (leoADCHumedadTemp > 0) // Humedad y Temperatura cada 5s
                     {
                         if (copias1 == 0) // Hay que leer Humedad a los 5ms, así que a los  0ms pasamos el MUX al pin de Humedad
@@ -583,7 +586,6 @@ void __interrupt() TRAT_INT(void) {
 
 }
 
-
 /*FUNCION PRINCIPAL*/
 void main(void) {
     initYo();
@@ -591,7 +593,21 @@ void main(void) {
 
     while (deboContinuar) {
         if (emitirMisSensores) {
-            printf("A%c = %d\r\n", emitoSensores);
+            char ruidoAux = 'E';
+            switch (emitoSensores[0]) {
+                case 1: // Ruido bajo
+                    ruidoAux = 'b';
+                    break;
+                case 2: // Ruido medio
+                    ruidoAux = 'm';
+                    break;
+                case 3: // Ruido alto
+                    ruidoAux = 'a';
+                    break;
+                default: // Error
+                    break;
+            }
+            printf("Ruido = categoria %d, humedad = %d %%, temperatura = %d %c C, CO2 = %d ppm, Luminosidad = %d lx\r\n", ruidoAux, emitoSensores[1], emitoSensores[2], 167, emitoSensores[3], emitoSensores[4]);
             //'A' + valoresSensores(); // TODO valores de los sensores
         }
         analisisRuido();

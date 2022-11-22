@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F886 ]
 [d frameptr 0 ]
-"338 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"339 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [e E1298 . `uc
 FALSE 0
 TRUE 1
@@ -48,54 +48,54 @@ TRUE 1
 [v _init_TMR2 init_TMR2 `(v  1 e 1 0 ]
 "103
 [v _init_CCP1_PWM init_CCP1_PWM `(v  1 e 1 0 ]
-"129
+"130
 [v _init_uart init_uart `(v  1 e 1 0 ]
-"150
+"151
 [v _init_I2C init_I2C `(v  1 e 1 0 ]
-"201
+"202
 [v _init_SPI init_SPI `(v  1 e 1 0 ]
-"210
+"211
 [v _init_ADC init_ADC `(v  1 e 1 0 ]
-"226
+"227
 [v _init_memoria init_memoria `(v  1 e 1 0 ]
-"233
+"234
 [v _putch putch `(v  1 e 1 0 ]
-"242
+"243
 [v _setLumen setLumen `(v  1 e 1 0 ]
-"251
+"252
 [v _getLumen getLumen `(i  1 e 2 0 ]
-"256
+"257
 [v _setCO2 setCO2 `(v  1 e 1 0 ]
-"265
+"266
 [v _getCO2 getCO2 `(i  1 e 2 0 ]
-"270
+"271
 [v _leerMemoria leerMemoria `(uc  1 e 1 0 ]
 [v i1_leerMemoria leerMemoria `(uc  1 e 1 0 ]
-"283
+"284
 [v _escribirMemoria escribirMemoria `(i  1 e 2 0 ]
 [v i1_escribirMemoria escribirMemoria `(i  1 e 2 0 ]
-"314
+"315
 [v _initYo initYo `(v  1 e 1 0 ]
-"338
+"339
 [v _getnoPrimerArranque getnoPrimerArranque `(E1298  1 e 1 0 ]
-"346
+"347
 [v _setPWM setPWM `(v  1 e 1 0 ]
 [v i1_setPWM setPWM `(v  1 e 1 0 ]
-"358
+"360
 [v _cosasSPI cosasSPI `(v  1 e 1 0 ]
 [v i1_cosasSPI cosasSPI `(v  1 e 1 0 ]
-"378
+"380
 [v _setLED setLED `(v  1 e 1 0 ]
 [v i1_setLED setLED `(v  1 e 1 0 ]
-"398
+"401
 [v _analisisRuido analisisRuido `(v  1 e 1 0 ]
-"412
+"415
 [v _analisisResto analisisResto `(v  1 e 1 0 ]
-"428
+"431
 [v _initActuadoresSegunMemoria initActuadoresSegunMemoria `(v  1 e 1 0 ]
-"438
+"441
 [v _TRAT_INT TRAT_INT `II(v  1 e 1 0 ]
-"588
+"590
 [v _main main `(v  1 e 1 0 ]
 "8 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\spi-master-v1.c
 [v _spi_write_read spi_write_read `(uc  1 e 1 0 ]
@@ -502,38 +502,40 @@ TRUE 1
 [v _los5msen15ms los5msen15ms `i  1 e 2 0 ]
 "69
 [v _los5msen1sT0 los5msen1sT0 `i  1 e 2 0 ]
-"588
+"590
 [v _main main `(v  1 e 1 0 ]
 {
-"606
+"596
+[v main@ruidoAux ruidoAux `uc  1 a 1 10 ]
+"622
 } 0
 "477 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 [v printf@f f `*.24DCuc  1 a 1 wreg ]
 "545
-[v printf@val val `ui  1 a 2 8 ]
+[v printf@val val `ui  1 a 2 7 ]
 "512
-[v printf@c c `uc  1 a 1 10 ]
-"479
-[v printf@ap ap `[1]*.4v  1 a 1 7 ]
+[v printf@c c `uc  1 a 1 9 ]
 "521
 [v printf@prec prec `c  1 a 1 6 ]
 "525
 [v printf@flag flag `uc  1 a 1 4 ]
+"479
+[v printf@ap ap `[1]*.4v  1 a 1 3 ]
 "477
 [v printf@f f `*.24DCuc  1 a 1 wreg ]
 "550
 [v printf@f f `*.24DCuc  1 a 1 5 ]
 "1567
 } 0
-"233 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"234 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@c c `uc  1 a 1 wreg ]
 [v putch@c c `uc  1 a 1 wreg ]
 [v putch@c c `uc  1 a 1 12 ]
-"239
+"240
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -557,20 +559,20 @@ TRUE 1
 [v ___lwdiv@dividend dividend `ui  1 p 2 14 ]
 "30
 } 0
-"314 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"315 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _initYo initYo `(v  1 e 1 0 ]
 {
-"335
+"336
 } 0
-"129
+"130
 [v _init_uart init_uart `(v  1 e 1 0 ]
 {
-"148
+"149
 } 0
-"226
+"227
 [v _init_memoria init_memoria `(v  1 e 1 0 ]
 {
-"230
+"231
 } 0
 "93
 [v _init_TMR2 init_TMR2 `(v  1 e 1 0 ]
@@ -587,43 +589,43 @@ TRUE 1
 {
 "80
 } 0
-"201
+"202
 [v _init_SPI init_SPI `(v  1 e 1 0 ]
 {
-"208
+"209
 } 0
-"150
+"151
 [v _init_I2C init_I2C `(v  1 e 1 0 ]
 {
-"199
+"200
 } 0
 "103
 [v _init_CCP1_PWM init_CCP1_PWM `(v  1 e 1 0 ]
 {
 "113
 } 0
-"210
+"211
 [v _init_ADC init_ADC `(v  1 e 1 0 ]
 {
-"224
+"225
 } 0
 "16 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\i2c-v2.c
 [v _i2c_start i2c_start `(v  1 e 1 0 ]
 {
 "21
 } 0
-"428 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"431 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _initActuadoresSegunMemoria initActuadoresSegunMemoria `(v  1 e 1 0 ]
 {
-"436
+"439
 } 0
-"346
+"347
 [v _setPWM setPWM `(v  1 e 1 0 ]
 {
 [v setPWM@porcent porcent `uc  1 a 1 wreg ]
 [v setPWM@porcent porcent `uc  1 a 1 wreg ]
 [v setPWM@porcent porcent `uc  1 a 1 23 ]
-"351
+"352
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
@@ -651,49 +653,49 @@ TRUE 1
 [v ___awdiv@dividend dividend `i  1 p 2 14 ]
 "41
 } 0
-"378 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"380 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _setLED setLED `(v  1 e 1 0 ]
 {
 [v setLED@red red `uc  1 a 1 wreg ]
 [v setLED@red red `uc  1 a 1 wreg ]
-[v setLED@green green `uc  1 p 1 0 ]
-[v setLED@blue blue `uc  1 p 1 1 ]
-[v setLED@luminosidad luminosidad `uc  1 p 1 2 ]
-"380
-[v setLED@red red `uc  1 a 1 24 ]
-"391
+[v setLED@green green `uc  1 p 1 24 ]
+[v setLED@blue blue `uc  1 p 1 25 ]
+[v setLED@luminosidad luminosidad `uc  1 p 1 26 ]
+"382
+[v setLED@red red `uc  1 a 1 27 ]
+"393
 } 0
-"283
+"284
 [v _escribirMemoria escribirMemoria `(i  1 e 2 0 ]
 {
 [v escribirMemoria@direccion direccion `uc  1 a 1 wreg ]
-"291
-[v escribirMemoria@contador contador `i  1 a 2 17 ]
 "292
+[v escribirMemoria@contador contador `i  1 a 2 17 ]
+"293
 [v escribirMemoria@confirmado confirmado `i  1 a 2 14 ]
-"283
+"284
 [v escribirMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v escribirMemoria@dato dato `uc  1 p 1 13 ]
-"285
+"286
 [v escribirMemoria@direccion direccion `uc  1 a 1 16 ]
-"311
+"312
 } 0
-"358
+"360
 [v _cosasSPI cosasSPI `(v  1 e 1 0 ]
 {
 [v cosasSPI@roj roj `uc  1 a 1 wreg ]
-"359
+"361
 [v cosasSPI@i i `i  1 a 2 22 ]
-"360
+"362
 [v cosasSPI@lumo lumo `uc  1 a 1 21 ]
-"358
+"360
 [v cosasSPI@roj roj `uc  1 a 1 wreg ]
 [v cosasSPI@verd verd `uc  1 p 1 17 ]
 [v cosasSPI@azu azu `uc  1 p 1 18 ]
 [v cosasSPI@lumi lumi `uc  1 p 1 19 ]
-"360
+"362
 [v cosasSPI@roj roj `uc  1 a 1 20 ]
-"376
+"378
 } 0
 "8 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\spi-master-v1.c
 [v _spi_write_read spi_write_read `(uc  1 e 1 0 ]
@@ -708,47 +710,47 @@ TRUE 1
 [v spi_write_read@one_byte one_byte `uc  1 a 1 14 ]
 "29
 } 0
-"338 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"339 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _getnoPrimerArranque getnoPrimerArranque `(E1298  1 e 1 0 ]
 {
-"340
+"341
 [v getnoPrimerArranque@aux aux `uc  1 a 1 13 ]
-"343
+"344
 } 0
-"270
+"271
 [v _leerMemoria leerMemoria `(uc  1 e 1 0 ]
 {
 [v leerMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v leerMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v leerMemoria@direccion direccion `uc  1 a 1 12 ]
-"281
+"282
 } 0
 "23 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\i2c-v2.c
 [v _i2c_stop i2c_stop `(v  1 e 1 0 ]
 {
 "28
 } 0
-"398 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"401 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _analisisRuido analisisRuido `(v  1 e 1 0 ]
 {
-"400
+"403
 [v analisisRuido@temp temp `uc  1 a 1 14 ]
-"409
-} 0
 "412
+} 0
+"415
 [v _analisisResto analisisResto `(v  1 e 1 0 ]
 {
-"426
+"429
 } 0
-"242
+"243
 [v _setLumen setLumen `(v  1 e 1 0 ]
 {
-"249
+"250
 } 0
-"256
+"257
 [v _setCO2 setCO2 `(v  1 e 1 0 ]
 {
-"263
+"264
 } 0
 "37 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\i2c-v2.c
 [v _i2c_write i2c_write `(uc  1 e 1 0 ]
@@ -781,28 +783,28 @@ TRUE 1
 {
 "14
 } 0
-"251 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"252 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v _getLumen getLumen `(i  1 e 2 0 ]
 {
-"253
+"254
 } 0
-"265
+"266
 [v _getCO2 getCO2 `(i  1 e 2 0 ]
 {
-"267
+"268
 } 0
-"438
+"441
 [v _TRAT_INT TRAT_INT `II(v  1 e 1 0 ]
 {
-"584
+"587
 } 0
-"346
+"347
 [v i1_setPWM setPWM `(v  1 e 1 0 ]
 {
 [v i1setPWM@porcent porcent `uc  1 a 1 wreg ]
 [v i1setPWM@porcent porcent `uc  1 a 1 wreg ]
 [v i1setPWM@porcent porcent `uc  1 a 1 11 ]
-"351
+"352
 } 0
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8.c
 [v i1___bmul __bmul `(uc  1 e 1 0 ]
@@ -830,7 +832,7 @@ TRUE 1
 [v i1___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"378 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
+"380 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\main.c
 [v i1_setLED setLED `(v  1 e 1 0 ]
 {
 [v i1setLED@red red `uc  1 a 1 wreg ]
@@ -838,49 +840,49 @@ TRUE 1
 [v i1setLED@green green `uc  1 p 1 0 ]
 [v i1setLED@blue blue `uc  1 p 1 1 ]
 [v i1setLED@luminosidad luminosidad `uc  1 p 1 2 ]
-"380
+"382
 [v i1setLED@red red `uc  1 a 1 12 ]
-"391
+"393
 } 0
-"283
+"284
 [v i1_escribirMemoria escribirMemoria `(i  1 e 2 0 ]
 {
 [v i1escribirMemoria@direccion direccion `uc  1 a 1 wreg ]
-"291
-[v i1escribirMemoria@contador contador `i  1 a 2 5 ]
 "292
+[v i1escribirMemoria@contador contador `i  1 a 2 5 ]
+"293
 [v i1escribirMemoria@confirmado confirmado `i  1 a 2 2 ]
-"283
+"284
 [v i1escribirMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v i1escribirMemoria@dato dato `uc  1 p 1 1 ]
-"285
+"286
 [v i1escribirMemoria@direccion direccion `uc  1 a 1 4 ]
-"311
+"312
 } 0
-"270
+"271
 [v i1_leerMemoria leerMemoria `(uc  1 e 1 0 ]
 {
 [v i1leerMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v i1leerMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v i1leerMemoria@direccion direccion `uc  1 a 1 0 ]
-"281
+"282
 } 0
-"358
+"360
 [v i1_cosasSPI cosasSPI `(v  1 e 1 0 ]
 {
 [v i1cosasSPI@roj roj `uc  1 a 1 wreg ]
-"359
+"361
 [v i1cosasSPI@i i `i  1 a 2 10 ]
-"360
+"362
 [v i1cosasSPI@lumo lumo `uc  1 a 1 9 ]
-"358
+"360
 [v i1cosasSPI@roj roj `uc  1 a 1 wreg ]
 [v i1cosasSPI@verd verd `uc  1 p 1 5 ]
 [v i1cosasSPI@azu azu `uc  1 p 1 6 ]
 [v i1cosasSPI@lumi lumi `uc  1 p 1 7 ]
-"360
+"362
 [v i1cosasSPI@roj roj `uc  1 a 1 8 ]
-"376
+"378
 } 0
 "8 C:\ASL\Universidad\4to_curso\SE\ProyectoLampara\ProyectoEquipoLampara\Construccion y Pruebas\Proyecto1.X\spi-master-v1.c
 [v i1_spi_write_read spi_write_read `(uc  1 e 1 0 ]

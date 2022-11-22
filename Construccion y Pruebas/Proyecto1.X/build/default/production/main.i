@@ -2652,7 +2652,7 @@ int reciboLED = 0;
 char miLED[] = {255, 255, 255, 31};
 int reciboPWM = 0;
 int emitirMisSensores = 0;
-int emitoSensores[] = {0, 0, 0, 0, 0};
+int emitoSensores[] = {-1, -1, -1, -1, -1};
 
 int contado1 = 25000;
 unsigned char eltimer1H = 0x61;
@@ -2736,7 +2736,7 @@ void init_CCP1_PWM(void) {
 
 
 }
-# 129 "main.c"
+# 130 "main.c"
 void init_uart(void) {
     TXSTAbits.BRGH = 0;
     BAUDCTLbits.BRG16 = 0;
@@ -2769,12 +2769,12 @@ void init_I2C(void) {
     SSPCONbits.SSPM = 0;
 
     ANSEL = 0;
-# 176 "main.c"
+# 177 "main.c"
     SSPADD = (20000000 / 4) - 1;
 
     PIR1bits.SSPIF = 0;
     PIE1bits.SSPIE = 1;
-# 199 "main.c"
+# 200 "main.c"
 }
 
 void init_SPI(void) {
@@ -2934,6 +2934,7 @@ char getPWM() {
 }
 
 
+
 void cosasSPI(char roj, char verd, char azu, char lumi) {
     int i;
     char lumo = 0b11100000 + (lumi % 32);
@@ -2964,10 +2965,11 @@ void setLED(char red, char green, char blue, char luminosidad) {
     miLED[3] = luminosidad;
 
     escribirMemoria(direccionLED, miLED[0]);
-    escribirMemoria(direccionLED + 1 * sizeof(char), miLED[1]);
-    escribirMemoria(direccionLED + 2 * sizeof(char), miLED[2]);
-    escribirMemoria(direccionLED + 3 * sizeof(char), miLED[3]);
+    escribirMemoria(direccionLED + 1 * sizeof (char), miLED[1]);
+    escribirMemoria(direccionLED + 2 * sizeof (char), miLED[2]);
+    escribirMemoria(direccionLED + 3 * sizeof (char), miLED[3]);
 }
+
 
 char *getLED() {
     return miLED;
@@ -3052,7 +3054,7 @@ void __attribute__((picinterrupt(("")))) TRAT_INT(void) {
                 if (leoADCHumedadTemp > 0) ADCON0bits.GO_DONE = 1;
             } else {
                 copias1 += 1;
-                if (copias1 == los5msen15ms -1 || (leoADCHumedadTemp > 0 && copias1 == los5msen15ms -2))
+                if (copias1 == los5msen15ms - 1 || (leoADCHumedadTemp > 0 && copias1 == los5msen15ms - 2))
                     ADCON0bits.GO_DONE = 1;
 
 
@@ -3072,7 +3074,7 @@ void __attribute__((picinterrupt(("")))) TRAT_INT(void) {
 
                     PIR1bits.ADIF = 0;
                     valor[anI] = (int) ADRESH * 0x10 + ADRESL;
-# 514 "main.c"
+# 517 "main.c"
                     if (leoADCHumedadTemp > 0)
                     {
                         if (copias1 == 0)
@@ -3146,14 +3148,27 @@ void __attribute__((picinterrupt(("")))) TRAT_INT(void) {
 }
 
 
-
 void main(void) {
     initYo();
     initActuadoresSegunMemoria();
 
     while (deboContinuar) {
         if (emitirMisSensores) {
-            printf("A%c = %d\r\n", emitoSensores);
+            char ruidoAux = 'E';
+            switch (emitoSensores[0]) {
+                case 1:
+                    ruidoAux = 'b';
+                    break;
+                case 2:
+                    ruidoAux = 'm';
+                    break;
+                case 3:
+                    ruidoAux = 'a';
+                    break;
+                default:
+                    break;
+            }
+            printf("Ruido = %d, humedad = %d, temperatura = %d, CO2 = %d, Luminosidad = %d \r\n", ruidoAux, emitoSensores[1], emitoSensores[2], emitoSensores[3], emitoSensores[4]);
 
         }
         analisisRuido();

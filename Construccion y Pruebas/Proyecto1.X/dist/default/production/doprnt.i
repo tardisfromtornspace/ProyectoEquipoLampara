@@ -359,20 +359,9 @@ printf(const char * f, ...)
   case 'd':
   case 'i':
    break;
-# 810 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c90\\common\\doprnt.c"
-  case 'c':
-# 825 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c90\\common\\doprnt.c"
-   c = (char)(*(int *)__va_arg((*(int **)ap), (int)0));
-
-
+# 828 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c90\\common\\doprnt.c"
   default:
-
-
-
-
-
-
-   (putch(c) );
+# 839 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c90\\common\\doprnt.c"
    continue;
 # 848 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\sources\\c90\\common\\doprnt.c"
   }
