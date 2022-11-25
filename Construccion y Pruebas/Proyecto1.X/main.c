@@ -243,10 +243,13 @@ void putch(char c) {
 void setLumen() {
     //Es de los sensores del bus I2C, de 16 bits
     i2c_rstart();
-    i2c_write(0x21); // 0x10 es la dirección del esclavo, ahora eso evoluciona a 0x20 para escribir, y 0x21 para leer
-    i2c_write(0x04); // 0x04 es el registro ALS (Ambient Light Sensor), ver si es accidentalmente el 0x05 que es el registro WHITE, hay hata 0x06 pero 0x03 no está implementado
+    //i2c_write(0x21); // 0x10 es la dirección del esclavo, ahora eso evoluciona a 0x20 para escribir, y 0x21 para leer
+    i2c_write(0x20); // Queremos escribir a este sensor para decirle el comando
+    i2c_write(0x04); // 0x04 es el registro ALS (Ambient Light Sensor), ver si es accidentalmente el 0x05 que es el registro WHITE, hay hasta 0x06 pero 0x03 no está implementado
+    i2c_write(0x21); // Queremos leer lo de arriba del sensor
     valorI2C[1] = i2c_read(1); // Recibo el Least Significant Byte (LSB)
-    valorI2C[1] += (i2c_read(1) * 0x10); // Recibo el MSB
+    valorI2C[1] += (i2c_read(0) * 0x10); // Recibo el MSB
+    
 }
 
 int getLumen() {
@@ -257,10 +260,11 @@ int getLumen() {
 void setCO2() {
     //Es de los sensores del bus I2C, de 16 bits
     i2c_rstart();
-    i2c_write(0x5A); // 0x5a Dirección del sensor de CO2, + 0  para leer, +1 para escribir. El write bit A 1 lo hace "no contactable" como dice el manual.
+    //i2c_write(0x5A); // 0x5a Dirección del sensor de CO2, + 0  para leer, +1 para escribir. El write bit A 1 lo hace "no contactable" como dice el manual.
     i2c_write(0xB5); // Para leer datos
     valorI2C[0] = i2c_read(1); // Primero recibo el LSB
     valorI2C[0] += (i2c_read(1) * 0x10); // Recibo el MSB
+    if (i2c_read(0) == 0x10) valorI2C[0] = -1; // Si me dice que el sensor no está listo pues indico que no está listo
 }
 
 int getCO2() {
