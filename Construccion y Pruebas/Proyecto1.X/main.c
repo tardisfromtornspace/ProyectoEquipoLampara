@@ -499,7 +499,7 @@ void __interrupt() TRAT_INT(void) {
                 if (PIR1bits.ADIF) {
                     // Interrupcion ADC
                     PIR1bits.ADIF = 0;
-                    valor[anI] = (int) ADRESH * 0x10 + ADRESL;
+                    valor[anI] = (int) ADRESH * 0x100 + ADRESL;
                     //anI++;
                     //if (anI >= 3) anI = 0;
 

@@ -2821,10 +2821,13 @@ void putch(char c) {
 void setLumen() {
 
     i2c_rstart();
-    i2c_write(0x21);
+
+    i2c_write(0x20);
     i2c_write(0x04);
+    i2c_write(0x21);
     valorI2C[1] = i2c_read(1);
-    valorI2C[1] += (i2c_read(1) * 0x10);
+    valorI2C[1] += (i2c_read(0) * 0x10);
+
 }
 
 int getLumen() {
@@ -2835,10 +2838,11 @@ int getLumen() {
 void setCO2() {
 
     i2c_rstart();
-    i2c_write(0x5A);
+
     i2c_write(0xB5);
     valorI2C[0] = i2c_read(1);
     valorI2C[0] += (i2c_read(1) * 0x10);
+    if (i2c_read(0) == 0x10) valorI2C[0] = -1;
 }
 
 int getCO2() {
@@ -3073,8 +3077,8 @@ void __attribute__((picinterrupt(("")))) TRAT_INT(void) {
                 if (PIR1bits.ADIF) {
 
                     PIR1bits.ADIF = 0;
-                    valor[anI] = (int) ADRESH * 0x10 + ADRESL;
-# 517 "main.c"
+                    valor[anI] = (int) ADRESH * 0x100 + ADRESL;
+# 521 "main.c"
                     if (leoADCHumedadTemp > 0)
                     {
                         if (copias1 == 0)
@@ -3168,7 +3172,7 @@ void main(void) {
                 default:
                     break;
             }
-            printf("Ruido = %d, humedad = %d, temperatura = %d, CO2 = %d, Luminosidad = %d \r\n", ruidoAux, emitoSensores[1], emitoSensores[2], emitoSensores[3], emitoSensores[4]);
+            printf("Ruido = categoria %d, humedad = %d %%, temperatura = %d %c C, CO2 = %d ppm, Luminosidad = %d lx\r\n", ruidoAux, emitoSensores[1], emitoSensores[2], 167, emitoSensores[3], emitoSensores[4]);
 
         }
         analisisRuido();
