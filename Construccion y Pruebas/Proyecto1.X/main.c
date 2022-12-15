@@ -263,6 +263,7 @@ void setCO2() {
     //i2c_write(0x5A); // 0x5a Dirección del sensor de CO2, + 0  para leer, +1 para escribir. El write bit A 1 lo hace "no contactable" como dice el manual.
     i2c_write(0xB5); // Para leer datos
     valorI2C[0] = i2c_read(1); // Primero recibo el LSB
+    // TO-DO Poner waits
     valorI2C[0] += (i2c_read(1) * 0x10); // Recibo el MSB
     if (i2c_read(0) == 0x10) valorI2C[0] = -1; // Si me dice que el sensor no está listo pues indico que no está listo
 }
@@ -324,18 +325,24 @@ void initYo(void) {
     init_TMR0();
     init_TMR1();
     init_TMR2();
+    printf("Ini uart adc timers\r\n");
 
     init_CCP1_PWM();
+    printf("Ini ccp1\r\n");
     //init_CCP2_PWM();
     init_I2C();
+    printf("Ini i2c\r\n");
     init_SPI();
-    i2c_start();
+    printf("Ini spi\r\n");
+    //i2c_start();
+    //printf("Ini i2c start\r\n");
     init_memoria();
+    printf("Ini memoria\r\n");
 
-    TRISB = 0; // Puerto B a output
+    TRISB = 0; // Puerto B a output 
 
-    INTCONbits.GIE = 1; // Habilitar interrupción
-    INTCONbits.PEIE = 1; // Habilitar interrupción de otros timers que no son el 0
+    //INTCONbits.GIE = 1; // Habilitar interrupción COMENTADO
+    //INTCONbits.PEIE = 1; // COMENTADO Habilitar interrupción de otros timers que no son el 0
 
 }
 
@@ -364,25 +371,30 @@ char getPWM() {
 void cosasSPI(char roj, char verd, char azu, char lumi) {
     int i;
     char lumo = 0b11100000 + (lumi % 32);
+    printf("Escribo en SPI cadena inicial");// DEBUG
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00); // Starting frame
     for (i = numLedes; i == 0; i--) {
+        printf("Escribo color led %d", i);// DEBUG
         spi_write_read(lumo);
         spi_write_read(azu);
         spi_write_read(verd);
         spi_write_read(roj);
     }
+    printf("Escribo en SPI cadena final");// DEBUG
     spi_write_read(0xFF);
     spi_write_read(0xFF);
     spi_write_read(0xFF);
     spi_write_read(0xFF); // End frame
+    printf("Exito SPI cadena final");// DEBUG
 
 }
 
 void setLED(char red, char green, char blue, char luminosidad) {
     //cosas del SPI
+    printf("Iniciar cosas SPI a"); // DEBUG
     cosasSPI(red, green, blue, luminosidad);
     // Si tuvo éxito procedemos a guardarlo en nuestra memoria volátil...
     miLED[0] = red;
@@ -390,6 +402,7 @@ void setLED(char red, char green, char blue, char luminosidad) {
     miLED[2] = blue;
     miLED[3] = luminosidad;
     //... y guardamos en memoria no volátil
+    printf("Guardar opcion de led"); // DEBUG
     escribirMemoria(direccionLED, miLED[0]);
     escribirMemoria(direccionLED + 1 * sizeof (char), miLED[1]);
     escribirMemoria(direccionLED + 2 * sizeof (char), miLED[2]);
@@ -433,12 +446,19 @@ void analisisResto() {
 }
 
 void initActuadoresSegunMemoria(void) {
+    printf("Pruebo memoria");
     if (getnoPrimerArranque() == FALSE) { // Si no encuentra nada, opción por defecto: luz blanca a máxima intensidad y ventilador apagado
+        printf("Default");
         setPWM(0);
         setLED(255, 255, 255, 31);
     } else { // Cargo configuración de LED y PWM
-        setPWM(leerMemoria(direccionPWM));
-        setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
+        printf("Custom");
+        
+        setPWM(0); // TO-DO quitar del proyecto final
+        setLED(255, 255, 255, 31);
+        
+        //setPWM(leerMemoria(direccionPWM)); DESCOMENTAR EN FINAL
+        //setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
     }
 }
 
@@ -593,7 +613,9 @@ void __interrupt() TRAT_INT(void) {
 /*FUNCION PRINCIPAL*/
 void main(void) {
     initYo();
+    printf("Iniyo terminado\r\n");
     initActuadoresSegunMemoria();
+    printf("Inicio terminado\r\n");
 
     while (deboContinuar) {
         if (emitirMisSensores) {

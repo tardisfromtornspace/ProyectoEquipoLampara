@@ -49,6 +49,8 @@ void init_TMR1(void) {
 void init_ADC(void) {
     TRISA =1;
     ANSELbits.ANS0 = 1;
+    //ANSELbits.ANS1 = 1;
+    //ANSELbits.ANS2 = 1;
     ADCON0bits.ADCS = 0b10;
     ADCON0bits.CHS = 0b0000;
     ADCON0bits.ADON = 1;
