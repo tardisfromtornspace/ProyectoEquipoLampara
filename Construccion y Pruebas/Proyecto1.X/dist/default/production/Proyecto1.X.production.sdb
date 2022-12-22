@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F886 ]
 [d frameptr 0 ]
-"350 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
+"351 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
 [e E1298 . `uc
 FALSE 0
 TRUE 1
@@ -13,13 +13,10 @@ TRUE 1
 [v i1___awdiv __awdiv `(i  1 e 2 0 ]
 "477 /opt/microchip/xc8/v2.40/pic/sources/c90/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
-[v i1_printf printf `(i  1 e 2 0 ]
 "5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-[v i1___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-[v i1___lwmod __lwmod `(ui  1 e 2 0 ]
 "10 /opt/microchip/xc8/v2.40/pic/sources/c90/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 /opt/microchip/xc8/v2.40/pic/sources/c90/common/Umul8.c
@@ -61,7 +58,6 @@ TRUE 1
 [v _init_memoria init_memoria `(v  1 e 1 0 ]
 "234
 [v _putch putch `(v  1 e 1 0 ]
-[v i1_putch putch `(v  1 e 1 0 ]
 "243
 [v _setLumen setLumen `(v  1 e 1 0 ]
 "255
@@ -76,35 +72,35 @@ TRUE 1
 "289
 [v _escribirMemoria escribirMemoria `(i  1 e 2 0 ]
 [v i1_escribirMemoria escribirMemoria `(i  1 e 2 0 ]
-"320
+"321
 [v _initYo initYo `(v  1 e 1 0 ]
-"350
-[v _getnoPrimerArranque getnoPrimerArranque `(E1298  1 e 1 0 ]
-"358
+"346
+[v _getnoPrimerArranque getnoPrimerArranque `(i  1 e 2 0 ]
+"357
 [v _setPWM setPWM `(v  1 e 1 0 ]
 [v i1_setPWM setPWM `(v  1 e 1 0 ]
-"371
+"376
 [v _cosasSPI cosasSPI `(v  1 e 1 0 ]
 [v i1_cosasSPI cosasSPI `(v  1 e 1 0 ]
-"395
+"400
 [v _setLED setLED `(v  1 e 1 0 ]
 [v i1_setLED setLED `(v  1 e 1 0 ]
-"418
+"423
 [v _analisisRuido analisisRuido `(v  1 e 1 0 ]
-"432
+"437
 [v _analisisResto analisisResto `(v  1 e 1 0 ]
-"448
+"453
 [v _initActuadoresSegunMemoria initActuadoresSegunMemoria `(v  1 e 1 0 ]
-"465
+"470
 [v _TRAT_INT TRAT_INT `II(v  1 e 1 0 ]
-"614
+"619
 [v _main main `(v  1 e 1 0 ]
 "8 /home/alumno/MPLABXProjects/Proyecto1.X/spi-master-v1.c
 [v _spi_write_read spi_write_read `(uc  1 e 1 0 ]
 [v i1_spi_write_read spi_write_read `(uc  1 e 1 0 ]
 "60 /opt/microchip/mplabx/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8/pic/include/proc/pic16f886.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
-[s S896 . 1 `uc 1 RA0 1 0 :1:0 
+[s S886 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -114,9 +110,9 @@ TRUE 1
 `uc 1 RA7 1 0 :1:7 
 ]
 "184
-[u S905 . 1 `S896 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES905  1 e 1 @5 ]
-[s S875 . 1 `uc 1 RC0 1 0 :1:0 
+[u S895 . 1 `S886 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES895  1 e 1 @5 ]
+[s S865 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -126,8 +122,8 @@ TRUE 1
 `uc 1 RC7 1 0 :1:7 
 ]
 "308
-[u S884 . 1 `S875 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES884  1 e 1 @7 ]
+[u S874 . 1 `S865 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES874  1 e 1 @7 ]
 [s S49 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -355,7 +351,7 @@ TRUE 1
 [v _PIE2bits PIE2bits `VES510  1 e 1 @141 ]
 "1705
 [v _OSCCON OSCCON `VEuc  1 e 1 @143 ]
-[s S835 . 1 `uc 1 SEN 1 0 :1:0 
+[s S825 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -365,8 +361,8 @@ TRUE 1
 `uc 1 GCEN 1 0 :1:7 
 ]
 "1839
-[u S844 . 1 `S835 1 . 1 0 ]
-[v _SSPCON2bits SSPCON2bits `VES844  1 e 1 @145 ]
+[u S834 . 1 `S825 1 . 1 0 ]
+[v _SSPCON2bits SSPCON2bits `VES834  1 e 1 @145 ]
 "1884
 [v _PR2 PR2 `VEuc  1 e 1 @146 ]
 "1891
@@ -482,6 +478,8 @@ TRUE 1
 [v _leoADCHumedadTemp leoADCHumedadTemp `i  1 e 2 0 ]
 "45
 [v _actualizoLecturas actualizoLecturas `i  1 e 2 0 ]
+"47
+[v _direccionInicial direccionInicial `uc  1 e 1 0 ]
 "48
 [v _direccionPWM direccionPWM `uc  1 e 1 0 ]
 "49
@@ -504,17 +502,17 @@ TRUE 1
 [v _los5msen15ms los5msen15ms `i  1 e 2 0 ]
 "69
 [v _los5msen1sT0 los5msen1sT0 `i  1 e 2 0 ]
-"614
+"619
 [v _main main `(v  1 e 1 0 ]
 {
-"622
-[v main@ruidoAux ruidoAux `uc  1 a 1 42 ]
-"648
+"626
+[v main@ruidoAux ruidoAux `uc  1 a 1 39 ]
+"652
 } 0
-"320
+"321
 [v _initYo initYo `(v  1 e 1 0 ]
 {
-"347
+"343
 } 0
 "130
 [v _init_uart init_uart `(v  1 e 1 0 ]
@@ -561,117 +559,120 @@ TRUE 1
 {
 "225
 } 0
-"448
+"453
 [v _initActuadoresSegunMemoria initActuadoresSegunMemoria `(v  1 e 1 0 ]
 {
-"463
+"468
 } 0
-"358
+"357
 [v _setPWM setPWM `(v  1 e 1 0 ]
 {
 [v setPWM@porcent porcent `uc  1 a 1 wreg ]
+"364
+[v setPWM@direccion direccion `uc  1 a 1 19 ]
+"357
 [v setPWM@porcent porcent `uc  1 a 1 wreg ]
-[v setPWM@porcent porcent `uc  1 a 1 11 ]
-"363
+[v setPWM@porcent porcent `uc  1 a 1 20 ]
+"368
 } 0
 "4 /opt/microchip/xc8/v2.40/pic/sources/c90/common/Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
 {
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
 "6
-[v ___bmul@product product `uc  1 a 1 2 ]
+[v ___bmul@product product `uc  1 a 1 10 ]
 "4
 [v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
-[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 8 ]
 "6
-[v ___bmul@multiplier multiplier `uc  1 a 1 3 ]
+[v ___bmul@multiplier multiplier `uc  1 a 1 11 ]
 "51
 } 0
 "5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+[v ___awdiv@quotient quotient `i  1 a 2 15 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 6 ]
-[v ___awdiv@counter counter `uc  1 a 1 5 ]
+[v ___awdiv@sign sign `uc  1 a 1 14 ]
+[v ___awdiv@counter counter `uc  1 a 1 13 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+[v ___awdiv@divisor divisor `i  1 p 2 8 ]
+[v ___awdiv@dividend dividend `i  1 p 2 10 ]
 "41
 } 0
-"395 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
+"400 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
 [v _setLED setLED `(v  1 e 1 0 ]
 {
 [v setLED@red red `uc  1 a 1 wreg ]
+"409
+[v setLED@direccion direccion `uc  1 a 1 21 ]
+"400
 [v setLED@red red `uc  1 a 1 wreg ]
-[v setLED@green green `uc  1 p 1 4 ]
-[v setLED@blue blue `uc  1 p 1 5 ]
-[v setLED@luminosidad luminosidad `uc  1 p 1 6 ]
-"397
-[v setLED@red red `uc  1 a 1 41 ]
-"410
+[v setLED@green green `uc  1 p 1 18 ]
+[v setLED@blue blue `uc  1 p 1 19 ]
+[v setLED@luminosidad luminosidad `uc  1 p 1 20 ]
+"402
+[v setLED@red red `uc  1 a 1 22 ]
+"415
 } 0
 "289
 [v _escribirMemoria escribirMemoria `(i  1 e 2 0 ]
 {
 [v escribirMemoria@direccion direccion `uc  1 a 1 wreg ]
 "297
-[v escribirMemoria@contador contador `i  1 a 2 5 ]
+[v escribirMemoria@contador contador `i  1 a 2 13 ]
 "298
-[v escribirMemoria@confirmado confirmado `i  1 a 2 2 ]
+[v escribirMemoria@confirmado confirmado `i  1 a 2 10 ]
 "289
 [v escribirMemoria@direccion direccion `uc  1 a 1 wreg ]
-[v escribirMemoria@dato dato `uc  1 p 1 1 ]
+[v escribirMemoria@dato dato `uc  1 p 1 9 ]
 "291
-[v escribirMemoria@direccion direccion `uc  1 a 1 4 ]
-"317
+[v escribirMemoria@direccion direccion `uc  1 a 1 12 ]
+"318
 } 0
-"371
+"376
 [v _cosasSPI cosasSPI `(v  1 e 1 0 ]
 {
-[v cosasSPI@roj roj `uc  1 a 1 wreg ]
-"372
-[v cosasSPI@i i `i  1 a 2 2 ]
-"373
-[v cosasSPI@lumo lumo `uc  1 a 1 1 ]
-"371
-[v cosasSPI@roj roj `uc  1 a 1 wreg ]
-[v cosasSPI@verd verd `uc  1 p 1 38 ]
-[v cosasSPI@azu azu `uc  1 p 1 39 ]
-[v cosasSPI@lumi lumi `uc  1 p 1 40 ]
-"373
-[v cosasSPI@roj roj `uc  1 a 1 0 ]
-"393
+"377
+[v cosasSPI@i i `i  1 a 2 16 ]
+"376
+[v cosasSPI@verd verd `uc  1 p 1 13 ]
+[v cosasSPI@azu azu `uc  1 p 1 14 ]
+[v cosasSPI@lumi lumi `uc  1 p 1 15 ]
+"398
 } 0
 "8 /home/alumno/MPLABXProjects/Proyecto1.X/spi-master-v1.c
 [v _spi_write_read spi_write_read `(uc  1 e 1 0 ]
 {
 [v spi_write_read@one_byte one_byte `uc  1 a 1 wreg ]
 "11
-[v spi_write_read@x x `uc  1 a 1 4 ]
-[v spi_write_read@answer answer `uc  1 a 1 3 ]
+[v spi_write_read@x x `uc  1 a 1 12 ]
+[v spi_write_read@answer answer `uc  1 a 1 11 ]
 "8
 [v spi_write_read@one_byte one_byte `uc  1 a 1 wreg ]
 "13
-[v spi_write_read@one_byte one_byte `uc  1 a 1 2 ]
+[v spi_write_read@one_byte one_byte `uc  1 a 1 10 ]
 "29
 } 0
 "477 /opt/microchip/xc8/v2.40/pic/sources/c90/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
+[v printf@f f `*.24DCuc  1 a 1 wreg ]
 "545
-[v printf@val val `ui  1 a 2 35 ]
+[v printf@val val `ui  1 a 2 4 ]
 "512
-[v printf@c c `uc  1 a 1 37 ]
+[v printf@c c `uc  1 a 1 6 ]
 "479
-[v printf@ap ap `[1]*.4v  1 a 1 34 ]
+[v printf@ap ap `[1]*.4v  1 a 1 2 ]
 "521
-[v printf@prec prec `c  1 a 1 33 ]
+[v printf@prec prec `c  1 a 1 1 ]
 "525
-[v printf@flag flag `uc  1 a 1 32 ]
+[v printf@flag flag `uc  1 a 1 0 ]
 "477
-[v printf@f f `*.25DCuc  1 p 2 14 ]
+[v printf@f f `*.24DCuc  1 a 1 wreg ]
+"550
+[v printf@f f `*.24DCuc  1 a 1 3 ]
 "1567
 } 0
 "234 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
@@ -679,44 +680,46 @@ TRUE 1
 {
 [v putch@c c `uc  1 a 1 wreg ]
 [v putch@c c `uc  1 a 1 wreg ]
-[v putch@c c `uc  1 a 1 0 ]
+[v putch@c c `uc  1 a 1 8 ]
 "240
 } 0
 "5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwmod@counter counter `uc  1 a 1 13 ]
+[v ___lwmod@counter counter `uc  1 a 1 21 ]
 "5
-[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 16 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 18 ]
 "25
 } 0
 "5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwdiv@quotient quotient `ui  1 a 2 6 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 14 ]
 "11
-[v ___lwdiv@counter counter `uc  1 a 1 5 ]
+[v ___lwdiv@counter counter `uc  1 a 1 13 ]
 "5
-[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 8 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 10 ]
 "30
 } 0
-"350 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
-[v _getnoPrimerArranque getnoPrimerArranque `(E1298  1 e 1 0 ]
+"346 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
+[v _getnoPrimerArranque getnoPrimerArranque `(i  1 e 2 0 ]
 {
-"352
-[v getnoPrimerArranque@aux aux `uc  1 a 1 1 ]
-"355
+"348
+[v getnoPrimerArranque@aux aux `uc  1 a 1 12 ]
+"347
+[v getnoPrimerArranque@direccion direccion `uc  1 a 1 11 ]
+"354
 } 0
 "276
 [v _leerMemoria leerMemoria `(uc  1 e 1 0 ]
 {
 [v leerMemoria@direccion direccion `uc  1 a 1 wreg ]
 [v leerMemoria@direccion direccion `uc  1 a 1 wreg ]
-[v leerMemoria@direccion direccion `uc  1 a 1 0 ]
+[v leerMemoria@direccion direccion `uc  1 a 1 8 ]
 "287
 } 0
 "23 /home/alumno/MPLABXProjects/Proyecto1.X/i2c-v2.c
@@ -724,17 +727,17 @@ TRUE 1
 {
 "28
 } 0
-"418 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
+"423 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
 [v _analisisRuido analisisRuido `(v  1 e 1 0 ]
 {
-"420
-[v analisisRuido@temp temp `uc  1 a 1 2 ]
-"429
+"425
+[v analisisRuido@temp temp `uc  1 a 1 10 ]
+"434
 } 0
-"432
+"437
 [v _analisisResto analisisResto `(v  1 e 1 0 ]
 {
-"446
+"451
 } 0
 "243
 [v _setLumen setLumen `(v  1 e 1 0 ]
@@ -752,7 +755,7 @@ TRUE 1
 [v i2c_write@I2C_data I2C_data `uc  1 a 1 wreg ]
 [v i2c_write@I2C_data I2C_data `uc  1 a 1 wreg ]
 "39
-[v i2c_write@I2C_data I2C_data `uc  1 a 1 0 ]
+[v i2c_write@I2C_data I2C_data `uc  1 a 1 8 ]
 "42
 } 0
 "30
@@ -765,11 +768,11 @@ TRUE 1
 {
 [v i2c_read@master_ack master_ack `uc  1 a 1 wreg ]
 "49
-[v i2c_read@I2C_data I2C_data `uc  1 a 1 1 ]
+[v i2c_read@I2C_data I2C_data `uc  1 a 1 9 ]
 "47
 [v i2c_read@master_ack master_ack `uc  1 a 1 wreg ]
 "51
-[v i2c_read@master_ack master_ack `uc  1 a 1 0 ]
+[v i2c_read@master_ack master_ack `uc  1 a 1 8 ]
 "64
 } 0
 "8
@@ -787,18 +790,21 @@ TRUE 1
 {
 "273
 } 0
-"465
+"470
 [v _TRAT_INT TRAT_INT `II(v  1 e 1 0 ]
 {
-"611
+"616
 } 0
-"358
+"357
 [v i1_setPWM setPWM `(v  1 e 1 0 ]
 {
 [v i1setPWM@porcent porcent `uc  1 a 1 wreg ]
+"364
+[v i1setPWM@direccion direccion `uc  1 a 1 11 ]
+"357
 [v i1setPWM@porcent porcent `uc  1 a 1 wreg ]
-[v i1setPWM@porcent porcent `uc  1 a 1 11 ]
-"363
+[v i1setPWM@porcent porcent `uc  1 a 1 12 ]
+"368
 } 0
 "4 /opt/microchip/xc8/v2.40/pic/sources/c90/common/Umul8.c
 [v i1___bmul __bmul `(uc  1 e 1 0 ]
@@ -826,17 +832,20 @@ TRUE 1
 [v i1___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"395 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
+"400 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
 [v i1_setLED setLED `(v  1 e 1 0 ]
 {
 [v i1setLED@red red `uc  1 a 1 wreg ]
+"409
+[v i1setLED@direccion direccion `uc  1 a 1 0 ]
+"400
 [v i1setLED@red red `uc  1 a 1 wreg ]
-[v i1setLED@green green `uc  1 p 1 21 ]
-[v i1setLED@blue blue `uc  1 p 1 22 ]
-[v i1setLED@luminosidad luminosidad `uc  1 p 1 23 ]
-"397
-[v i1setLED@red red `uc  1 a 1 24 ]
-"410
+[v i1setLED@green green `uc  1 p 1 10 ]
+[v i1setLED@blue blue `uc  1 p 1 11 ]
+[v i1setLED@luminosidad luminosidad `uc  1 p 1 12 ]
+"402
+[v i1setLED@red red `uc  1 a 1 1 ]
+"415
 } 0
 "289
 [v i1_escribirMemoria escribirMemoria `(i  1 e 2 0 ]
@@ -851,7 +860,7 @@ TRUE 1
 [v i1escribirMemoria@dato dato `uc  1 p 1 1 ]
 "291
 [v i1escribirMemoria@direccion direccion `uc  1 a 1 4 ]
-"317
+"318
 } 0
 "276
 [v i1_leerMemoria leerMemoria `(uc  1 e 1 0 ]
@@ -861,22 +870,16 @@ TRUE 1
 [v i1leerMemoria@direccion direccion `uc  1 a 1 0 ]
 "287
 } 0
-"371
+"376
 [v i1_cosasSPI cosasSPI `(v  1 e 1 0 ]
 {
-[v i1cosasSPI@roj roj `uc  1 a 1 wreg ]
-"372
-[v i1cosasSPI@i i `i  1 a 2 19 ]
-"373
-[v i1cosasSPI@lumo lumo `uc  1 a 1 18 ]
-"371
-[v i1cosasSPI@roj roj `uc  1 a 1 wreg ]
-[v i1cosasSPI@verd verd `uc  1 p 1 14 ]
-[v i1cosasSPI@azu azu `uc  1 p 1 15 ]
-[v i1cosasSPI@lumi lumi `uc  1 p 1 16 ]
-"373
-[v i1cosasSPI@roj roj `uc  1 a 1 17 ]
-"393
+"377
+[v i1cosasSPI@i i `i  1 a 2 8 ]
+"376
+[v i1cosasSPI@verd verd `uc  1 p 1 5 ]
+[v i1cosasSPI@azu azu `uc  1 p 1 6 ]
+[v i1cosasSPI@lumi lumi `uc  1 p 1 7 ]
+"398
 } 0
 "8 /home/alumno/MPLABXProjects/Proyecto1.X/spi-master-v1.c
 [v i1_spi_write_read spi_write_read `(uc  1 e 1 0 ]
@@ -890,51 +893,4 @@ TRUE 1
 "13
 [v i1spi_write_read@one_byte one_byte `uc  1 a 1 2 ]
 "29
-} 0
-"477 /opt/microchip/xc8/v2.40/pic/sources/c90/common/doprnt.c
-[v i1_printf printf `(i  1 e 2 0 ]
-{
-"545
-[v i1printf@val val `ui  1 a 2 11 ]
-"512
-[v i1printf@c c `uc  1 a 1 13 ]
-"479
-[v i1printf@ap ap `[1]*.4v  1 a 1 10 ]
-"521
-[v i1printf@prec prec `c  1 a 1 9 ]
-"525
-[v i1printf@flag flag `uc  1 a 1 8 ]
-"477
-[v i1printf@f f `*.25DCuc  1 p 2 0 ]
-"1567
-} 0
-"234 /home/alumno/MPLABXProjects/Proyecto1.X/main.c
-[v i1_putch putch `(v  1 e 1 0 ]
-{
-[v i1putch@c c `uc  1 a 1 wreg ]
-[v i1putch@c c `uc  1 a 1 wreg ]
-[v i1putch@c c `uc  1 a 1 0 ]
-"240
-} 0
-"5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/lwmod.c
-[v i1___lwmod __lwmod `(ui  1 e 2 0 ]
-{
-"10
-[v i1___lwmod@counter counter `uc  1 a 1 13 ]
-"5
-[v i1___lwmod@divisor divisor `ui  1 p 2 8 ]
-[v i1___lwmod@dividend dividend `ui  1 p 2 10 ]
-"25
-} 0
-"5 /opt/microchip/xc8/v2.40/pic/sources/c90/common/lwdiv.c
-[v i1___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"10
-[v i1___lwdiv@quotient quotient `ui  1 a 2 5 ]
-"11
-[v i1___lwdiv@counter counter `uc  1 a 1 7 ]
-"5
-[v i1___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v i1___lwdiv@dividend dividend `ui  1 p 2 2 ]
-"30
 } 0

@@ -1,0 +1,4 @@
+modo de ejecucion de hilos
+https://recursospython.com/guias-y-manuales/ejecutar-un-codigo-cada-determinado-tiempo/
+semaforos para hilos
+https://superfastpython.com/thread-semaphore/

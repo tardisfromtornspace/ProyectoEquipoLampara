@@ -303,7 +303,7 @@ int escribirMemoria(char direccion, char dato) {
             EECON2 = 0xAA;
             EECON1bits.WR = 1;
             INTCONbits.GIE = 1; // rehabilitar interrupción
-            while (!continuoEscribiendo); // Esperamos a que PIR2bits.EEIF == 0; // Limpiar flag cuando la escritura esté completa
+            while (EECON1bits.WR == 1);//while (!continuoEscribiendo); // Esperamos a que PIR2bits.EEIF == 0; // Limpiar flag cuando la escritura esté completa
             continuoEscribiendo = 0;
             if (leerMemoria(direccion) == dato)
                 confirmado = 1;
@@ -313,6 +313,7 @@ int escribirMemoria(char direccion, char dato) {
         if (contador >= 10) valorSal = 1; // Error en la escritura
         else valorSal = 0; // Éxito  
     } else valorSal = 2; // Error, ya se está realizando operacion de lectura
+    EECON1bits.WREN = 0; // Deshabilitamos escritura al final
     return valorSal;
 }
 
@@ -325,19 +326,14 @@ void initYo(void) {
     init_TMR0();
     init_TMR1();
     init_TMR2();
-    printf("Ini uart adc timers\r\n");
 
     init_CCP1_PWM();
-    printf("Ini ccp1\r\n");
     //init_CCP2_PWM();
     init_I2C();
-    printf("Ini i2c\r\n");
     init_SPI();
-    printf("Ini spi\r\n");
     //i2c_start();
     //printf("Ini i2c start\r\n");
     init_memoria();
-    printf("Ini memoria\r\n");
 
     TRISB = 0; // Puerto B a output 
 
@@ -347,19 +343,28 @@ void initYo(void) {
 }
 
 /*COMPROBACIÓN MEMORIA DISPONIBLE*/
-boolean getnoPrimerArranque() {
+int getnoPrimerArranque() {
     char direccion = direccionInicial;
     char aux = leerMemoria(direccion);
+    //if (aux == (char) 0b11111111) return TRUE;
+    //else return FALSE; // No es el primer arranque
     if (aux == NULL || aux == 0 || aux == (char) 0b00000000) return FALSE; //Es el primer arranque
     else return TRUE; // No es el primer arranque
+    
 }
 
 /*FUNCIONES DEL PWM*/
 void setPWM(char porcent) {
     porcentaje = (char) (porcent / 100);
+    //printf("Estableciendo PWM a %d", porcentaje);
     CCPR1L = porcentaje * porcentajeMax; // Los 8 bits mas significativos para el duty cycle del PWM. El porcentajeMax debe ser igual a la variable elPR2
+    //printf("Guardando PWM en memoria");
     escribirMemoria(direccionPWM, porcent);
+    //printf(" PWM guardando");
+    char direccion = direccionInicial;
+    escribirMemoria(direccion, 0b00000000);
     pPWM = porcent;
+    //printf("PWM guardado");
 }
 
 char getPWM() {
@@ -369,32 +374,27 @@ char getPWM() {
 //NOTA: TODO puede que requieran interrupción por emplear bus SPI
 
 void cosasSPI(char roj, char verd, char azu, char lumi) {
-    int i;
+    int i = numLedes;
     char lumo = 0b11100000 + (lumi % 32);
-    printf("Escribo en SPI cadena inicial");// DEBUG
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00); // Starting frame
-    for (i = numLedes; i == 0; i--) {
-        printf("Escribo color led %d", i);// DEBUG
+    for (i = numLedes; i > 0; i--) {
         spi_write_read(lumo);
         spi_write_read(azu);
         spi_write_read(verd);
         spi_write_read(roj);
     }
-    printf("Escribo en SPI cadena final");// DEBUG
     spi_write_read(0xFF);
     spi_write_read(0xFF);
     spi_write_read(0xFF);
     spi_write_read(0xFF); // End frame
-    printf("Exito SPI cadena final");// DEBUG
 
 }
 
 void setLED(char red, char green, char blue, char luminosidad) {
     //cosas del SPI
-    printf("Iniciar cosas SPI a"); // DEBUG
     cosasSPI(red, green, blue, luminosidad);
     // Si tuvo éxito procedemos a guardarlo en nuestra memoria volátil...
     miLED[0] = red;
@@ -402,7 +402,8 @@ void setLED(char red, char green, char blue, char luminosidad) {
     miLED[2] = blue;
     miLED[3] = luminosidad;
     //... y guardamos en memoria no volátil
-    printf("Guardar opcion de led"); // DEBUG
+    char direccion = direccionInicial;
+    escribirMemoria(direccion, 0b00000000);
     escribirMemoria(direccionLED, miLED[0]);
     escribirMemoria(direccionLED + 1 * sizeof (char), miLED[1]);
     escribirMemoria(direccionLED + 2 * sizeof (char), miLED[2]);
@@ -446,19 +447,16 @@ void analisisResto() {
 }
 
 void initActuadoresSegunMemoria(void) {
-    printf("Pruebo memoria");
-    if (getnoPrimerArranque() == FALSE) { // Si no encuentra nada, opción por defecto: luz blanca a máxima intensidad y ventilador apagado
-        printf("Default");
+    //printf("Pruebo memoria");
+    if (getnoPrimerArranque() == TRUE) { // Si no encuentra nada, opción por defecto: luz blanca a máxima intensidad y ventilador apagado
+        //printf("Default");
         setPWM(0);
         setLED(255, 255, 255, 31);
     } else { // Cargo configuración de LED y PWM
-        printf("Custom");
+        //printf("Custom");
         
-        setPWM(0); // TO-DO quitar del proyecto final
-        setLED(255, 255, 255, 31);
-        
-        //setPWM(leerMemoria(direccionPWM)); DESCOMENTAR EN FINAL
-        //setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
+        setPWM(leerMemoria(direccionPWM)); //DESCOMENTAR EN FINAL
+        setLED(leerMemoria(direccionLED), leerMemoria(direccionLED + 1 * 8), leerMemoria(direccionLED + 2 * 8), leerMemoria(direccionLED + 3 * 8));
     }
 }
 
@@ -613,9 +611,8 @@ void __interrupt() TRAT_INT(void) {
 /*FUNCION PRINCIPAL*/
 void main(void) {
     initYo();
-    printf("Iniyo terminado\r\n");
     initActuadoresSegunMemoria();
-    printf("Inicio terminado\r\n");
+    //printf("Inicio terminado\r\n");
 
     while (deboContinuar) {
         if (emitirMisSensores) {

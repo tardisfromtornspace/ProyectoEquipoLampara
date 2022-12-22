@@ -2877,7 +2877,7 @@ int escribirMemoria(char direccion, char dato) {
             EECON2 = 0xAA;
             EECON1bits.WR = 1;
             INTCONbits.GIE = 1;
-            while (!continuoEscribiendo);
+            while (EECON1bits.WR == 1);
             continuoEscribiendo = 0;
             if (leerMemoria(direccion) == dato)
                 confirmado = 1;
@@ -2887,6 +2887,7 @@ int escribirMemoria(char direccion, char dato) {
         if (contador >= 10) valorSal = 1;
         else valorSal = 0;
     } else valorSal = 2;
+    EECON1bits.WREN = 0;
     return valorSal;
 }
 
@@ -2899,19 +2900,14 @@ void initYo(void) {
     init_TMR0();
     init_TMR1();
     init_TMR2();
-    printf("Ini uart adc timers\r\n");
 
     init_CCP1_PWM();
-    printf("Ini ccp1\r\n");
 
     init_I2C();
-    printf("Ini i2c\r\n");
     init_SPI();
-    printf("Ini spi\r\n");
 
 
     init_memoria();
-    printf("Ini memoria\r\n");
 
     TRISB = 0;
 
@@ -2921,19 +2917,28 @@ void initYo(void) {
 }
 
 
-boolean getnoPrimerArranque() {
+int getnoPrimerArranque() {
     char direccion = direccionInicial;
     char aux = leerMemoria(direccion);
+
+
     if (aux == (0) || aux == 0 || aux == (char) 0b00000000) return FALSE;
     else return TRUE;
+
 }
 
 
 void setPWM(char porcent) {
     porcentaje = (char) (porcent / 100);
+
     CCPR1L = porcentaje * porcentajeMax;
+
     escribirMemoria(direccionPWM, porcent);
+
+    char direccion = direccionInicial;
+    escribirMemoria(direccion, 0b00000000);
     pPWM = porcent;
+
 }
 
 char getPWM() {
@@ -2943,32 +2948,31 @@ char getPWM() {
 
 
 void cosasSPI(char roj, char verd, char azu, char lumi) {
-    int i;
+    int i = numLedes;
     char lumo = 0b11100000 + (lumi % 32);
-    printf("Escribo en SPI cadena inicial");
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00);
     spi_write_read(0x00);
-    for (i = numLedes; i == 0; i--) {
-        printf("Escribo color led %d", i);
-        spi_write_read(lumo);
-        spi_write_read(azu);
-        spi_write_read(verd);
-        spi_write_read(roj);
+    for (i = numLedes; i > 0; i--) {
+
+        spi_write_read(0b11101111);
+        spi_write_read(0b11111111);
+        spi_write_read(0b11111111);
+        spi_write_read(0b11111111);
+
+
+
     }
-    printf("Escribo en SPI cadena final");
     spi_write_read(0xFF);
     spi_write_read(0xFF);
     spi_write_read(0xFF);
     spi_write_read(0xFF);
-    printf("Exito SPI cadena final");
 
 }
 
 void setLED(char red, char green, char blue, char luminosidad) {
 
-    printf("Iniciar cosas SPI a");
     cosasSPI(red, green, blue, luminosidad);
 
     miLED[0] = red;
@@ -2976,7 +2980,8 @@ void setLED(char red, char green, char blue, char luminosidad) {
     miLED[2] = blue;
     miLED[3] = luminosidad;
 
-    printf("Guardar opcion de led");
+    char direccion = direccionInicial;
+    escribirMemoria(direccion, 0b00000000);
     escribirMemoria(direccionLED, miLED[0]);
     escribirMemoria(direccionLED + 1 * sizeof (char), miLED[1]);
     escribirMemoria(direccionLED + 2 * sizeof (char), miLED[2]);
@@ -3021,7 +3026,7 @@ void analisisResto() {
 
 void initActuadoresSegunMemoria(void) {
     printf("Pruebo memoria");
-    if (getnoPrimerArranque() == FALSE) {
+    if (getnoPrimerArranque() == TRUE) {
         printf("Default");
         setPWM(0);
         setLED(255, 255, 255, 31);
@@ -3094,7 +3099,7 @@ void __attribute__((picinterrupt(("")))) TRAT_INT(void) {
 
                     PIR1bits.ADIF = 0;
                     valor[anI] = (int) ADRESH * 0x100 + ADRESL;
-# 541 "main.c"
+# 546 "main.c"
                     if (leoADCHumedadTemp > 0)
                     {
                         if (copias1 == 0)
@@ -3170,7 +3175,6 @@ void __attribute__((picinterrupt(("")))) TRAT_INT(void) {
 
 void main(void) {
     initYo();
-    printf("Iniyo terminado\r\n");
     initActuadoresSegunMemoria();
     printf("Inicio terminado\r\n");
 

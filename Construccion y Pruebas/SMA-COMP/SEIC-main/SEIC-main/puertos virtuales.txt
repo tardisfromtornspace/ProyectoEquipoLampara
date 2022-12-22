@@ -1,0 +1,2 @@
+Como crear puertos virtuales
+https://stackoverflow.com/questions/2291772/virtual-serial-device-in-python

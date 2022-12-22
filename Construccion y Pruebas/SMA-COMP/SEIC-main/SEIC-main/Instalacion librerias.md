@@ -1,0 +1,16 @@
+Usar libreria PySerial y configurarlo como una uart
+
+sudo apt install python3-serial
+
+Usar libreria Tk instalacion librerias
+
+sudo apt install python3-tk
+
+Video para configuracion de la uart 
+https://www.youtube.com/watch?v=R-CegZOa02I
+
+https://youtu.be/o-iBFrRJ8nQ
+
+https://www.todavianose.com/enviar-sms-con-python-y-la-libreria-pyserial/
+
+https://julioecheverri.wordpress.com/2018/02/26/comunicacion-serial-y-python/
